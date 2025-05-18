@@ -1,0 +1,35 @@
+# .dockerignore
+
+# Git files
+.git
+.gitignore
+
+# Maven target directory (intermediate build artifacts)
+# The Dockerfiles copy only what's needed (pom.xml, src, .mvn) and build inside the container.
+target/
+
+# IDE and OS specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+Thumbs.db
+
+# Local Maven wrapper jar (downloaded by mvnw script if not present)
+.mvn/wrapper/maven-wrapper.jar
+
+# Build directories from other tools
+build/
+dist/
+
+# Log files
+*.log
+logs/
+
+# Local configuration (if any, that shouldn't be in the image)
+# local.properties
+
+# Secrets (should never be in build context)
+*.secret
+*.key

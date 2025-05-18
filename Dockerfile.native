@@ -1,0 +1,61 @@
+# Dockerfile.native
+# Builds a GraalVM native executable for the Spring Boot application.
+#
+# NOTE: This Dockerfile assumes the availability of a GraalVM Community Edition (CE)
+# distribution built for JDK 24 (e.g., ghcr.io/graalvm/graalvm-ce:jdk-24).
+# Such a version might be experimental or a future release.
+# If unavailable, you may need to:
+#   1. Use a GraalVM version for an earlier JDK (e.g., JDK 21 or 22) and adjust
+#      your pom.xml's <java.version> if source compatibility is an issue for native compilation.
+#   2. Build GraalVM for JDK 24 yourself or find a custom build.
+# Adjust the builder image name as needed.
+
+# --- Builder Stage ---
+# Uses a GraalVM image that includes the native-image tool.
+FROM ghcr.io/graalvm/graalvm-ce:jdk-24 AS builder
+# Example for a potentially more available GraalVM version (adjust pom.xml if needed):
+# FROM ghcr.io/graalvm/graalvm-ce:jdk-21 AS builder
+
+LABEL stage="native-builder"
+WORKDIR /workspace
+
+# Copy Maven wrapper and pom.xml
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+
+# Download dependencies to leverage Docker cache
+RUN ./mvnw dependency:resolve
+
+# Copy source code
+COPY src ./src
+
+# Build the native executable using the 'native' Maven profile.
+# This invokes the GraalVM native-image compiler.
+RUN ./mvnw package -Pnative -DskipTests
+
+# --- Runtime Stage ---
+# Uses a minimal distroless base image for the native executable.
+FROM gcr.io/distroless/base-debian12
+# Alternatives for even smaller images if your app has no external OS dependencies:
+# FROM gcr.io/distroless/static-debian12
+# FROM cgr.dev/chainguard/static:latest
+# FROM scratch (only if the executable is fully static and self-contained)
+
+LABEL stage="native-runtime"
+WORKDIR /app
+
+# APP_NAME argument will be passed by Docker Bake, defaulting to the artifactId.
+ARG APP_NAME=kube-app-version
+COPY --from=builder /workspace/target/${APP_NAME} .
+
+# Distroless images run as a non-root user ('nonroot' UID 65532) by default.
+# If using a different base image that runs as root, create and switch to a non-root user:
+# RUN groupadd --system appgroup --gid 1001 && \
+#     useradd --system --uid 1001 --gid appgroup appuser
+# USER appuser
+
+EXPOSE 8080
+
+# Entrypoint is the native executable.
+ENTRYPOINT ["./kube-app-version"]
+# If APP_NAME arg is used consistently: ENTRYPOINT ["./${APP_NAME}"]

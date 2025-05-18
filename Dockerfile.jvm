@@ -1,0 +1,63 @@
+# Dockerfile.jvm
+# Builds a Spring Boot application using layered JARs for efficient image caching.
+#
+# NOTE: This Dockerfile assumes the availability of OpenJDK 24 base images.
+# Official OpenJDK images are typically available on Docker Hub (e.g., openjdk:24-jdk-slim).
+# Eclipse Temurin images (e.g., eclipse-temurin:24-jdk) are another good option.
+# Adjust the image names below if using different sources or when specific official images are confirmed.
+
+# --- Builder Stage ---
+# Uses a JDK image to build the application and extract layers.
+FROM openjdk:24-jdk-slim AS builder
+# Alternative: FROM eclipse-temurin:24-jdk-jammy AS builder
+
+LABEL stage="jvm-builder"
+WORKDIR /workspace
+
+# Copy Maven wrapper and pom.xml to leverage Docker cache for dependencies
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+
+# Download dependencies. If pom.xml or .mvn/ changes, this layer rebuilds.
+RUN ./mvnw dependency:go-offline
+
+# Copy source code
+COPY src ./src
+
+# Build the application JAR. This uses the downloaded dependencies.
+# Tests are skipped as they should be run in a separate CI step.
+RUN ./mvnw package -DskipTests
+
+# Extract layers from the Spring Boot JAR for optimized image creation.
+# JAR_FILE argument will be passed by Docker Bake, defaulting to the expected path.
+ARG JAR_FILE=target/kube-app-version-0.0.1-SNAPSHOT.jar
+RUN java -Djarmode=layertools -jar ${JAR_FILE} extract
+
+# --- Runtime Stage ---
+# Uses a JRE image for a smaller final image.
+FROM openjdk:24-jre-slim
+# Alternative: FROM eclipse-temurin:24-jre-jammy
+
+LABEL stage="jvm-runtime"
+WORKDIR /app
+
+# Create a non-root user and group for security.
+# Using fixed UID/GID is good practice for Kubernetes.
+# These commands assume a Debian-based slim image (like openjdk:*-slim).
+# If using an Alpine-based slim image, use 'addgroup -S' and 'adduser -S'.
+RUN groupadd --system appgroup --gid 1001 && \
+    useradd --system --uid 1001 --gid appgroup appuser
+
+# Copy extracted layers from the builder stage.
+# Order matters: dependencies, spring-boot-loader, snapshot-dependencies, then application.
+COPY --chown=appuser:appgroup --from=builder /workspace/dependencies/ ./
+COPY --chown=appuser:appgroup --from=builder /workspace/spring-boot-loader/ ./
+COPY --chown=appuser:appgroup --from=builder /workspace/snapshot-dependencies/ ./
+COPY --chown=appuser:appgroup --from=builder /workspace/application/ ./
+
+USER appuser
+
+EXPOSE 8080
+
+# Entrypoint uses Spring Boot's JarLauncher to run the layered application.
+ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
