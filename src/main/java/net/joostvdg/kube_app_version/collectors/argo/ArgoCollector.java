@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 // OffsetDateTime is used by Kubernetes client for timestamps
-// import java.time.OffsetDateTime;
+import java.time.OffsetDateTime; // Keep this import as it's used by Kubernetes client
 // DateTimeFormatter might be needed for custom parsing, but not with OffsetDateTime.toLocalDateTime()
 // import java.time.format.DateTimeFormatter;
 import java.util.Collections;
@@ -85,8 +85,9 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
             Map<String, String> labels = argoAppCr.getMetadata().getLabels();
             discoveredApp.setLabels(labels != null ? new HashMap<>(labels) : new HashMap<>());
 
-            if (argoAppCr.getMetadata().getCreationTimestamp() != null) {
-                discoveredApp.setFirstSeen(argoAppCr.getMetadata().getCreationTimestamp().toLocalDateTime());
+            OffsetDateTime creationTimestamp = argoAppCr.getMetadata().getCreationTimestamp();
+            if (creationTimestamp != null) {
+                discoveredApp.setFirstSeen(creationTimestamp.toLocalDateTime());
             } else {
                 logger.warn("Creation timestamp is null for Argo App: {}. Using current time as fallback for firstSeen.", appName);
                 discoveredApp.setFirstSeen(LocalDateTime.now());
@@ -140,8 +141,28 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
             }
             currentVersion.setVersion(appVersionString);
 
-            // --- Populate AppArtifacts (e.g., container images from status.summary) ---
+            // --- Populate AppArtifacts ---
             Set<AppArtifact> artifacts = new HashSet<>();
+
+            // 1. Extract Source Artifacts (Helm or Git) from spec
+            if (spec != null) {
+                if (spec.has("source") && spec.get("source").isJsonObject()) {
+                    JsonObject source = spec.getAsJsonObject("source");
+                    extractSourceArtifact(source, artifacts, appName);
+                } else if (spec.has("sources") && spec.get("sources").isJsonArray()) {
+                    JsonArray sourcesArray = spec.getAsJsonArray("sources");
+                    for (JsonElement sourceElement : sourcesArray) {
+                        if (sourceElement.isJsonObject()) {
+                            extractSourceArtifact(sourceElement.getAsJsonObject(), artifacts, appName);
+                        }
+                    }
+                }
+            } else {
+                logger.debug("Argo App {} has no 'spec' field. Cannot extract source artifacts.", appName);
+            }
+
+
+            // 2. Extract Deployed Image Artifacts from status.summary (existing logic)
             if (status != null && status.has("summary") && status.get("summary").isJsonObject()) {
                 JsonObject summary = status.getAsJsonObject("summary");
                 if (summary.has("images") && summary.get("images").isJsonArray()) {
@@ -176,6 +197,51 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
         }
         logger.info("Finished collecting Argo applications. Total found: {}", argoApps.size());
     }
+
+    /**
+     * Helper method to extract source artifact details from a single source object.
+     * Handles both Helm and Git types.
+     *
+     * @param sourceObject The JsonObject representing a single source (from spec.source or spec.sources[]).
+     * @param artifacts    The set to add the discovered artifacts to.
+     * @param appName      The name of the application (for logging).
+     */
+    private void extractSourceArtifact(JsonObject sourceObject, Set<AppArtifact> artifacts, String appName) {
+        AppArtifact sourceArtifact = new AppArtifact();
+        sourceArtifact.setDiscoveredAt(LocalDateTime.now());
+
+        String repoUrl = sourceObject.has("repoURL") && sourceObject.get("repoURL").isJsonPrimitive()
+                ? sourceObject.get("repoURL").getAsString() : null;
+        String chart = sourceObject.has("chart") && sourceObject.get("chart").isJsonPrimitive()
+                ? sourceObject.get("chart").getAsString() : null;
+        String path = sourceObject.has("path") && sourceObject.get("path").isJsonPrimitive()
+                ? sourceObject.get("path").getAsString() : null;
+
+        if (chart != null) {
+            // It's a Helm chart source
+            sourceArtifact.setArtifactType("helm");
+            if (repoUrl != null) {
+                sourceArtifact.setSource(repoUrl + "/" + chart);
+            } else {
+                sourceArtifact.setSource(chart); // Should ideally have repoURL, but handle if missing
+                logger.warn("Argo App {} source has 'chart' but no 'repoURL'. Source set to just chart name: {}", appName, chart);
+            }
+            artifacts.add(sourceArtifact);
+            logger.debug("Argo App {}: Added Helm source artifact: {}", appName, sourceArtifact.getSource());
+
+        } else if (repoUrl != null && path != null) {
+            // It's a Git repository source (assuming not Helm if chart is null)
+            sourceArtifact.setArtifactType("git");
+            sourceArtifact.setSource(repoUrl + "/" + path);
+            artifacts.add(sourceArtifact);
+            logger.debug("Argo App {}: Added Git source artifact: {}", appName, sourceArtifact.getSource());
+
+        } else {
+            // Source type could not be determined based on chart/repoURL/path
+            logger.debug("Argo App {}: Could not determine source artifact type from source object: {}", appName, sourceObject);
+        }
+    }
+
 
     // Implement the interface method
     @Override

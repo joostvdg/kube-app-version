@@ -44,6 +44,11 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>2.2</version> <!-- Use the latest stable version -->
+		</dependency>
+		<dependency>
 			<groupId>io.kubernetes</groupId>
 			<artifactId>client-java</artifactId>
 			<version>23.0.0</version>
