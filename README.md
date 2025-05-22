@@ -16,5 +16,20 @@ argocd app create cert-manager \
 
 ## TODO
 
-* should we extract Git and container Image version hashes for the artifacts?
-* 
+* normalize retrieve version to SemVer 2.0 minimal format before comparing with external versions
+* fix delta's properties
+* fix nextXVersion properties
+
+```json
+{
+   "currentArtifactVersion": "1.13",
+    "deployedAppVersion": "1.13",
+    "latestGARelease": "1.17.2",
+    "latestOverallVersion": "1.18.0-alpha.0",
+    "latestPreRelease": "1.18.0-alpha.0",
+    "majorVersionDelta": 0,
+    "minorVersionDelta": 4,
+    "nextMajorVersion": null,
+    "nextMinorVersion": "1.17.2"
+}
+```

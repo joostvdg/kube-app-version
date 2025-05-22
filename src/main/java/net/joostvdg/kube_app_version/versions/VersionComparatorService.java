@@ -4,18 +4,13 @@ import net.joostvdg.kube_app_version.api.model.App;
 import net.joostvdg.kube_app_version.api.model.AppArtifact;
 import net.joostvdg.kube_app_version.api.model.AppVersion;
 import net.joostvdg.kube_app_version.collectors.CollectorService;
-import net.joostvdg.kube_app_version.versions.dto.OutdatedArtifactInfo; // Import the DTO
-import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil; // Placeholder for SemVer
+import net.joostvdg.kube_app_version.versions.dto.OutdatedArtifactInfo;
+import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap; // Keep for getAvailableVersionsForAllAppArtifacts if still used
-import java.util.List;
-import java.util.Map; // Keep for getAvailableVersionsForAllAppArtifacts if still used
-import java.util.Set;
+import java.util.*; // For Optional
 
 @Service
 public class VersionComparatorService {
@@ -37,13 +32,15 @@ public class VersionComparatorService {
         for (App app : apps) {
             for (AppVersion appVersion : app.getVersions()) {
                 for (AppArtifact artifact : appVersion.getArtifacts()) {
-                    String currentArtifactVersion = determineCurrentArtifactVersion(artifact, appVersion);
+                    String currentArtifactVersionStr = determineCurrentArtifactVersion(artifact, appVersion);
 
-                    if (currentArtifactVersion == null || "unknown".equalsIgnoreCase(currentArtifactVersion)) {
+                    if (currentArtifactVersionStr == null || "unknown".equalsIgnoreCase(currentArtifactVersionStr)) {
                         logger.debug("Could not determine a valid current version for artifact {} (type: {}) in app {}, skipping comparison.",
                                 artifact.getSource(), artifact.getArtifactType(), app.getName());
                         continue;
                     }
+                    Optional<com.github.zafarkhaja.semver.Version> currentParsedVersionOpt = SemanticVersionUtil.parseVersion(currentArtifactVersionStr);
+
 
                     for (VersionFetcher fetcher : versionFetchers) {
                         if (fetcher.supports(artifact)) {
@@ -54,39 +51,62 @@ public class VersionComparatorService {
 
                                 if (availableVersions == null || availableVersions.isEmpty()) {
                                     logger.debug("No available versions found for artifact {}", artifact.getSource());
-                                    continue; // No versions to compare against
-                                }
-
-                                // The HelmChartVersionFetcher sorts latest first. Other fetchers should too,
-                                // or getLatestVersion needs to implement robust sorting.
-                                String latestAvailableVersion = SemanticVersionUtil.getLatestVersion(availableVersions);
-
-                                if (latestAvailableVersion == null) {
-                                    logger.warn("Could not determine the latest version from available versions for artifact {}", artifact.getSource());
                                     continue;
                                 }
 
-                                logger.debug("Comparing current artifact version '{}' with latest available '{}' for {} ({})",
-                                        currentArtifactVersion, latestAvailableVersion, artifact.getSource(), artifact.getArtifactType());
+                                Optional<com.github.zafarkhaja.semver.Version> latestOverallOpt = SemanticVersionUtil.getLatestOverallVersion(availableVersions);
+                                Optional<com.github.zafarkhaja.semver.Version> latestGAOpt = SemanticVersionUtil.getLatestGARelease(availableVersions);
+                                Optional<com.github.zafarkhaja.semver.Version> latestPreOpt = SemanticVersionUtil.getLatestPreRelease(availableVersions);
 
-                                if (SemanticVersionUtil.isOutdated(currentArtifactVersion, latestAvailableVersion)) {
-                                    logger.info("Artifact outdated: App: '{}', Artifact: '{}', Current: '{}', Latest: '{}'",
-                                            app.getName(), artifact.getSource(), currentArtifactVersion, latestAvailableVersion);
+                                String latestOverallVersionStr = latestOverallOpt.map(Object::toString).orElse(null);
+                                String latestGAVersionStr = latestGAOpt.map(Object::toString).orElse(null);
+                                String latestPreVersionStr = latestPreOpt.map(Object::toString).orElse(null);
+
+                                Optional<String> nextMinorOpt = SemanticVersionUtil.findNextMinorVersion(currentArtifactVersionStr, availableVersions);
+                                Optional<String> nextMajorOpt = SemanticVersionUtil.findNextMajorVersion(currentArtifactVersionStr, availableVersions);
+
+                                // Calculate Deltas
+                                Optional<Integer> majorDeltaOpt = SemanticVersionUtil.calculateMajorVersionDelta(currentParsedVersionOpt, latestGAOpt);
+                                Optional<com.github.zafarkhaja.semver.Version> latestMinorInSameMajorOpt = SemanticVersionUtil.findLatestMinorInSameMajorSeries(currentParsedVersionOpt, availableVersions);
+                                Optional<Integer> minorDeltaOpt = SemanticVersionUtil.calculateMinorVersionDelta(currentParsedVersionOpt, latestMinorInSameMajorOpt);
+
+
+                                // Determine if outdated primarily based on latest GA release
+                                boolean isOutdated = false;
+                                if (latestGAVersionStr != null) {
+                                    isOutdated = SemanticVersionUtil.isOutdated(currentArtifactVersionStr, latestGAVersionStr);
+                                } else if (latestOverallVersionStr != null) {
+                                    isOutdated = SemanticVersionUtil.isOutdated(currentArtifactVersionStr, latestOverallVersionStr);
+                                    if (isOutdated) {
+                                        logger.info("Artifact {} is outdated against latest overall (pre-release: {}), as no GA was found.", artifact.getSource(), latestOverallVersionStr);
+                                    }
+                                }
+
+
+                                if (isOutdated) { // Only add to list if outdated
+                                    logger.info("Artifact outdated: App: '{}', Artifact: '{}', Current: '{}', Latest GA: '{}', Major Delta: {}, Minor Delta: {}",
+                                            app.getName(), artifact.getSource(), currentArtifactVersionStr, latestGAVersionStr, majorDeltaOpt.orElse(null), minorDeltaOpt.orElse(null));
                                     outdatedList.add(new OutdatedArtifactInfo(
                                             app.getName(),
                                             app.getId(),
-                                            appVersion.getVersion(), // Overall deployed version of the app
+                                            appVersion.getVersion(),
                                             artifact.getSource(),
                                             artifact.getArtifactType(),
-                                            currentArtifactVersion,
-                                            latestAvailableVersion,
-                                            availableVersions // Include all available for context
+                                            currentArtifactVersionStr,
+                                            latestOverallVersionStr,
+                                            latestGAVersionStr,
+                                            latestPreVersionStr,
+                                            nextMinorOpt.orElse(null),
+                                            nextMajorOpt.orElse(null),
+                                            majorDeltaOpt.orElse(null), // Add delta
+                                            minorDeltaOpt.orElse(null), // Add delta
+                                            availableVersions
                                     ));
                                 }
                             } catch (Exception e) {
                                 logger.error("Error fetching or comparing versions for artifact {}: {}", artifact.getSource(), e.getMessage(), e);
                             }
-                            break; // Found a supporting fetcher, no need to check others for this artifact
+                            break; // Found a supporting fetcher
                         }
                     }
                 }
@@ -102,22 +122,21 @@ public class VersionComparatorService {
         switch (artifactType.toLowerCase()) {
             case "helm":
             case "git":
-                // For Helm and Git, the AppVersion.version (from Argo's targetRevision/sync.revision)
-                // is considered the current version of that source artifact.
                 return appVersion.getVersion();
             case "containerimage":
                 String source = artifact.getSource();
                 if (source == null) return null;
-                // Naive parsing: assumes "image:tag" or "image@digest"
-                // Prefers tag if both colon and @ are present (though unlikely in a single source string from Argo)
                 int colonIndex = source.lastIndexOf(':');
-                int atIndex = source.lastIndexOf('@'); // Digests are usually for immutability, not "latest" checks
+                int atIndex = source.lastIndexOf('@');
 
                 if (colonIndex > 0 && (atIndex == -1 || colonIndex > atIndex)) {
-                    return source.substring(colonIndex + 1);
-                } else if (atIndex > 0 && colonIndex == -1) { // Only digest
+                    String tag = source.substring(colonIndex + 1);
+                    return SemanticVersionUtil.parseVersion(tag)
+                            .map(com.github.zafarkhaja.semver.Version::toString)
+                            .orElse(tag);
+                } else if (atIndex > 0 && colonIndex == -1) {
                     logger.debug("Artifact {} uses a digest '{}'. Digest comparison is not typical for 'latest version' checks.", source, source.substring(atIndex + 1));
-                    return null; // Or return the digest if you have a way to compare it, but usually we compare tags.
+                    return null;
                 }
                 logger.warn("Could not parse version tag from containerImage source: {}", source);
                 return null;
@@ -127,11 +146,9 @@ public class VersionComparatorService {
         }
     }
 
-
-    // This method might still be useful for other purposes or direct queries
     public Map<String, List<String>> getAvailableVersionsForAllAppArtifacts() {
         Set<App> apps = collectorService.getAllCollectedApps();
-        Map<String, List<String>> artifactVersionsMap = new HashMap<>(); // Renamed for clarity
+        Map<String, List<String>> artifactVersionsMap = new HashMap<>();
 
         for (App app : apps) {
             for (AppVersion appVersion : app.getVersions()) {

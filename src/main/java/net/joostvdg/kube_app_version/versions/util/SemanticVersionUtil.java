@@ -1,88 +1,218 @@
 package net.joostvdg.kube_app_version.versions.util;
 
-// This is critical. Real semantic version comparison is non-trivial. You should replace this with a robust library like com.github.zafarkhaja:java-semver.
-
+import com.github.zafarkhaja.semver.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
-// import com.github.zafarkhaja.semver.Version; // Example if using java-semver
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class SemanticVersionUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(SemanticVersionUtil.class);
+    // Pattern to identify versions like "X.Y" (e.g., "1.2", "10.0")
+    private static final Pattern XY_PATTERN = Pattern.compile("^(\\d+\\.\\d+)$");
+    // Pattern to identify versions like "X.Y-prerelease" (e.g., "1.2-alpha", "10.0-beta.1")
+    private static final Pattern XY_PRERELEASE_PATTERN = Pattern.compile("^(\\d+\\.\\d+)-([a-zA-Z0-9][a-zA-Z0-9.-]*)$");
 
-    /**
-     * Determines the latest version from a list.
-     * IMPORTANT: This is a placeholder. It assumes versions are somewhat sortable as strings
-     * or that the fetcher provides them sorted (latest first).
-     * For robust results, use a proper semantic version sorting mechanism.
-     */
-    public static String getLatestVersion(List<String> versions) {
-        if (versions == null || versions.isEmpty()) {
-            return null;
+
+    public static Optional<Version> parseVersion(String versionStr) {
+        if (versionStr == null) {
+            return Optional.empty();
         }
-        // The HelmChartVersionFetcher sorts them latest first.
-        // If other fetchers don't, this needs to be more robust.
-        // For example, using java-semver:
-        // return versions.stream()
-        //       .map(s -> {
-        //           try { return Version.valueOf(s); }
-        //           catch (Exception e) { logger.warn("Invalid version format: {}", s); return null; }
-        //       })
-        //       .filter(Objects::nonNull)
-        //       .max(Version::compareTo)
-        //       .map(Version::toString)
-        //       .orElse(null);
 
-        // Simple approach assuming fetchers sort latest first (like HelmChartVersionFetcher does)
-        return versions.get(0);
+        String originalVersionString = versionStr;
+        String processedString = versionStr;
+
+        if (processedString.startsWith("v")) {
+            processedString = processedString.substring(1);
+        }
+
+        Optional<Version> parsedOpt;
+
+        parsedOpt = Version.tryParse(processedString, false);
+        if (parsedOpt.isPresent()) {
+            return parsedOpt;
+        }
+
+        Matcher xyMatcher = XY_PATTERN.matcher(processedString);
+        if (xyMatcher.matches()) {
+            String majorMinor = xyMatcher.group(1);
+            String normalizedVersion = majorMinor + ".0";
+            logger.debug("Normalizing X.Y format: '{}' (original: '{}') to '{}'",
+                    processedString, originalVersionString, normalizedVersion);
+            parsedOpt = Version.tryParse(normalizedVersion, false);
+            if (parsedOpt.isPresent()) {
+                return parsedOpt;
+            } else {
+                logger.warn("Normalization of X.Y format to '{}' still resulted in unparsable version. Original: '{}'", normalizedVersion, originalVersionString);
+            }
+        }
+
+        Matcher xyPrereleaseMatcher = XY_PRERELEASE_PATTERN.matcher(processedString);
+        if (xyPrereleaseMatcher.matches()) {
+            String majorMinor = xyPrereleaseMatcher.group(1);
+            String prerelease = xyPrereleaseMatcher.group(2);
+            String normalizedVersion = majorMinor + ".0-" + prerelease;
+            logger.debug("Normalizing X.Y-prerelease format: '{}' (original: '{}') to '{}'",
+                    processedString, originalVersionString, normalizedVersion);
+            parsedOpt = Version.tryParse(normalizedVersion, false);
+            if (parsedOpt.isPresent()) {
+                return parsedOpt;
+            } else {
+                logger.warn("Normalization of X.Y-prerelease format to '{}' still resulted in unparsable version. Original: '{}'", normalizedVersion, originalVersionString);
+            }
+        }
+
+        if (!parsedOpt.isPresent()) {
+            logger.warn("Invalid semantic version format, all normalization attempts failed. Original: '{}', Cleaned: '{}'.",
+                    originalVersionString, processedString);
+        }
+        return parsedOpt;
+    }
+
+    private static List<Version> parseAll(List<String> versionStrings) {
+        if (versionStrings == null || versionStrings.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return versionStrings.stream()
+                .map(SemanticVersionUtil::parseVersion)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
+    }
+
+    public static Optional<Version> getLatestOverallVersion(List<String> availableVersionStrings) {
+        if (availableVersionStrings == null || availableVersionStrings.isEmpty()) {
+            return Optional.empty();
+        }
+        return parseVersion(availableVersionStrings.get(0));
+    }
+
+    public static Optional<Version> getLatestGARelease(List<String> availableVersionStrings) {
+        List<Version> parsedVersions = parseAll(availableVersionStrings);
+        return parsedVersions.stream()
+                .filter(v -> !v.isPreRelease())
+                .max(Version::compareTo);
+    }
+
+    public static Optional<Version> getLatestPreRelease(List<String> availableVersionStrings) {
+        List<Version> parsedVersions = parseAll(availableVersionStrings);
+        return parsedVersions.stream()
+                .filter(Version::isPreRelease)
+                .max(Version::compareTo);
+    }
+
+    public static boolean isOutdated(String currentVersionStr, String latestGAVersionStr) {
+        Optional<Version> currentOpt = parseVersion(currentVersionStr);
+        Optional<Version> latestGAOpt = parseVersion(latestGAVersionStr);
+
+        if (currentOpt.isEmpty() || latestGAOpt.isEmpty()) {
+            logger.debug("Cannot compare versions due to parsing error: current='{}', latestGA='{}'", currentVersionStr, latestGAVersionStr);
+            return false;
+        }
+        return latestGAOpt.get().greaterThan(currentOpt.get());
+    }
+
+    public static Optional<String> findNextMinorVersion(String currentVersionStr, List<String> availableVersionStrings) {
+        Optional<Version> currentOpt = parseVersion(currentVersionStr);
+        if (currentOpt.isEmpty()) {
+            return Optional.empty();
+        }
+        Version current = currentOpt.get();
+        List<Version> availableParsed = parseAll(availableVersionStrings);
+
+        return availableParsed.stream()
+                .filter(v -> !v.isPreRelease()) // Only consider GA releases
+                .filter(v -> v.getMajorVersion() == current.getMajorVersion()) // Same Major
+                .filter(v -> v.greaterThan(current)) // Newer than current (handles minor or patch increase)
+                .max(Version::compareTo)
+                .map(Version::toString);
+    }
+
+    public static Optional<String> findNextMajorVersion(String currentVersionStr, List<String> availableVersionStrings) {
+        Optional<Version> currentOpt = parseVersion(currentVersionStr);
+        if (currentOpt.isEmpty()) {
+            return Optional.empty();
+        }
+        Version current = currentOpt.get();
+        List<Version> availableParsed = parseAll(availableVersionStrings);
+
+        return availableParsed.stream()
+                .filter(v -> !v.isPreRelease()) // Only consider GA releases
+                .filter(v -> v.getMajorVersion() == (current.getMajorVersion() + 1)) // Next Major series
+                .max(Version::compareTo) // Get the latest within that next major series
+                .map(Version::toString);
     }
 
     /**
-     * Checks if the current version is outdated compared to the latest available version.
-     * IMPORTANT: This is a placeholder. It uses simple string inequality.
-     * For robust results, use proper semantic version comparison.
+     * Calculates the difference in major versions between the current version and the latest GA release.
      *
-     * @param currentVersion The version currently in use.
-     * @param latestAvailableVersion The latest version available.
-     * @return true if currentVersion is considered older than latestAvailableVersion.
+     * @param currentVersionOpt Optional current version.
+     * @param latestGAReleaseOpt Optional latest GA release.
+     * @return The difference in major versions, or null if comparison isn't possible or not applicable.
      */
-    public static boolean isOutdated(String currentVersion, String latestAvailableVersion) {
-        if (currentVersion == null || latestAvailableVersion == null) {
-            return false; // Cannot compare
+    public static Optional<Integer> calculateMajorVersionDelta(Optional<Version> currentVersionOpt, Optional<Version> latestGAReleaseOpt) {
+        if (currentVersionOpt.isPresent() && latestGAReleaseOpt.isPresent()) {
+            Version current = currentVersionOpt.get();
+            Version latestGA = latestGAReleaseOpt.get();
+            if (latestGA.getMajorVersion() > current.getMajorVersion()) {
+                return Optional.of(latestGA.getMajorVersion() - current.getMajorVersion());
+            }
+            return Optional.of(0); // Same major or current is somehow newer (shouldn't happen if latestGA is truly latest)
         }
-        // Remove common prefixes like 'v' for more consistent comparison if not using a semver library
-        String cleanCurrent = currentVersion.startsWith("v") ? currentVersion.substring(1) : currentVersion;
-        String cleanLatest = latestAvailableVersion.startsWith("v") ? latestAvailableVersion.substring(1) : latestAvailableVersion;
+        return Optional.empty(); // Not enough info to calculate
+    }
 
-        // Proper semantic version comparison is needed here.
-        // Example using java-semver:
-        // try {
-        //     Version current = Version.valueOf(cleanCurrent);
-        //     Version latest = Version.valueOf(cleanLatest);
-        //     return latest.greaterThan(current);
-        // } catch (Exception e) {
-        //     logger.warn("Failed to compare versions semantically: '{}' vs '{}'. Falling back to string comparison. Error: {}", cleanCurrent, cleanLatest, e.getMessage());
-        //     // Fallback to simple inequality if parsing fails (not ideal)
-        //     return !cleanCurrent.equals(cleanLatest);
-        // }
-
-        // Highly simplified placeholder:
-        // If they are not equal, and getLatestVersion picked the "latest", assume it's newer.
-        // This is NOT robust for complex versions (e.g. 1.0.0-alpha vs 1.0.0).
-        if (cleanCurrent.equals(cleanLatest)) {
-            return false;
+    /**
+     * Finds the latest GA release within the same major series as the current version.
+     *
+     * @param currentVersionOpt Optional current version.
+     * @param availableVersionStrings List of all available version strings.
+     * @return Optional latest GA version in the same major series.
+     */
+    public static Optional<Version> findLatestMinorInSameMajorSeries(Optional<Version> currentVersionOpt, List<String> availableVersionStrings) {
+        if (currentVersionOpt.isEmpty()) {
+            return Optional.empty();
         }
-        // This basic check assumes that if strings are different, and one is "latest", it's an update.
-        // This will have false positives/negatives for pre-releases, build metadata, etc.
-        // For example, "1.0.0" vs "1.0.0-SNAPSHOT" - this logic might incorrectly say 1.0.0 is outdated if 1.0.0-SNAPSHOT is "latest".
-        // Or "1.10.0" vs "1.2.0" - string sort would be wrong.
-        // The getLatestVersion() method MUST ensure truly the latest is returned.
-        logger.warn("Using basic string inequality for version comparison: '{}' vs '{}'. Strongly recommend implementing proper semantic versioning.", cleanCurrent, cleanLatest);
-        return true; // If not equal, and latest is determined correctly, then it's "outdated".
-        // This relies heavily on getLatestVersion being accurate.
+        Version current = currentVersionOpt.get();
+        List<Version> availableParsed = parseAll(availableVersionStrings);
+
+        return availableParsed.stream()
+                .filter(v -> !v.isPreRelease()) // Only GA
+                .filter(v -> v.getMajorVersion() == current.getMajorVersion()) // Same Major
+                .max(Version::compareTo);
+    }
+
+
+    /**
+     * Calculates the difference in minor versions between the current version and
+     * the latest GA release within the same major series.
+     *
+     * @param currentVersionOpt Optional current version.
+     * @param latestMinorInSameMajorOpt Optional latest GA release in the same major series.
+     * @return The difference in minor versions, or null if comparison isn't possible or not applicable.
+     */
+    public static Optional<Integer> calculateMinorVersionDelta(Optional<Version> currentVersionOpt, Optional<Version> latestMinorInSameMajorOpt) {
+        if (currentVersionOpt.isPresent() && latestMinorInSameMajorOpt.isPresent()) {
+            Version current = currentVersionOpt.get();
+            Version latestMinorGA = latestMinorInSameMajorOpt.get();
+
+            // Ensure they are indeed in the same major series for a meaningful minor delta
+            if (current.getMajorVersion() == latestMinorGA.getMajorVersion()) {
+                if (latestMinorGA.getMinorVersion() > current.getMinorVersion()) {
+                    return Optional.of(latestMinorGA.getMinorVersion() - current.getMinorVersion());
+                }
+                return Optional.of(0); // Same minor or current is somehow newer
+            } else {
+                logger.debug("Cannot calculate minor delta between different major versions: current={}, latestMinorGA={}", current, latestMinorGA);
+            }
+        }
+        return Optional.empty(); // Not enough info or different majors
     }
 }

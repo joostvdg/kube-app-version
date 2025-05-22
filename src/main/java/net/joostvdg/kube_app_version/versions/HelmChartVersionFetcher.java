@@ -1,6 +1,9 @@
 package net.joostvdg.kube_app_version.versions;
 
 import com.github.zafarkhaja.semver.Version;
+// Make sure SemanticVersionUtil is imported if not in the same package,
+// but it seems to be in net.joostvdg.kube_app_version.versions.util
+import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import net.joostvdg.kube_app_version.api.model.AppArtifact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +21,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional; // Added for clarity, though stream handles it
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+// Pattern and Matcher are no longer needed here
 import java.util.stream.Collectors;
 
 @Service
@@ -30,10 +33,7 @@ public class HelmChartVersionFetcher implements VersionFetcher {
     private final HttpClient httpClient;
     private final Map<String, List<String>> versionCache = new ConcurrentHashMap<>();
 
-    // Pattern to identify versions like "X.Y-prerelease" (e.g., "1.2-alpha", "10.0-beta.1")
-    // It captures X.Y in group 1 and the pre-release part in group 2.
-    private static final Pattern XY_PRERELEASE_PATTERN = Pattern.compile("^(\\d+\\.\\d+)-([a-zA-Z0-9][a-zA-Z0-9.-]*)$");
-
+    // XY_PRERELEASE_PATTERN is removed as normalization is now in SemanticVersionUtil
 
     public HelmChartVersionFetcher() {
         this.httpClient = HttpClient.newBuilder()
@@ -57,53 +57,7 @@ public class HelmChartVersionFetcher implements VersionFetcher {
         return new String[]{repoUrl, chartName};
     }
 
-    private Version parseAndNormalizeVersionString(String versionStr, String chartNameForLogging) {
-        if (versionStr == null) {
-            logger.warn("Chart '{}': Null version string encountered. Skipping.", chartNameForLogging);
-            return null;
-        }
-
-        String originalVersionString = versionStr;
-        String processedString = versionStr;
-
-        if (processedString.startsWith("v")) {
-            processedString = processedString.substring(1);
-        }
-
-        try {
-            // Attempt direct parsing first
-            var possibleVersion = Version.tryParse(processedString, false);
-            if (possibleVersion != null && possibleVersion.isPresent()) {
-                return possibleVersion.get();
-            } else {
-                logger.warn("Chart '{}': Invalid semantic version format '{}'. Skipping.", chartNameForLogging, originalVersionString);
-                return null;
-            }
-        } catch (IllegalArgumentException e1) {
-            // Direct parsing failed, try to normalize if it matches X.Y-prerelease pattern
-            Matcher matcher = XY_PRERELEASE_PATTERN.matcher(processedString);
-            if (matcher.matches()) {
-                String majorMinor = matcher.group(1); // X.Y
-                String prerelease = matcher.group(2); // prerelease part
-                String normalizedVersion = majorMinor + ".0-" + prerelease;
-                logger.debug("Chart '{}': Normalizing version '{}' (original: '{}') to '{}'",
-                        chartNameForLogging, processedString, originalVersionString, normalizedVersion);
-                try {
-                    return Version.valueOf(normalizedVersion);
-                } catch (IllegalArgumentException e2) {
-                    logger.warn("Chart '{}': Invalid semantic version format after normalization. Original: '{}', Cleaned: '{}', Normalized: '{}'. Skipping. Error: {}",
-                            chartNameForLogging, originalVersionString, processedString, normalizedVersion, e2.getMessage());
-                    return null;
-                }
-            } else {
-                // Did not match X.Y-prerelease pattern, so the original error stands
-                logger.warn("Chart '{}': Invalid semantic version format. Original: '{}', Cleaned: '{}'. Skipping. Error: {}",
-                        chartNameForLogging, originalVersionString, processedString, e1.getMessage());
-                return null;
-            }
-        }
-    }
-
+    // parseAndNormalizeVersionString method is REMOVED from here.
 
     @Override
     @SuppressWarnings("unchecked") // For casting from Yaml parsing
@@ -204,15 +158,17 @@ public class HelmChartVersionFetcher implements VersionFetcher {
             return Collections.emptyList();
         }
 
+        // Use SemanticVersionUtil for parsing and normalization
         List<Version> semVerList = rawVersions.stream()
-                .map(s -> parseAndNormalizeVersionString(s, chartName))
-                .filter(Objects::nonNull)
+                .map(SemanticVersionUtil::parseVersion) // Returns Optional<Version>
+                .filter(Optional::isPresent)
+                .map(Optional::get)
                 .collect(Collectors.toList());
 
         Collections.sort(semVerList, Collections.reverseOrder()); // Sorts descending (latest first)
 
         List<String> sortedVersionStrings = semVerList.stream()
-                .map(Version::toString) // This will give the canonical string form (without 'v')
+                .map(Version::toString) // This will give the canonical string form
                 .collect(Collectors.toList());
 
         logger.info("Found and sorted {} versions for chart '{}' in repo '{}'. Caching result.", sortedVersionStrings.size(), chartName, repoUrl);
@@ -248,28 +204,28 @@ public class HelmChartVersionFetcher implements VersionFetcher {
             List<String> versions2 = fetcher.getAvailableVersions(anotherArtifact);
             logVersions(anotherArtifact.getSource(), versions2);
 
-            // Test case for X.Y-prerelease
-            AppArtifact testXYPrerelease = new AppArtifact();
-            testXYPrerelease.setArtifactType("helm");
-            // Simulate a chart that might have such versions (actual repo might not)
-            // For testing, we'd ideally mock the HTTP response or have a local test index.yaml
-            logger.info("Simulating fetch for a chart with X.Y-prerelease style versions (e.g., mychart/mychartname)");
-            // Manually testing the parser function:
-            Version parsedVer = fetcher.parseAndNormalizeVersionString("1.2-alpha", "mychart");
-            logger.info("Parsed '1.2-alpha': {}", parsedVer != null ? parsedVer.toString() : "null");
-            parsedVer = fetcher.parseAndNormalizeVersionString("v0.5-beta.2", "mychart");
-            logger.info("Parsed 'v0.5-beta.2': {}", parsedVer != null ? parsedVer.toString() : "null");
-            parsedVer = fetcher.parseAndNormalizeVersionString("1.2.3-rc1", "mychart");
-            logger.info("Parsed '1.2.3-rc1': {}", parsedVer != null ? parsedVer.toString() : "null");
-            parsedVer = fetcher.parseAndNormalizeVersionString("1.2.3", "mychart");
-            logger.info("Parsed '1.2.3': {}", parsedVer != null ? parsedVer.toString() : "null");
-            parsedVer = fetcher.parseAndNormalizeVersionString("invalid-version", "mychart");
-            logger.info("Parsed 'invalid-version': {}", parsedVer != null ? parsedVer.toString() : "null");
-
+            // Test cases for SemanticVersionUtil.parseVersion (which is now used internally)
+            logger.info("Testing SemanticVersionUtil.parseVersion directly:");
+            testParse("1.2-alpha");
+            testParse("v0.5-beta.2");
+            testParse("1.2.3-rc1");
+            testParse("1.2.3");
+            testParse("invalid-version");
+            testParse("1.2"); // Test X.Y normalization
+            testParse("v10.3"); // Test X.Y normalization with 'v'
+            testParse("1"); // Should fail
+            testParse("1.2.3.4"); // Should fail (SemVer only has 3 components + pre/build)
+            testParse("1.2.3+build"); // Should parse
+            testParse("1.2-alpha+build"); // Should parse (X.Y-prerelease normalized to X.Y.0-prerelease)
 
         } catch (Exception e) {
-            logger.error("Error fetching chart versions: {}", e.getMessage(), e);
+            logger.error("Error in main: {}", e.getMessage(), e);
         }
+    }
+
+    private static void testParse(String versionStr) {
+        Optional<Version> parsedVer = SemanticVersionUtil.parseVersion(versionStr);
+        logger.info("Parsed '{}': {}", versionStr, parsedVer.map(Version::toString).orElse("null (failed to parse)"));
     }
 
     private static void logVersions(String source, List<String> versions) {
