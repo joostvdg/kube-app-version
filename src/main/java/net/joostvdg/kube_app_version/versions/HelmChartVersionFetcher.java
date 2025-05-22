@@ -1,5 +1,6 @@
 package net.joostvdg.kube_app_version.versions;
 
+import com.github.zafarkhaja.semver.Version;
 import net.joostvdg.kube_app_version.api.model.AppArtifact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,25 +17,31 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 public class HelmChartVersionFetcher implements VersionFetcher {
 
     private static final Logger logger = LoggerFactory.getLogger(HelmChartVersionFetcher.class);
     private final HttpClient httpClient;
+    private final Map<String, List<String>> versionCache = new ConcurrentHashMap<>();
+
+    // Pattern to identify versions like "X.Y-prerelease" (e.g., "1.2-alpha", "10.0-beta.1")
+    // It captures X.Y in group 1 and the pre-release part in group 2.
+    private static final Pattern XY_PRERELEASE_PATTERN = Pattern.compile("^(\\d+\\.\\d+)-([a-zA-Z0-9][a-zA-Z0-9.-]*)$");
+
 
     public HelmChartVersionFetcher() {
         this.httpClient = HttpClient.newBuilder()
                 .followRedirects(HttpClient.Redirect.NORMAL)
-                .connectTimeout(Duration.ofSeconds(10)) // Add a connection timeout
+                .connectTimeout(Duration.ofSeconds(10))
                 .build();
     }
 
-    /**
-     * Parses the source string (expected format: repoUrl/chartName) into repository URL and chart name.
-     * @param source The source string.
-     * @return A String array where [0] is repoUrl and [1] is chartName, or null if parsing fails.
-     */
     private String[] parseHelmSource(String source) {
         if (source == null || source.isEmpty()) {
             logger.warn("Helm source string is null or empty.");
@@ -50,6 +57,54 @@ public class HelmChartVersionFetcher implements VersionFetcher {
         return new String[]{repoUrl, chartName};
     }
 
+    private Version parseAndNormalizeVersionString(String versionStr, String chartNameForLogging) {
+        if (versionStr == null) {
+            logger.warn("Chart '{}': Null version string encountered. Skipping.", chartNameForLogging);
+            return null;
+        }
+
+        String originalVersionString = versionStr;
+        String processedString = versionStr;
+
+        if (processedString.startsWith("v")) {
+            processedString = processedString.substring(1);
+        }
+
+        try {
+            // Attempt direct parsing first
+            var possibleVersion = Version.tryParse(processedString, false);
+            if (possibleVersion != null && possibleVersion.isPresent()) {
+                return possibleVersion.get();
+            } else {
+                logger.warn("Chart '{}': Invalid semantic version format '{}'. Skipping.", chartNameForLogging, originalVersionString);
+                return null;
+            }
+        } catch (IllegalArgumentException e1) {
+            // Direct parsing failed, try to normalize if it matches X.Y-prerelease pattern
+            Matcher matcher = XY_PRERELEASE_PATTERN.matcher(processedString);
+            if (matcher.matches()) {
+                String majorMinor = matcher.group(1); // X.Y
+                String prerelease = matcher.group(2); // prerelease part
+                String normalizedVersion = majorMinor + ".0-" + prerelease;
+                logger.debug("Chart '{}': Normalizing version '{}' (original: '{}') to '{}'",
+                        chartNameForLogging, processedString, originalVersionString, normalizedVersion);
+                try {
+                    return Version.valueOf(normalizedVersion);
+                } catch (IllegalArgumentException e2) {
+                    logger.warn("Chart '{}': Invalid semantic version format after normalization. Original: '{}', Cleaned: '{}', Normalized: '{}'. Skipping. Error: {}",
+                            chartNameForLogging, originalVersionString, processedString, normalizedVersion, e2.getMessage());
+                    return null;
+                }
+            } else {
+                // Did not match X.Y-prerelease pattern, so the original error stands
+                logger.warn("Chart '{}': Invalid semantic version format. Original: '{}', Cleaned: '{}'. Skipping. Error: {}",
+                        chartNameForLogging, originalVersionString, processedString, e1.getMessage());
+                return null;
+            }
+        }
+    }
+
+
     @Override
     @SuppressWarnings("unchecked") // For casting from Yaml parsing
     public List<String> getAvailableVersions(AppArtifact artifact) throws Exception {
@@ -64,14 +119,22 @@ public class HelmChartVersionFetcher implements VersionFetcher {
         }
         String repoUrl = parsedSource[0];
         String chartName = parsedSource[1];
+        String cacheKey = repoUrl + "/" + chartName;
 
+        List<String> cachedVersions = versionCache.get(cacheKey);
+        if (cachedVersions != null) {
+            logger.debug("Returning cached versions for {}", cacheKey);
+            return new ArrayList<>(cachedVersions);
+        }
+
+        logger.debug("No cache hit for {}. Fetching from remote.", cacheKey);
         String indexFileUrl = repoUrl.endsWith("/") ? repoUrl + "index.yaml" : repoUrl + "/index.yaml";
         logger.debug("Fetching Helm index file from: {}", indexFileUrl);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(indexFileUrl))
                 .header("Accept", "application/yaml, text/yaml, */*")
-                .timeout(Duration.ofSeconds(10)) // Add a request timeout
+                .timeout(Duration.ofSeconds(10))
                 .build();
 
         HttpResponse<String> response;
@@ -97,15 +160,17 @@ public class HelmChartVersionFetcher implements VersionFetcher {
             throw new Exception("Failed to parse YAML from " + indexFileUrl + ": " + e.getMessage(), e);
         }
 
-        List<String> versions = new ArrayList<>();
+        List<String> rawVersions = new ArrayList<>();
         if (indexData == null || !indexData.containsKey("entries")) {
-            logger.warn("YAML content from {} does not contain 'entries' or is null.", indexFileUrl);
+            logger.warn("YAML content from {} does not contain 'entries' or is null. Caching empty list.", indexFileUrl);
+            versionCache.put(cacheKey, Collections.emptyList());
             return Collections.emptyList();
         }
 
         Object entriesObject = indexData.get("entries");
         if (!(entriesObject instanceof Map)) {
-            logger.warn("'entries' in YAML from {} is not a Map.", indexFileUrl);
+            logger.warn("'entries' in YAML from {} is not a Map. Caching empty list.", indexFileUrl);
+            versionCache.put(cacheKey, Collections.emptyList());
             return Collections.emptyList();
         }
         Map<String, Object> entries = (Map<String, Object>) entriesObject;
@@ -113,7 +178,8 @@ public class HelmChartVersionFetcher implements VersionFetcher {
         if (entries.containsKey(chartName)) {
             Object chartEntriesObject = entries.get(chartName);
             if (!(chartEntriesObject instanceof List)) {
-                logger.warn("Chart entry for '{}' in YAML from {} is not a List.", chartName, indexFileUrl);
+                logger.warn("Chart entry for '{}' in YAML from {} is not a List. Caching empty list.", chartName, indexFileUrl);
+                versionCache.put(cacheKey, Collections.emptyList());
                 return Collections.emptyList();
             }
             List<Map<String, Object>> chartVersionEntries = (List<Map<String, Object>>) chartEntriesObject;
@@ -122,19 +188,37 @@ public class HelmChartVersionFetcher implements VersionFetcher {
                 if (chartVersionEntry != null && chartVersionEntry.containsKey("version")) {
                     Object versionObj = chartVersionEntry.get("version");
                     if (versionObj != null) {
-                        versions.add(versionObj.toString());
+                        rawVersions.add(versionObj.toString());
                     }
                 }
             }
-            logger.info("Found {} versions for chart '{}' in repo '{}'", versions.size(), chartName, repoUrl);
         } else {
-            logger.warn("Chart '{}' not found in {}", chartName, indexFileUrl);
+            logger.warn("Chart '{}' not found in {}. Caching empty list.", chartName, indexFileUrl);
+            versionCache.put(cacheKey, Collections.emptyList());
             return Collections.emptyList();
         }
 
-        // Consider using a semantic version comparator for more accurate sorting if needed
-        versions.sort(Collections.reverseOrder());
-        return versions;
+        if (rawVersions.isEmpty()) {
+            logger.info("No raw versions found for chart '{}' in repo '{}'. Caching empty list.", chartName, repoUrl);
+            versionCache.put(cacheKey, Collections.emptyList());
+            return Collections.emptyList();
+        }
+
+        List<Version> semVerList = rawVersions.stream()
+                .map(s -> parseAndNormalizeVersionString(s, chartName))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        Collections.sort(semVerList, Collections.reverseOrder()); // Sorts descending (latest first)
+
+        List<String> sortedVersionStrings = semVerList.stream()
+                .map(Version::toString) // This will give the canonical string form (without 'v')
+                .collect(Collectors.toList());
+
+        logger.info("Found and sorted {} versions for chart '{}' in repo '{}'. Caching result.", sortedVersionStrings.size(), chartName, repoUrl);
+        versionCache.put(cacheKey, Collections.unmodifiableList(new ArrayList<>(sortedVersionStrings)));
+
+        return sortedVersionStrings;
     }
 
     @Override
@@ -142,26 +226,69 @@ public class HelmChartVersionFetcher implements VersionFetcher {
         return artifact != null && "helm".equalsIgnoreCase(artifact.getArtifactType());
     }
 
-    // Main method can be kept for standalone testing during development
     public static void main(String[] args) {
         HelmChartVersionFetcher fetcher = new HelmChartVersionFetcher();
         AppArtifact testArtifact = new AppArtifact();
         testArtifact.setArtifactType("helm");
-        // Example from your README
         testArtifact.setSource("https://charts.jetstack.io/cert-manager");
-        // testArtifact.setSource("https://some-other-repo.com/my-chart"); // another example
 
         try {
             logger.info("Fetching versions for artifact source: {}", testArtifact.getSource());
             List<String> versions = fetcher.getAvailableVersions(testArtifact);
-            if (versions.isEmpty()) {
-                logger.info("No versions found for {}", testArtifact.getSource());
-            } else {
-                logger.info("Available versions for {}:", testArtifact.getSource());
-                versions.forEach(version -> logger.info(" - {}", version));
-            }
+            logVersions(testArtifact.getSource(), versions);
+
+            logger.info("Fetching versions again for artifact source (should hit cache): {}", testArtifact.getSource());
+            versions = fetcher.getAvailableVersions(testArtifact);
+            logVersions(testArtifact.getSource(), versions);
+
+            AppArtifact anotherArtifact = new AppArtifact();
+            anotherArtifact.setArtifactType("helm");
+            anotherArtifact.setSource("https://prometheus-community.github.io/helm-charts/kube-prometheus-stack");
+            logger.info("Fetching versions for artifact source: {}", anotherArtifact.getSource());
+            List<String> versions2 = fetcher.getAvailableVersions(anotherArtifact);
+            logVersions(anotherArtifact.getSource(), versions2);
+
+            // Test case for X.Y-prerelease
+            AppArtifact testXYPrerelease = new AppArtifact();
+            testXYPrerelease.setArtifactType("helm");
+            // Simulate a chart that might have such versions (actual repo might not)
+            // For testing, we'd ideally mock the HTTP response or have a local test index.yaml
+            logger.info("Simulating fetch for a chart with X.Y-prerelease style versions (e.g., mychart/mychartname)");
+            // Manually testing the parser function:
+            Version parsedVer = fetcher.parseAndNormalizeVersionString("1.2-alpha", "mychart");
+            logger.info("Parsed '1.2-alpha': {}", parsedVer != null ? parsedVer.toString() : "null");
+            parsedVer = fetcher.parseAndNormalizeVersionString("v0.5-beta.2", "mychart");
+            logger.info("Parsed 'v0.5-beta.2': {}", parsedVer != null ? parsedVer.toString() : "null");
+            parsedVer = fetcher.parseAndNormalizeVersionString("1.2.3-rc1", "mychart");
+            logger.info("Parsed '1.2.3-rc1': {}", parsedVer != null ? parsedVer.toString() : "null");
+            parsedVer = fetcher.parseAndNormalizeVersionString("1.2.3", "mychart");
+            logger.info("Parsed '1.2.3': {}", parsedVer != null ? parsedVer.toString() : "null");
+            parsedVer = fetcher.parseAndNormalizeVersionString("invalid-version", "mychart");
+            logger.info("Parsed 'invalid-version': {}", parsedVer != null ? parsedVer.toString() : "null");
+
+
         } catch (Exception e) {
             logger.error("Error fetching chart versions: {}", e.getMessage(), e);
+        }
+    }
+
+    private static void logVersions(String source, List<String> versions) {
+        if (versions.isEmpty()) {
+            logger.info("No versions found for {}", source);
+        } else {
+            logger.info("Available versions for {}: (Count: {})", source, versions.size());
+            int limit = 5;
+            if (versions.size() <= 2 * limit) {
+                versions.forEach(version -> logger.info(" - {}", version));
+            } else {
+                for(int i=0; i < limit; i++) {
+                    logger.info(" - {}", versions.get(i));
+                }
+                logger.info("   ... ({} more versions) ...", versions.size() - 2 * limit);
+                for(int i = versions.size() - limit; i < versions.size(); i++) {
+                    logger.info(" - {}", versions.get(i));
+                }
+            }
         }
     }
 }

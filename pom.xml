@@ -42,6 +42,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.zafarkhaja</groupId>
+			<artifactId>java-semver</artifactId>
+			<version>0.10.2</version> <!-- Check for the latest version -->
+		</dependency>
 
 		<dependency>
 			<groupId>org.yaml</groupId>
