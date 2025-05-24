@@ -22,7 +22,7 @@ public class VersionComparatorService {
     public VersionComparatorService(CollectorService collectorService, List<VersionFetcher> versionFetchers) {
         this.collectorService = collectorService;
         this.versionFetchers = versionFetchers;
-        logger.info("VersionComparatorService initialized with {} version fetchers.", versionFetchers.size());
+        logger.info("VersionComparatorService initialized with {} version fetchers.", Optional.of(versionFetchers.size()));
     }
 
     public List<OutdatedArtifactInfo> getOutdatedArtifacts() {
@@ -82,10 +82,8 @@ public class VersionComparatorService {
                                 Optional<String> nextMajorOpt = SemanticVersionUtil.findNextMajorVersion(currentArtifactVersionStr, availableVersions);
 
                                 // Calculate Deltas
-                                Optional<Integer> majorDeltaOpt = SemanticVersionUtil.calculateMajorVersionDelta(currentParsedVersionOpt, latestGAOpt);
-                                Optional<com.github.zafarkhaja.semver.Version> latestMinorInSameMajorOpt = SemanticVersionUtil.findLatestMinorInSameMajorSeries(currentParsedVersionOpt, availableVersions);
-                                Optional<Integer> minorDeltaOpt = SemanticVersionUtil.calculateMinorVersionDelta(currentParsedVersionOpt, latestMinorInSameMajorOpt);
-
+                                Optional<Long> minorDeltaOpt = SemanticVersionUtil.calculateMinorVersionDelta(currentParsedVersionOpt, nextMinorOpt);
+                                Optional<Long> majorDeltaOpt = SemanticVersionUtil.calculateMajorVersionDelta(currentParsedVersionOpt, nextMajorOpt);
 
                                 // Determine if outdated primarily based on latest GA release
                                 boolean isOutdated = false;

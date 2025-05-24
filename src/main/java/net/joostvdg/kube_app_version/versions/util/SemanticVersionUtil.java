@@ -165,17 +165,25 @@ public class SemanticVersionUtil {
      * Calculates the difference in major versions between the current version and the latest GA release.
      *
      * @param currentVersionOpt Optional current version.
-     * @param latestGAReleaseOpt Optional latest GA release.
+     * @param nextMajorVersionOpt Optional latest GA release.
      * @return The difference in major versions, or null if comparison isn't possible or not applicable.
      */
-    public static Optional<Integer> calculateMajorVersionDelta(Optional<Version> currentVersionOpt, Optional<Version> latestGAReleaseOpt) {
-        if (currentVersionOpt.isPresent() && latestGAReleaseOpt.isPresent()) {
+    public static Optional<Long> calculateMajorVersionDelta(Optional<Version> currentVersionOpt, Optional<String> nextMajorVersionOpt) {
+        if (currentVersionOpt.isPresent() && nextMajorVersionOpt.isPresent()) {
             Version current = currentVersionOpt.get();
-            Version latestGA = latestGAReleaseOpt.get();
-            if (latestGA.getMajorVersion() > current.getMajorVersion()) {
-                return Optional.of(latestGA.getMajorVersion() - current.getMajorVersion());
+            Version latestGA = Version.tryParse(nextMajorVersionOpt.get(), false).orElse(null);
+            if (latestGA == null) {
+                return Optional.empty();
             }
-            return Optional.of(0); // Same major or current is somehow newer (shouldn't happen if latestGA is truly latest)
+
+            if (latestGA.majorVersion() == current.majorVersion()) {
+                if (latestGA.minorVersion() > current.minorVersion()) {
+                    return Optional.of(latestGA.minorVersion() - current.minorVersion());
+                } else {
+                    return Optional.of(0L); // Same minor or current is somehow newer
+                }
+            }
+            return Optional.of(0L); // Same major or current is somehow newer (shouldn't happen if latestGA is truly latest)
         }
         return Optional.empty(); // Not enough info to calculate
     }
@@ -209,17 +217,18 @@ public class SemanticVersionUtil {
      * @param latestMinorInSameMajorOpt Optional latest GA release in the same major series.
      * @return The difference in minor versions, or null if comparison isn't possible or not applicable.
      */
-    public static Optional<Integer> calculateMinorVersionDelta(Optional<Version> currentVersionOpt, Optional<Version> latestMinorInSameMajorOpt) {
+    public static Optional<Long> calculateMinorVersionDelta(Optional<Version> currentVersionOpt, Optional<String> latestMinorInSameMajorOpt) {
         if (currentVersionOpt.isPresent() && latestMinorInSameMajorOpt.isPresent()) {
             Version current = currentVersionOpt.get();
-            Version latestMinorGA = latestMinorInSameMajorOpt.get();
+            Version latestMinorGA = Version.tryParse(latestMinorInSameMajorOpt.get(), false).orElse(null);
 
             // Ensure they are indeed in the same major series for a meaningful minor delta
-            if (current.getMajorVersion() == latestMinorGA.getMajorVersion()) {
-                if (latestMinorGA.getMinorVersion() > current.getMinorVersion()) {
-                    return Optional.of(latestMinorGA.getMinorVersion() - current.getMinorVersion());
+
+            if (latestMinorGA != null && current.majorVersion() == latestMinorGA.majorVersion() && latestMinorGA.minorVersion() == current.minorVersion()) {
+                if (latestMinorGA.patchVersion() > current.patchVersion()) {
+                    return Optional.of(latestMinorGA.patchVersion() - current.patchVersion());
                 }
-                return Optional.of(0); // Same minor or current is somehow newer
+                return Optional.of(0L); // Same minor or current is somehow newer
             } else {
                 logger.debug("Cannot calculate minor delta between different major versions: current={}, latestMinorGA={}", current, latestMinorGA);
             }

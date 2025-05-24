@@ -15,15 +15,15 @@ public class OutdatedArtifactInfo {
     private String latestPreRelease;     // Latest pre-release (if any)
     private String nextMinorVersion;     // Next available minor update for current
     private String nextMajorVersion;     // Next available major update for current
-    private Integer majorVersionDelta;   // Delta to latest GA Major
-    private Integer minorVersionDelta;   // Delta to latest GA Minor (within same Major)
+    private Long majorVersionDelta;   // Delta to latest GA Major
+    private Long minorVersionDelta;   // Delta to latest GA Minor (within same Major)
     private List<String> availableArtifactVersions; // Full list for context
 
     public OutdatedArtifactInfo(String appName, String appId, String deployedAppVersion,
                                 String artifactSource, String artifactType, String currentArtifactVersion,
                                 String latestOverallVersion, String latestGARelease, String latestPreRelease,
                                 String nextMinorVersion, String nextMajorVersion,
-                                Integer majorVersionDelta, Integer minorVersionDelta, // New params
+                                Long majorVersionDelta, Long minorVersionDelta, // New params
                                 List<String> availableArtifactVersions) {
         this.appName = appName;
         this.appId = appId;
@@ -53,8 +53,8 @@ public class OutdatedArtifactInfo {
     public String getLatestPreRelease() { return latestPreRelease; }
     public String getNextMinorVersion() { return nextMinorVersion; }
     public String getNextMajorVersion() { return nextMajorVersion; }
-    public Integer getMajorVersionDelta() { return majorVersionDelta; } // New getter
-    public Integer getMinorVersionDelta() { return minorVersionDelta; } // New getter
+    public Long getMajorVersionDelta() { return majorVersionDelta; } // New getter
+    public Long getMinorVersionDelta() { return minorVersionDelta; } // New getter
     public List<String> getAvailableArtifactVersions() { return availableArtifactVersions; }
 
     // --- equals, hashCode, toString (important for collections and logging) ---
