@@ -127,10 +127,19 @@ public class SemanticVersionUtil {
         Version current = currentOpt.get();
         List<Version> availableParsed = parseAll(availableVersionStrings);
 
-        return availableParsed.stream()
+        var versionsWithinSameMinor = availableParsed.
+                stream()
                 .filter(v -> !v.isPreRelease()) // Only consider GA releases
-                .filter(v -> v.getMajorVersion() == current.getMajorVersion()) // Same Major
-                .filter(v -> v.greaterThan(current)) // Newer than current (handles minor or patch increase)
+                .filter(v -> v.majorVersion() == current.majorVersion()) // Same Major
+                .filter(v -> v.minorVersion() == current.minorVersion()) // Same Minor
+                .toList();
+
+        for (Version v : versionsWithinSameMinor) {
+            logger.info("Found minor version options: {}", v);
+        }
+
+        return versionsWithinSameMinor.stream()
+                .filter(v -> v.isHigherThanOrEquivalentTo(current)) // Newer than current (handles minor or patch increase)
                 .max(Version::compareTo)
                 .map(Version::toString);
     }
@@ -143,9 +152,11 @@ public class SemanticVersionUtil {
         Version current = currentOpt.get();
         List<Version> availableParsed = parseAll(availableVersionStrings);
 
+        // We want the highest Minor version within the same Major version
         return availableParsed.stream()
                 .filter(v -> !v.isPreRelease()) // Only consider GA releases
-                .filter(v -> v.getMajorVersion() == (current.getMajorVersion() + 1)) // Next Major series
+                .filter(v -> v.majorVersion() == current.majorVersion()) // Same Major
+                .filter(v -> v.isHigherThanOrEquivalentTo(current)) // Newer than current (handles minor or patch increase)
                 .max(Version::compareTo) // Get the latest within that next major series
                 .map(Version::toString);
     }

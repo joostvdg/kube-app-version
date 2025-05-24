@@ -39,6 +39,22 @@ public class VersionComparatorService {
                                 artifact.getSource(), artifact.getArtifactType(), app.getName());
                         continue;
                     }
+
+                    // Count number of dots, if we only have X.Y, we add .0 at the end
+                    int dotCount = currentArtifactVersionStr.split("\\.").length;
+                    if (dotCount == 1) {
+                        // verify we don't have a -abc
+                        if (currentArtifactVersionStr.contains("-")) {
+                            // find the index of the hyphen, collect it as a suffix, add the .0 before the index of - and then add the suffix back
+                            int hyphenIndex = currentArtifactVersionStr.indexOf('-');
+                            String suffix = currentArtifactVersionStr.substring(hyphenIndex);
+                            currentArtifactVersionStr = currentArtifactVersionStr.substring(0, hyphenIndex);
+                            currentArtifactVersionStr += ".0" + suffix;
+                        }
+                        currentArtifactVersionStr += ".0";
+                    }
+
+
                     Optional<com.github.zafarkhaja.semver.Version> currentParsedVersionOpt = SemanticVersionUtil.parseVersion(currentArtifactVersionStr);
 
 
@@ -84,8 +100,8 @@ public class VersionComparatorService {
 
 
                                 if (isOutdated) { // Only add to list if outdated
-                                    logger.info("Artifact outdated: App: '{}', Artifact: '{}', Current: '{}', Latest GA: '{}', Major Delta: {}, Minor Delta: {}",
-                                            app.getName(), artifact.getSource(), currentArtifactVersionStr, latestGAVersionStr, majorDeltaOpt.orElse(null), minorDeltaOpt.orElse(null));
+                                    logger.info("Artifact outdated: App: '{}', Artifact: '{}', Current: '{}', Latest GA: '{}', Major Delta: {}, Minor Delta: {}, Next Minor: {}, Next Major: {}",
+                                            app.getName(), artifact.getSource(), currentArtifactVersionStr, latestGAVersionStr, majorDeltaOpt.orElse(null), minorDeltaOpt.orElse(null), nextMinorOpt.orElse(null), nextMajorOpt.orElse(null));
                                     outdatedList.add(new OutdatedArtifactInfo(
                                             app.getName(),
                                             app.getId(),
