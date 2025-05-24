@@ -16,19 +16,15 @@ argocd app create cert-manager \
 
 ## TODO
 
-* fix delta's properties
-
-
-```json
-{
-  "currentArtifactVersion": "1.13",
-  "deployedAppVersion": "1.13",
-  "latestGARelease": "1.17.2",
-  "latestOverallVersion": "1.18.0-alpha.0",
-  "latestPreRelease": "1.18.0-alpha.0",
-  "majorVersionDelta": 0,
-  "minorVersionDelta": 4,
-  "nextMajorVersion": "1.17.2",
-  "nextMinorVersion": "1.13.6"
-}
-```
+* test with more applications
+* add versioning calculation for Git
+  * tags?
+  * releases?
+* add unit tests
+* add spring modulith
+* add Spotless
+* add datastore
+* build container
+* build native-container
+* create Kustomize "package"?
+  * or Helm
