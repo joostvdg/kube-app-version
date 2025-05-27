@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-02
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/instance: guestbook
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  sources:
+    - repoURL: https://github.com/argoproj/argocd-example-apps.git
+      path: guestbook
+      targetRevision: guestbook-v0.2

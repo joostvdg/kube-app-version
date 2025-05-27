@@ -1,0 +1,237 @@
+[
+  {
+    "created_at": "2024-03-07T23:04:40Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/188319540",
+    "id": 188319540,
+    "metadata": {
+      "container": {
+        "tags": [
+          "0.1.29-amd"
+        ]
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:fc4ea0c619e6a42ec41fd407907186a590114a77becf2358f60fd9f30333812d",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-03-07T23:04:40Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/188319540"
+  },
+  {
+    "created_at": "2024-03-07T23:04:39Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/188319536",
+    "id": 188319536,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:71a481655a98ee86449a45e27feaa0050f8a10de29a45f815f924366c0fda23f",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-03-07T23:04:39Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/188319536"
+  },
+  {
+    "created_at": "2024-03-07T23:04:39Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/188319532",
+    "id": 188319532,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:79289005e08b47aad136dbdbad1222570c80439c6b5112b5b1e6663bbd5566fc",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-03-07T23:04:39Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/188319532"
+  },
+  {
+    "created_at": "2024-02-28T18:43:48Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184746686",
+    "id": 184746686,
+    "metadata": {
+      "container": {
+        "tags": [
+          "0.1.29-4"
+        ]
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:0fdd165e6156727f26032ed78cfc630028fd5ab3081f68eb31886884a26c7dfb",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:43:48Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184746686"
+  },
+  {
+    "created_at": "2024-02-28T18:43:48Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184746682",
+    "id": 184746682,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:5b4e6c334ec4f9f1c5d131f42047182428de4e3b35475093c1e020f450bb6193",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:43:48Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184746682"
+  },
+  {
+    "created_at": "2024-02-28T18:43:47Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184746673",
+    "id": 184746673,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:2543ededd0acd76f1b85ed17409d697ce16961dd0b5db4abac9a46f33d914c42",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:43:47Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184746673"
+  },
+  {
+    "created_at": "2024-02-28T18:33:44Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184742769",
+    "id": 184742769,
+    "metadata": {
+      "container": {
+        "tags": [
+          "0.1.29-3"
+        ]
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:45057bf567b0a702cca68aa2d9decf0e7b79abd0522e5cf71e38d73e3f523c2d",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:33:44Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184742769"
+  },
+  {
+    "created_at": "2024-02-28T18:33:43Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184742764",
+    "id": 184742764,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:f6d6a16c93998554e50665e8cff9bb8ef3b6610674fc6a9462dc5e2398a703d3",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:33:43Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184742764"
+  },
+  {
+    "created_at": "2024-02-28T18:33:43Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184742756",
+    "id": 184742756,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:9a92c253174a3c4cc0ddd3fb417bcc46254c7db5007055edb1c9b3ff120a4b2f",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:33:43Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184742756"
+  },
+  {
+    "created_at": "2024-02-28T18:31:59Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184742147",
+    "id": 184742147,
+    "metadata": {
+      "container": {
+        "tags": [
+          "0.1.29-2"
+        ]
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:bc40a54c545ce249b2c5d09aee15aae279a3ba3697f5caa62aa8e3a970003120",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:31:59Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184742147"
+  },
+  {
+    "created_at": "2024-02-28T18:31:58Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184742139",
+    "id": 184742139,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:d1b728ae7bccbce8cad3b0d789442d5ade3d45be84ec8c15a76d91ce729ff00b",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:31:58Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184742139"
+  },
+  {
+    "created_at": "2024-02-28T18:31:57Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184742123",
+    "id": 184742123,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:b1e3e4358d0cba7fb929f2610f70d78a608931e8b1d2cdc2d4bc65c13a2983be",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:31:57Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184742123"
+  },
+  {
+    "created_at": "2024-02-28T18:22:16Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184738675",
+    "id": 184738675,
+    "metadata": {
+      "container": {
+        "tags": [
+          "0.1.29-1"
+        ]
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:105411e53d2c8cedf92efe3dfd622984c50b243081e9cc2cc43ab52a8d333e26",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:22:16Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184738675"
+  },
+  {
+    "created_at": "2024-02-28T18:22:15Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184738670",
+    "id": 184738670,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:ed4902df332717b745e8435f2ee5b78a1596eca4a5d2454b6209b40f4e3874d7",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:22:15Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184738670"
+  },
+  {
+    "created_at": "2024-02-28T18:22:14Z",
+    "html_url": "https://github.com/users/joostvdg/packages/container/idec/184738663",
+    "id": 184738663,
+    "metadata": {
+      "container": {
+        "tags": []
+      },
+      "package_type": "container"
+    },
+    "name": "sha256:b126b7c965562644b3b8c0ea3916f582e05a0dd2b544ff0cf6f3d2130e78f85b",
+    "package_html_url": "https://github.com/users/joostvdg/packages/container/package/idec",
+    "updated_at": "2024-02-28T18:22:14Z",
+    "url": "https://api.github.com/users/joostvdg/packages/container/idec/versions/184738663"
+  }
+]

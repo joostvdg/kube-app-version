@@ -179,7 +179,10 @@ public class HelmChartVersionFetcher implements VersionFetcher {
 
     @Override
     public boolean supports(AppArtifact artifact) {
-        return artifact != null && "helm".equalsIgnoreCase(artifact.getArtifactType());
+        return artifact != null &&
+                "helm".equalsIgnoreCase(artifact.getArtifactType()) &&
+                artifact.getSource() != null &&
+                !artifact.getSource().startsWith("oci://");
     }
 
     public static void main(String[] args) {
