@@ -1,3 +1,4 @@
+/* (C)2025 */
 package net.joostvdg.kube_app_version.config;
 
 import io.kubernetes.client.openapi.ApiClient;
@@ -9,15 +10,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class KubernetesClientConfig {
 
-    @Bean
-    public ApiClient apiClient() throws Exception {
-        ApiClient client = Config.defaultClient();
-        io.kubernetes.client.openapi.Configuration.setDefaultApiClient(client);
-        return client;
-    }
+  @Bean
+  public ApiClient apiClient() throws Exception {
+    ApiClient client = Config.defaultClient();
+    io.kubernetes.client.openapi.Configuration.setDefaultApiClient(client);
+    return client;
+  }
 
-    @Bean
-    public CoreV1Api coreV1Api(ApiClient apiClient) {
-        return new CoreV1Api(apiClient);
-    }
+  @Bean
+  public CoreV1Api coreV1Api(ApiClient apiClient) {
+    return new CoreV1Api(apiClient);
+  }
 }

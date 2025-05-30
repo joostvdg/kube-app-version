@@ -1,52 +1,51 @@
+/* (C)2025 */
 package net.joostvdg.kube_app_version.api.model;
 
 public class Service {
-    private String name;
-    private String namespace;
-    private String clusterIP;
-    private String externalIP;
+  private String name;
+  private String namespace;
+  private String clusterIP;
+  private String externalIP;
 
-    public Service(String name, String namespace, String clusterIP, String externalIP) {
-        this.name = name;
-        this.namespace = namespace;
-        this.clusterIP = clusterIP;
-        this.externalIP = externalIP;
+  public Service(String name, String namespace, String clusterIP, String externalIP) {
+    this.name = name;
+    this.namespace = namespace;
+    this.clusterIP = clusterIP;
+    this.externalIP = externalIP;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof Service service)) {
+      return false;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Service)) {
-            return false;
-        }
+    if (!name.equals(service.name)) return false;
 
-        Service service = (Service) o;
+    return namespace.equals(service.namespace);
+  }
 
-        if (!name.equals(service.name)) return false;
+  @Override
+  public int hashCode() {
+    int result = name.hashCode();
+    result = 31 * result + namespace.hashCode();
+    return result;
+  }
 
-        return namespace.equals(service.namespace);
-    }
+  public String getName() {
+    return name;
+  }
 
-    @Override
-    public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + namespace.hashCode();
-        return result;
-    }
+  public String getNamespace() {
+    return namespace;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getClusterIP() {
+    return clusterIP;
+  }
 
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public String getClusterIP() {
-        return clusterIP;
-    }
-
-    public String getExternalIP() {
-        return externalIP;
-    }
+  public String getExternalIP() {
+    return externalIP;
+  }
 }
