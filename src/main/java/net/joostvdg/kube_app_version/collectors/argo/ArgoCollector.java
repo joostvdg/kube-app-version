@@ -194,6 +194,8 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
       currentVersion.setArtifacts(artifacts);
       appVersions.add(currentVersion);
       discoveredApp.setVersions(appVersions);
+      discoveredApp.setCurrentVersion(
+          currentVersion); // TODO: create logic to determine the actual current version
 
       // Add the fully populated App object to the set.
       // For this to correctly avoid duplicates if run multiple times without clearing argoApps,

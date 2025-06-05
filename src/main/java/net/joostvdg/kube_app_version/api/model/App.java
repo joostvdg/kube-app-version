@@ -11,6 +11,7 @@ public class App {
   private Map<String, String> labels;
   private LocalDateTime firstSeen;
   private LocalDateTime lastSeen;
+  private AppVersion currentVersion;
   private Set<AppVersion> versions;
 
   public String getId() {
@@ -59,5 +60,13 @@ public class App {
 
   public void setVersions(Set<AppVersion> versions) {
     this.versions = versions;
+  }
+
+  public AppVersion getCurrentVersion() {
+    return currentVersion;
+  }
+
+  public void setCurrentVersion(AppVersion currentVersion) {
+    this.currentVersion = currentVersion;
   }
 }

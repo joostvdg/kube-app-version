@@ -20,6 +20,7 @@ import net.joostvdg.kube_app_version.api.model.AppArtifact;
 import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,6 +43,7 @@ public class GithubOciHelmChartVersionFetcher implements VersionFetcher {
 
   @Override
   @SuppressWarnings("MixedMutabilityReturnType") // not using Guava you stupid parser
+  @Cacheable(cacheNames = "kubeversion", key = "#artifact.source")
   public List<String> getAvailableVersions(AppArtifact artifact) throws Exception {
     if (!supports(artifact)) {
       logger.warn(

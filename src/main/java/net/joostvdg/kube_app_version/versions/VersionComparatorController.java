@@ -2,6 +2,7 @@
 package net.joostvdg.kube_app_version.versions;
 
 import java.util.List;
+import java.util.Map;
 import net.joostvdg.kube_app_version.versions.dto.OutdatedArtifactInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +20,11 @@ public class VersionComparatorController {
 
   @GetMapping("/outdated")
   public List<OutdatedArtifactInfo> getOutdatedApplications() {
-    return versionComparatorService.getOutdatedArtifacts();
+    return versionComparatorService.getOutdatedArtifactsParallel();
   }
 
-  // You could also expose the raw available versions if needed
-  // @GetMapping("/available")
-  // public Map<String, List<String>> getAllAvailableVersions() {
-  //     return versionComparatorService.getAvailableVersionsForAllAppArtifacts();
-  // }
+  @GetMapping("/available")
+  public Map<String, List<String>> getAllAvailableVersions() {
+    return versionComparatorService.getAvailableVersionsForAllAppArtifacts();
+  }
 }

@@ -22,13 +22,10 @@ kubectl apply -f examples/argocd-applications
 
 ## TODO
 
-* handle OCI urls
 * add versioning calculation for Git
   * tags?
   * releases?
 * add unit tests
-* add spring modulith
-* add Spotless
 * add datastore
 * build container
 * build native-container
