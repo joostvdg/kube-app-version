@@ -178,10 +178,7 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
           for (JsonElement imageElement : images) {
             if (imageElement.isJsonPrimitive()) {
               String imageName = imageElement.getAsString();
-              AppArtifact artifact = new AppArtifact();
-              artifact.setSource(imageName);
-              artifact.setArtifactType("containerImage"); // Assuming these are container images
-              artifact.setDiscoveredAt(now());
+              AppArtifact artifact = new AppArtifact(imageName, "containerImage");
               artifacts.add(artifact);
             }
           }
@@ -219,8 +216,8 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
    */
   private void extractSourceArtifact(
       JsonObject sourceObject, Set<AppArtifact> artifacts, String appName) {
-    AppArtifact sourceArtifact = new AppArtifact();
-    sourceArtifact.setDiscoveredAt(now());
+    String source = "";
+    String artifactType = "";
 
     String repoUrl =
         sourceObject.has("repoURL") && sourceObject.get("repoURL").isJsonPrimitive()
@@ -237,27 +234,21 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
 
     if (chart != null) {
       // It's a Helm chart source
-      sourceArtifact.setArtifactType("helm");
+      artifactType = "helm";
       if (repoUrl != null) {
-        sourceArtifact.setSource(repoUrl + "/" + chart);
+        source = repoUrl + "/" + chart;
       } else {
-        sourceArtifact.setSource(chart); // Should ideally have repoURL, but handle if missing
+        source = chart; // Should ideally have repoURL, but handle if missing
         logger.warn(
             "Argo App {} source has 'chart' but no 'repoURL'. Source set to just chart name: {}",
             appName,
             chart);
       }
-      artifacts.add(sourceArtifact);
-      logger.debug(
-          "Argo App {}: Added Helm source artifact: {}", appName, sourceArtifact.getSource());
 
     } else if (repoUrl != null && path != null) {
       // It's a Git repository source (assuming not Helm if chart is null)
-      sourceArtifact.setArtifactType("git");
-      sourceArtifact.setSource(repoUrl + "/" + path);
-      artifacts.add(sourceArtifact);
-      logger.debug(
-          "Argo App {}: Added Git source artifact: {}", appName, sourceArtifact.getSource());
+      artifactType = "git";
+      source = repoUrl + "/" + path;
 
     } else {
       // Source type could not be determined based on chart/repoURL/path
@@ -266,6 +257,10 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
           appName,
           sourceObject);
     }
+    AppArtifact sourceArtifact = new AppArtifact(source, artifactType);
+    artifacts.add(sourceArtifact);
+    logger.debug(
+        "Argo App {}: Added Helm source artifact: {}", appName, sourceArtifact.getSource());
   }
 
   private LocalDateTime now() {

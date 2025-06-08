@@ -3,6 +3,7 @@ package net.joostvdg.kube_app_version.versions;
 
 import java.util.List;
 import java.util.Map;
+import net.joostvdg.kube_app_version.api.model.AppArtifact;
 import net.joostvdg.kube_app_version.versions.dto.OutdatedArtifactInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +27,11 @@ public class VersionComparatorController {
   @GetMapping("/available")
   public Map<String, List<String>> getAllAvailableVersions() {
     return versionComparatorService.getAvailableVersionsForAllAppArtifacts();
+  }
+
+  // TODO: temp debug, remove or move
+  @GetMapping("/artifacts")
+  public List<AppArtifact> getAllAppArtifacts() {
+    return versionComparatorService.getAllAppArtifacts();
   }
 }

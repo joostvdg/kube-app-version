@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  valkey-primary:
+    image: bitnami/valkey:latest
+    environment:
+      - VALKEY_REPLICATION_MODE=primary
+      - VALKEY_PASSWORD="notasecret"
+      - VALKEY_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - "6379:6379"
+    volumes:
+      - valkey-data:/bitnami/valkey/data'
+
+  valkey-replica:
+    image: bitnami/valkey:latest
+    ports:
+      - '6379'
+    depends_on:
+      - valkey-primary
+    environment:
+      - VALKEY_REPLICATION_MODE=replica
+      - VALKEY_PRIMARY_HOST=valkey-primary
+      - VALKEY_PRIMARY_PORT_NUMBER=6379
+      - VALKEY_PRIMARY_PASSWORD="notasecret"
+      - VALKEY_PASSWORD="notasecret"
+      - VALKEY_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    ports:
+      - "5540:5540"
+    restart: unless-stopped
+
+
+volumes:
+  valkey-data:
+    driver: local

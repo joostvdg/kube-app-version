@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+#  valkey:
+#    image: valkey/valkey:latest
+#    container_name: valkey
+#    ports:
+#      - "6379:6379"
+#    volumes:
+#      - valkey-data:/data
+#    command: ["--appendonly", "yes"]
+#    healthcheck:
+#      test: ["CMD", "redis-cli", "ping"]
+#      interval: 5s
+#      timeout: 3s
+#      retries: 5
+#    restart: unless-stopped
+
+  valkey-node-1:
+    image: valkey/valkey:latest
+    command: valkey-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --requirepass ${VALKEY_PASSWORD}
+    volumes:
+      - ./data1:/data
+    networks:
+      valkey-cluster:
+        ipv4_address: 10.0.0.11
+    ports:
+      - "6381:6379"
+  valkey-node-2:
+    image: valkey/valkey:latest
+    command: valkey-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --requirepass ${VALKEY_PASSWORD}
+    volumes:
+      - ./data2:/data
+    networks:
+      valkey-cluster:
+        ipv4_address: 10.0.0.12
+    ports:
+      - "6380:6379"
+  valkey-node-3:
+    image: valkey/valkey:latest
+    command: valkey-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --requirepass ${VALKEY_PASSWORD}
+    volumes:
+      - ./data3:/data
+    ports:
+      - "6379:6379"
+    networks:
+      valkey-cluster:
+        ipv4_address: 10.0.0.13
+
+  valkey-cluster-creator:
+    image: valkey/valkey:latest
+    command: valkey-cli --cluster create 10.0.0.11:6379 10.0.0.12:6379 10.0.0.13:6379 -a ${VALKEY_PASSWORD} --cluster-yes
+    volumes:
+      - ./data3:/data
+    networks:
+      valkey-cluster:
+        ipv4_address: 10.0.0.20
+    depends_on:
+      - valkey-node-1
+      - valkey-node-2
+      - valkey-node-3
+
+  # Option 1: RedisInsight (official Redis GUI)
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    networks:
+      valkey-cluster:
+        ipv4_address: 10.0.0.30
+    ports:
+      - "5540:5540"
+    restart: unless-stopped
+
+networks:
+  valkey-cluster:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/16
+
+volumes:
+  valkey-data:
+    driver: local
+  data1:
+    driver: local
+  data3:
+    driver: local
+  data2:
+    driver: local

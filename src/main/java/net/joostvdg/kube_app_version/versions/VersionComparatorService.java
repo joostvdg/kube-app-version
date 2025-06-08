@@ -14,6 +14,7 @@ import net.joostvdg.kube_app_version.versions.dto.OutdatedArtifactInfo;
 import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,11 +23,15 @@ public class VersionComparatorService {
   private static final Logger logger = LoggerFactory.getLogger(VersionComparatorService.class);
   private final CollectorService collectorService;
   private final List<VersionFetcher> versionFetchers;
+  private final AppArtifactRepository appVersionRepository;
 
   public VersionComparatorService(
-      CollectorService collectorService, List<VersionFetcher> versionFetchers) {
+      CollectorService collectorService,
+      List<VersionFetcher> versionFetchers,
+      AppArtifactRepository appVersionRepository) {
     this.collectorService = collectorService;
     this.versionFetchers = versionFetchers;
+    this.appVersionRepository = appVersionRepository;
     logger.info(
         "VersionComparatorService initialized with {} version fetchers.",
         Optional.of(versionFetchers.size()));
@@ -229,6 +234,7 @@ public class VersionComparatorService {
     }
   }
 
+  @Cacheable(value = "availableVersions")
   public Map<String, List<String>> getAvailableVersionsForAllAppArtifacts() {
     long startTime = System.nanoTime();
     Set<App> apps = collectorService.getAllCollectedApps();
@@ -332,6 +338,7 @@ public class VersionComparatorService {
   private Optional<OutdatedArtifactInfo> processArtifact(
       App app, AppVersion appVersion, AppArtifact artifact) throws Exception {
     Optional<OutdatedArtifactInfo> optionalOutdatedArtifactInfo = Optional.empty();
+    saveAppArtifact(artifact);
     String currentArtifactVersionStr = determineCurrentArtifactVersion(artifact, appVersion);
 
     if (currentArtifactVersionStr == null
@@ -460,5 +467,15 @@ public class VersionComparatorService {
       }
     }
     return optionalOutdatedArtifactInfo;
+  }
+
+  public List<AppArtifact> getAllAppArtifacts() {
+    List<AppArtifact> appArtifacts = new ArrayList<>();
+    appVersionRepository.findAll().forEach(appArtifacts::add);
+    return appArtifacts;
+  }
+
+  public void saveAppArtifact(AppArtifact appArtifact) {
+    appVersionRepository.save(appArtifact);
   }
 }

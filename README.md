@@ -1,5 +1,31 @@
 # Kube App Version
 
+## TODO
+
+* add datastore -> Redis
+  * do Redis standalone demo
+  * use single Redis instance
+* add unit tests
+  * use test containers for Redis
+* GitHub Actions release
+  * build container
+  * build native-container
+* run collection as recurring service
+  * use a library?
+  * quartz? or spring ecosystem alternative?
+* add security -> JWT?
+* add configuration options
+  * with or w/o security token
+  * with or w/o redis
+  * run collection on startup y/n
+  * run collection recurring y/n
+  * recurring interval
+* create Kustomize "package"?
+  * or Helm
+* add versioning calculation for Git
+  * tags?
+  * releases?
+
 ## Run
 
 ```shell
@@ -19,18 +45,6 @@ http :8080/api/versions/outdated
 ```shell
 kubectl apply -f examples/argocd-applications 
 ```
-
-## TODO
-
-* add versioning calculation for Git
-  * tags?
-  * releases?
-* add unit tests
-* add datastore
-* build container
-* build native-container
-* create Kustomize "package"?
-  * or Helm
 
 ## Helm Indexs
 
@@ -108,3 +122,17 @@ curl -fsSL \
 ```shell
 http -A bearer -a ${DHUB_TOKEN} "https://registry-1.docker.io/v2/bitnamicharts/keycloak/tags/list"
 ```
+
+## ValKey Cluster
+
+### Docker Compose
+
+* https://github.com/redislabs-training/dockerized-redis-cluster
+* https://github.com/dtaivpp/valkey-samples/blob/main/valkey-cluster.yaml
+
+Open http://localhost:5540 to connect to Redis Insights.
+Once connected, you can add the cluster by connecting to one of the nodes.
+It is in the same network, so use a local address: `10.0.0.13` for example.
+The password in `.env`.
+
+`
