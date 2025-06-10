@@ -2,6 +2,8 @@
 
 ## TODO
 
+* add configurable kubernetes endpoint
+* test with argocd app deployment in Kind cluster
 * add unit tests
   * use test containers for Redis
 * GitHub Actions release
@@ -16,8 +18,6 @@
   * run collection on startup y/n
   * run collection recurring y/n
   * recurring interval
-* create Kustomize "package"?
-  * or Helm
 * add versioning calculation for Git
   * tags?
   * releases?
