@@ -61,6 +61,20 @@ http :8080/api/versions/outdated
 http :8080/api/versions/artifacts
 ```
 
+### Run Docker Image
+
+* https://www.chainguard.dev/unchained/building-minimal-and-low-cve-images-for-java
+* https://snyk.io/blog/best-practices-to-build-java-containers-with-docker/
+* https://github.com/joostvdg/ingress-dns-export-controller/blob/main/Dockerfile
+
+```shell
+docker run --rm -it --name kav ghcr.io/joostvdg/kube-app-version:0.1.0 -e APP_REDIS_MODE=OPTIONAL
+```
+
+### Docker Native
+
+* https://github.com/joostvdg/where-was-i/blob/main/Dockerfile.native
+
 ## Deploy Example Applications
 
 ### ArgoCD
