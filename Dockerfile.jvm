@@ -6,18 +6,24 @@ WORKDIR /project
 
 COPY .mvn/ .mvn
 COPY pom.xml ./
-RUN mvn dependency:go-offline
+RUN mvn dependency:go-offline -e -C -B --show-version --no-transfer-progress
 
 COPY src/ ./src
-RUN mvn clean package -DskipTests
+RUN mvn package -e -C -B --show-version --no-transfer-progress -DskipTests  # we assume tests are run before we get here
 
 
-FROM eclipse-temurin:24-jre-alpine
-RUN apk add dumb-init
-RUN mkdir /app
-RUN addgroup --system javauser && adduser -S -s /bin/false -G javauser javauser
-COPY --from=build /project/target/kube-app-version-*-SNAPSHOT.jar /app/java-application.jar
+#FROM eclipse-temurin:24-jre-alpine
+#RUN apk add dumb-init
+#RUN mkdir /app
+#RUN addgroup --system javauser && adduser -S -s /bin/false -G javauser javauser
+#COPY --from=build /project/target/kube-app-version-*-SNAPSHOT.jar /app/java-application.jar
+#WORKDIR /app
+#RUN chown -R javauser:javauser /app
+#USER javauser
+#CMD "dumb-init" "java" "-jar" "java-application.jar"
+FROM cgr.dev/chainguard/jre as runtime
 WORKDIR /app
-RUN chown -R javauser:javauser /app
-USER javauser
-CMD "dumb-init" "java" "-jar" "java-application.jar"
+COPY --from=build /project/target/kube-app-version-*-SNAPSHOT.jar  app.jar
+EXPOSE 8080
+USER 1001
+ENTRYPOINT ["java","-XX:MaxRAMPercentage=75", "-XX:+UseParallelGC", "-XX:ActiveProcessorCount=1", "-jar","/app/app.jar"]
