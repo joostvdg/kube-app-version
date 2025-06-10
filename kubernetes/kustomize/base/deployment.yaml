@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-app-version
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-app-version
+  template:
+    metadata:
+      labels:
+        app: kube-app-version
+    spec:
+      serviceAccountName: kube-app-version
+      containers:
+        - name: kube-app-version
+          image: ghcr.io/joostvdg/kube-app-version:0.1.0@sha256:d2e7bae73d33bfdcfef17981562145bf71ec2262d98fad6005fe13597b9357a7
+          ports:
+            - containerPort: 8080
+          env:
+            - name: APP_REDIS_MODE
+              value: "REQUIRED"
