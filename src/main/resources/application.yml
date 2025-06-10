@@ -1,9 +1,17 @@
+# Redis Configuration
+app:
+  redis:
+    mode: ${REDIS_MODE:OPTIONAL}
+    reconnectInterval: ${REDIS_RECONNECT_INTERVAL:60000}
+
 
 cluster:
   name: "local"
   url: "127.0.0.1:443"
 
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: Kubernetes App Version Info
   threads:

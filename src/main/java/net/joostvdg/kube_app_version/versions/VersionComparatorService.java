@@ -469,13 +469,23 @@ public class VersionComparatorService {
     return optionalOutdatedArtifactInfo;
   }
 
-  public List<AppArtifact> getAllAppArtifacts() {
-    List<AppArtifact> appArtifacts = new ArrayList<>();
-    appVersionRepository.findAll().forEach(appArtifacts::add);
-    return appArtifacts;
+  public void saveAppArtifact(AppArtifact appArtifact) {
+    try {
+      appVersionRepository.save(appArtifact);
+    } catch (Exception e) {
+      logger.warn("Failed to save artifact {}: {}", appArtifact.getSource(), e.getMessage());
+    }
   }
 
-  public void saveAppArtifact(AppArtifact appArtifact) {
-    appVersionRepository.save(appArtifact);
+  @SuppressWarnings("MixedMutabilityReturnType") // not using Guava you stupid parser
+  public List<AppArtifact> getAllAppArtifacts() {
+    try {
+      List<AppArtifact> appArtifacts = new ArrayList<>();
+      appVersionRepository.findAll().forEach(appArtifacts::add);
+      return appArtifacts;
+    } catch (Exception e) {
+      logger.warn("Failed to fetch artifacts: {}", e.getMessage());
+      return Collections.emptyList();
+    }
   }
 }

@@ -2,9 +2,6 @@
 
 ## TODO
 
-* add datastore -> Redis
-  * do Redis standalone demo
-  * use single Redis instance
 * add unit tests
   * use test containers for Redis
 * GitHub Actions release
@@ -16,7 +13,6 @@
 * add security -> JWT?
 * add configuration options
   * with or w/o security token
-  * with or w/o redis
   * run collection on startup y/n
   * run collection recurring y/n
   * recurring interval
@@ -25,6 +21,13 @@
 * add versioning calculation for Git
   * tags?
   * releases?
+* GUI application
+  * with Vaadin?
+  * with NextJS
+  * any new hip alternatives?
+* CLI to interact with servers
+  * written in Rust
+  * use Ratatui for console UI?
 
 ## Run
 
@@ -32,10 +35,30 @@
 mvn spring-boot:run
 ```
 
+```shell
+REDIS_MODE=DISABLED LOGGING_LEVEL_NET_JOOSTVDG=DEBUG mvn spring-boot:run
+```
+
+```shell
+REDIS_MODE=REQUIRED REDIS_RECONNECT_INTERVAL=30000 mvn spring-boot:run
+```
+
+```shell
+REDIS_MODE=REQUIRED mvn spring-boot:run
+```
+
+```shell
+REDIS_MODE=OPTIONAL mvn spring-boot:run
+```
+
 ### Test Endpoints
 
 ```shell
 http :8080/api/versions/outdated
+```
+
+```shell
+http :8080/api/versions/artifacts
 ```
 
 ## Deploy Example Applications

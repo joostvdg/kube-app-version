@@ -270,11 +270,8 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
   // Implement the interface method
   @Override
   public Set<App> getCollectedApplications() {
-    // Return a copy to prevent external modification if argoApps is not thread-safe for iteration
-    // or if you want to provide a snapshot.
-    // Collections.synchronizedSet only synchronizes individual operations, not iteration.
-    // For simplicity here, returning the direct reference. If concurrent access during iteration
-    // is a concern, consider returning new HashSet<>(argoApps) or using a ConcurrentHashMap.
-    return argoApps;
+
+    // return a copy
+    return Collections.unmodifiableSet(argoApps);
   }
 }
