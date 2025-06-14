@@ -6,7 +6,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.openapi.ApiException;
-import io.kubernetes.client.openapi.apis.CoreV1Api;
 import io.kubernetes.client.util.generic.dynamic.DynamicKubernetesApi;
 import io.kubernetes.client.util.generic.dynamic.DynamicKubernetesObject;
 import java.time.LocalDateTime;
@@ -24,7 +23,6 @@ import net.joostvdg.kube_app_version.api.model.AppVersion;
 import net.joostvdg.kube_app_version.collectors.ApplicationCollector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,25 +30,19 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
   private final Set<App> argoApps = Collections.synchronizedSet(new HashSet<>());
 
   private final Logger logger = LoggerFactory.getLogger(ArgoCollector.class);
-  // private final CoreV1Api coreV1Api; // Injected via constructor
+
   private final ApiClient apiClient;
 
   private static final String AMSTERDAM_ZONE_ID = "Europe/Amsterdam";
 
-  @Value("${cluster.name}")
-  private String clusterName;
-
-  @Value("${cluster.url}")
-  private String clusterApiServerIp;
-
-  public ArgoCollector(CoreV1Api coreV1Api, ApiClient apiClient) {
-    // this.coreV1Api = coreV1Api;
+  public ArgoCollector(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 
   @PostConstruct
+  // TODO: make this configurable?
   private void init() {
-    printClusterInfo();
+    logger.info("Initializing Argo Collector");
     try {
       collectArgoApplications();
     } catch (ApiException e) {
@@ -58,11 +50,6 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
           "Failed to collect Argo Applications during initialization: {}", e.getMessage(), e);
       throw new RuntimeException(e);
     }
-  }
-
-  private void printClusterInfo() {
-    logger.info("Cluster Name: {}", clusterName);
-    logger.info("Cluster API Server IP: {}", clusterApiServerIp);
   }
 
   private void collectArgoApplications() throws ApiException {
@@ -74,6 +61,13 @@ public class ArgoCollector implements ApplicationCollector { // Implement the in
     // Clears previously collected apps. If you want to update existing ones,
     // you'll need a different strategy (e.g. Map<String, App> and update logic).
     argoApps.clear();
+
+    if (dynamicApi.list() == null
+        || dynamicApi.list().getObject() == null
+        || dynamicApi.list().getObject().getItems() == null) {
+      logger.warn("No Argo Applications found.");
+      return;
+    }
 
     for (DynamicKubernetesObject argoAppCr : dynamicApi.list().getObject().getItems()) {
       String appName = argoAppCr.getMetadata().getName();

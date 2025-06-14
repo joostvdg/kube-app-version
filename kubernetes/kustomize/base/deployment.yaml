@@ -21,3 +21,30 @@ spec:
           env:
             - name: APP_REDIS_MODE
               value: "REQUIRED"
+            - name: KUBERNETES_MODE
+              value: "IN_CLUSTER"
+          # Startup probe - allows application to fully start before other probes begin
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 30
+          # Liveness probe - detects if application is running
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          # Readiness probe - detects if application is ready to serve requests
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3

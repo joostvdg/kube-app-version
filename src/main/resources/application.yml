@@ -1,5 +1,10 @@
-# Redis Configuration
 app:
+  kubernetes:
+    mode: ${KUBERNETES_MODE:DIRECT}
+    kubeconfig-path: ${KUBERNETES_KUBECONFIG_PATH:}
+    context-name: ${KUBERNETES_CONTEXT_NAME:}
+    cluster-name: ${KUBERNETES_CLUSTER_NAME:local}
+    cluster-endpoint: ${KUBERNETES_CLUSTER_ENDPOINT:127.0.0.1:443}
   redis:
     mode: ${REDIS_MODE:OPTIONAL}
     reconnectInterval: ${REDIS_RECONNECT_INTERVAL:60000}

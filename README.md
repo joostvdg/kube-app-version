@@ -29,6 +29,30 @@
   * written in Rust
   * use Ratatui for console UI?
 
+
+## Test Kustomize Deployment
+
+```shell
+brew install kustomize
+```
+
+```shell
+kustomize build kubernetes/kustomize/overlays/kind | yq
+```
+
+
+```shell
+kubectl create ns kav
+```
+
+```shell
+kustomize build kubernetes/kustomize/overlays/kind | kubectl apply -n kav -f -
+```
+
+```shell
+kubectl get sa,deploy,svc,po -n kav
+```
+
 ## Run
 
 ```shell

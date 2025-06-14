@@ -7,7 +7,15 @@ spec:
     spec:
       containers:
         - name: kube-app-version
-          image: ghcr.io/joostvdg/kube-app-version:0.1.0@sha256:d2e7bae73d33bfdcfef17981562145bf71ec2262d98fad6005fe13597b9357a7
+          image:  ghcr.io/joostvdg/kube-app-version:0.3.3@sha256:16ceba5b379752363537fc73a6dc18a7d567eceba83478d94786feadd3cc6f9f
           env:
             - name: APP_REDIS_MODE
               value: "OPTIONAL"
+            - name: LOGGING_LEVEL_net_joostvdg_kube_app_version
+              value: "DEBUG"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "1000m"
+            limits:
+              memory: "1Gi"
