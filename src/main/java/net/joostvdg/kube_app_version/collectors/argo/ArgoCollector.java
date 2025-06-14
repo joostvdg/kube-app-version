@@ -11,11 +11,8 @@ import io.kubernetes.client.util.generic.dynamic.DynamicKubernetesObject;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import net.joostvdg.kube_app_version.api.model.App;
 import net.joostvdg.kube_app_version.api.model.AppArtifact;
@@ -23,249 +20,293 @@ import net.joostvdg.kube_app_version.api.model.AppVersion;
 import net.joostvdg.kube_app_version.collectors.ApplicationCollector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArgoCollector implements ApplicationCollector { // Implement the interface
+public class ArgoCollector implements ApplicationCollector {
   private final Set<App> argoApps = Collections.synchronizedSet(new HashSet<>());
-
   private final Logger logger = LoggerFactory.getLogger(ArgoCollector.class);
-
   private final ApiClient apiClient;
-
+  private final ArgoCollectorConfig config;
   private static final String AMSTERDAM_ZONE_ID = "Europe/Amsterdam";
 
-  public ArgoCollector(ApiClient apiClient) {
+  public ArgoCollector(ApiClient apiClient, ArgoCollectorConfig config) {
     this.apiClient = apiClient;
+    this.config = config;
   }
 
   @PostConstruct
-  // TODO: make this configurable?
   private void init() {
     logger.info("Initializing Argo Collector");
+    if (config.isRunOnStartup()) {
+      try {
+        collectArgoApplications();
+      } catch (ApiException e) {
+        logger.error(
+            "Failed to collect Argo Applications during initialization: {}", e.getMessage(), e);
+        throw new RuntimeException(e);
+      }
+    } else {
+      logger.info("Skipping initial collection as configured (runOnStartup=false)");
+    }
+  }
+
+  @Scheduled(
+      fixedDelayString = "${argo.collector.collectionIntervalMinutes:15}",
+      timeUnit = TimeUnit.MINUTES)
+  public void scheduledCollection() {
+    if (!config.isScheduledCollectionEnabled()) {
+      logger.debug("Scheduled collection is disabled by configuration");
+      return;
+    }
+
+    logger.info("Running scheduled Argo application collection");
     try {
       collectArgoApplications();
     } catch (ApiException e) {
-      logger.error(
-          "Failed to collect Argo Applications during initialization: {}", e.getMessage(), e);
-      throw new RuntimeException(e);
+      logger.error("Failed to collect Argo Applications in scheduled run: {}", e.getMessage(), e);
     }
   }
 
   private void collectArgoApplications() throws ApiException {
-    // Note: Ensure your ApiClient is configured for the correct context/namespace,
-    // or use listAll() for all namespaces if Argo apps are cluster-wide.
-    DynamicKubernetesApi dynamicApi =
-        new DynamicKubernetesApi("argoproj.io", "v1alpha1", "applications", apiClient);
+    List<DynamicKubernetesObject> argoAppList = fetchArgoApplications();
 
-    // Clears previously collected apps. If you want to update existing ones,
-    // you'll need a different strategy (e.g. Map<String, App> and update logic).
+    // Clear previously collected apps
     argoApps.clear();
 
-    if (dynamicApi.list() == null
-        || dynamicApi.list().getObject() == null
-        || dynamicApi.list().getObject().getItems() == null) {
+    if (argoAppList.isEmpty()) {
       logger.warn("No Argo Applications found.");
       return;
     }
 
-    for (DynamicKubernetesObject argoAppCr : dynamicApi.list().getObject().getItems()) {
-      String appName = argoAppCr.getMetadata().getName();
-      logger.info("Processing Argo Application: {}", appName);
-
-      App discoveredApp = new App();
-      discoveredApp.setId(argoAppCr.getMetadata().getUid());
-      discoveredApp.setName(appName);
-
-      Map<String, String> labels = argoAppCr.getMetadata().getLabels();
-      discoveredApp.setLabels(labels != null ? new HashMap<>(labels) : new HashMap<>());
-
-      OffsetDateTime creationTimestamp = argoAppCr.getMetadata().getCreationTimestamp();
-      if (creationTimestamp != null) {
-        discoveredApp.setFirstSeen(creationTimestamp.toLocalDateTime());
-      } else {
-        logger.warn(
-            "Creation timestamp is null for Argo App: {}. Using current time as fallback for"
-                + " firstSeen.",
-            appName);
-        discoveredApp.setFirstSeen(now());
-      }
-
-      // lastSeen reflects when this collector last processed this app's data.
-      discoveredApp.setLastSeen(now());
-
-      // --- Populate AppVersion ---
-      Set<AppVersion> appVersions = new HashSet<>();
-      AppVersion currentVersion = new AppVersion();
-      currentVersion.setDiscoveredAt(now());
-
-      // AppVersion labels can be inherited from the App or be more specific if available
-      currentVersion.setLabels(labels != null ? new HashMap<>(labels) : new HashMap<>());
-
-      JsonObject rawCr = argoAppCr.getRaw();
-      JsonObject spec = rawCr.getAsJsonObject("spec"); // Can be null
-      JsonObject status = rawCr.getAsJsonObject("status"); // Can be null
-
-      // Extract version (target revision or sync revision)
-      String appVersionString = "unknown";
-      if (status != null && status.has("sync") && status.get("sync").isJsonObject()) {
-        JsonObject syncStatus = status.getAsJsonObject("sync");
-        if (syncStatus.has("revision") && syncStatus.get("revision").isJsonPrimitive()) {
-          appVersionString = syncStatus.get("revision").getAsString();
-        }
-      }
-
-      // Fallback to spec if status.sync.revision is not available or status is null
-      if (("unknown".equals(appVersionString) || appVersionString.isEmpty()) && spec != null) {
-        if (spec.has("source") && spec.get("source").isJsonObject()) {
-          JsonObject source = spec.getAsJsonObject("source");
-          if (source.has("targetRevision") && source.get("targetRevision").isJsonPrimitive()) {
-            appVersionString = source.get("targetRevision").getAsString();
-          }
-        } else if (spec.has("sources") && spec.get("sources").isJsonArray()) {
-          // Handle multi-source applications (e.g., from ApplicationSet)
-          // This takes the targetRevision from the first source as a simplification.
-          JsonArray sourcesArray = spec.getAsJsonArray("sources");
-          if (!sourcesArray.isEmpty() && sourcesArray.get(0).isJsonObject()) {
-            JsonObject firstSource = sourcesArray.get(0).getAsJsonObject();
-            if (firstSource.has("targetRevision")
-                && firstSource.get("targetRevision").isJsonPrimitive()) {
-              appVersionString = firstSource.get("targetRevision").getAsString();
-              if (sourcesArray.size() > 1) {
-                logger.debug(
-                    "Argo App {} has multiple sources. Using targetRevision from the first source:"
-                        + " {}",
-                    appName,
-                    appVersionString);
-              }
-            }
-          }
-        }
-      }
-      currentVersion.setVersion(appVersionString);
-
-      // --- Populate AppArtifacts ---
-      Set<AppArtifact> artifacts = new HashSet<>();
-
-      // 1. Extract Source Artifacts (Helm or Git) from spec
-      if (spec != null) {
-        if (spec.has("source") && spec.get("source").isJsonObject()) {
-          JsonObject source = spec.getAsJsonObject("source");
-          extractSourceArtifact(source, artifacts, appName);
-        } else if (spec.has("sources") && spec.get("sources").isJsonArray()) {
-          JsonArray sourcesArray = spec.getAsJsonArray("sources");
-          for (JsonElement sourceElement : sourcesArray) {
-            if (sourceElement.isJsonObject()) {
-              extractSourceArtifact(sourceElement.getAsJsonObject(), artifacts, appName);
-            }
-          }
-        }
-      } else {
-        logger.debug("Argo App {} has no 'spec' field. Cannot extract source artifacts.", appName);
-      }
-
-      // 2. Extract Deployed Image Artifacts from status.summary (existing logic)
-      if (status != null && status.has("summary") && status.get("summary").isJsonObject()) {
-        JsonObject summary = status.getAsJsonObject("summary");
-        if (summary.has("images") && summary.get("images").isJsonArray()) {
-          JsonArray images = summary.getAsJsonArray("images");
-          for (JsonElement imageElement : images) {
-            if (imageElement.isJsonPrimitive()) {
-              String imageName = imageElement.getAsString();
-              AppArtifact artifact = new AppArtifact(imageName, "containerImage");
-              artifacts.add(artifact);
-            }
-          }
-        }
-      }
-      // Note: If status.summary.images is not available/enabled in ArgoCD,
-      // a more complex approach would be to parse status.resources,
-      // find deployed workloads (Deployments, StatefulSets), and extract their container images.
-
-      currentVersion.setArtifacts(artifacts);
-      appVersions.add(currentVersion);
-      discoveredApp.setVersions(appVersions);
-      discoveredApp.setCurrentVersion(
-          currentVersion); // TODO: create logic to determine the actual current version
-
-      // Add the fully populated App object to the set.
-      // For this to correctly avoid duplicates if run multiple times without clearing argoApps,
-      // or to update existing entries, the App class would need equals() and hashCode()
-      // implemented, typically based on 'id'.
-      // Since argoApps is cleared at the start of this method in this example,
-      // it just collects the current state.
+    for (DynamicKubernetesObject argoAppCr : argoAppList) {
+      App discoveredApp = processArgoApplication(argoAppCr);
       argoApps.add(discoveredApp);
     }
+
     logger.info("Finished collecting Argo applications. Total found: {}", argoApps.size());
   }
 
-  /**
-   * Helper method to extract source artifact details from a single source object. Handles both Helm
-   * and Git types.
-   *
-   * @param sourceObject The JsonObject representing a single source (from spec.source or
-   *     spec.sources[]).
-   * @param artifacts The set to add the discovered artifacts to.
-   * @param appName The name of the application (for logging).
-   */
+  private List<DynamicKubernetesObject> fetchArgoApplications() throws ApiException {
+    DynamicKubernetesApi dynamicApi =
+        new DynamicKubernetesApi("argoproj.io", "v1alpha1", "applications", apiClient);
+
+    if (dynamicApi.list() == null
+        || dynamicApi.list().getObject() == null
+        || dynamicApi.list().getObject().getItems() == null) {
+      return Collections.emptyList();
+    }
+
+    return dynamicApi.list().getObject().getItems();
+  }
+
+  private App processArgoApplication(DynamicKubernetesObject argoAppCr) {
+    String appName = argoAppCr.getMetadata().getName();
+    logger.info("Processing Argo Application: {}", appName);
+
+    App discoveredApp = createBasicAppInfo(argoAppCr, appName);
+    AppVersion currentVersion = createAppVersion(argoAppCr, appName, discoveredApp.getLabels());
+
+    Set<AppVersion> appVersions = new HashSet<>();
+    appVersions.add(currentVersion);
+    discoveredApp.setVersions(appVersions);
+    discoveredApp.setCurrentVersion(currentVersion);
+
+    return discoveredApp;
+  }
+
+  private App createBasicAppInfo(DynamicKubernetesObject argoAppCr, String appName) {
+    App discoveredApp = new App();
+    discoveredApp.setId(argoAppCr.getMetadata().getUid());
+    discoveredApp.setName(appName);
+
+    Map<String, String> labels = argoAppCr.getMetadata().getLabels();
+    discoveredApp.setLabels(labels != null ? new HashMap<>(labels) : new HashMap<>());
+
+    OffsetDateTime creationTimestamp = argoAppCr.getMetadata().getCreationTimestamp();
+    if (creationTimestamp != null) {
+      discoveredApp.setFirstSeen(creationTimestamp.toLocalDateTime());
+    } else {
+      logger.warn(
+          "Creation timestamp is null for Argo App: {}. Using current time as fallback.", appName);
+      discoveredApp.setFirstSeen(now());
+    }
+
+    discoveredApp.setLastSeen(now());
+    return discoveredApp;
+  }
+
+  private AppVersion createAppVersion(
+      DynamicKubernetesObject argoAppCr, String appName, Map<String, String> appLabels) {
+    AppVersion currentVersion = new AppVersion();
+    currentVersion.setDiscoveredAt(now());
+
+    // Copy labels from App
+    currentVersion.setLabels(new HashMap<>(appLabels));
+
+    JsonObject rawCr = argoAppCr.getRaw();
+    String appVersionString = extractVersionString(rawCr, appName);
+    currentVersion.setVersion(appVersionString);
+
+    Set<AppArtifact> artifacts = extractArtifacts(rawCr, appName);
+    currentVersion.setArtifacts(artifacts);
+
+    return currentVersion;
+  }
+
+  private String extractVersionString(JsonObject rawCr, String appName) {
+    JsonObject spec = rawCr.getAsJsonObject("spec");
+    JsonObject status = rawCr.getAsJsonObject("status");
+
+    String appVersionString = "unknown";
+
+    // Try to extract from status first
+    if (status != null && status.has("sync") && status.get("sync").isJsonObject()) {
+      JsonObject syncStatus = status.getAsJsonObject("sync");
+      if (syncStatus.has("revision") && syncStatus.get("revision").isJsonPrimitive()) {
+        appVersionString = syncStatus.get("revision").getAsString();
+      }
+    }
+
+    // Fallback to spec if needed
+    if (("unknown".equals(appVersionString) || appVersionString.isEmpty()) && spec != null) {
+      appVersionString = extractVersionFromSpec(spec, appName);
+    }
+
+    return appVersionString;
+  }
+
+  private String extractVersionFromSpec(JsonObject spec, String appName) {
+    String appVersionString = "unknown";
+
+    if (spec.has("source") && spec.get("source").isJsonObject()) {
+      JsonObject source = spec.getAsJsonObject("source");
+      if (source.has("targetRevision") && source.get("targetRevision").isJsonPrimitive()) {
+        appVersionString = source.get("targetRevision").getAsString();
+      }
+    } else if (spec.has("sources") && spec.get("sources").isJsonArray()) {
+      JsonArray sourcesArray = spec.getAsJsonArray("sources");
+      if (!sourcesArray.isEmpty() && sourcesArray.get(0).isJsonObject()) {
+        JsonObject firstSource = sourcesArray.get(0).getAsJsonObject();
+        if (firstSource.has("targetRevision")
+            && firstSource.get("targetRevision").isJsonPrimitive()) {
+          appVersionString = firstSource.get("targetRevision").getAsString();
+          if (sourcesArray.size() > 1) {
+            logger.debug(
+                "Argo App {} has multiple sources. Using targetRevision from first source: {}",
+                appName,
+                appVersionString);
+          }
+        }
+      }
+    }
+
+    return appVersionString;
+  }
+
+  private Set<AppArtifact> extractArtifacts(JsonObject rawCr, String appName) {
+    Set<AppArtifact> artifacts = new HashSet<>();
+    JsonObject spec = rawCr.getAsJsonObject("spec");
+    JsonObject status = rawCr.getAsJsonObject("status");
+
+    // Extract source artifacts from spec
+    extractSourceArtifacts(spec, artifacts, appName);
+
+    // Extract deployed image artifacts from status
+    extractImageArtifacts(status, artifacts);
+
+    return artifacts;
+  }
+
+  private void extractSourceArtifacts(JsonObject spec, Set<AppArtifact> artifacts, String appName) {
+    if (spec == null) {
+      logger.debug("Argo App {} has no 'spec' field. Cannot extract source artifacts.", appName);
+      return;
+    }
+
+    if (spec.has("source") && spec.get("source").isJsonObject()) {
+      JsonObject source = spec.getAsJsonObject("source");
+      extractSourceArtifact(source, artifacts, appName);
+    } else if (spec.has("sources") && spec.get("sources").isJsonArray()) {
+      JsonArray sourcesArray = spec.getAsJsonArray("sources");
+      for (JsonElement sourceElement : sourcesArray) {
+        if (sourceElement.isJsonObject()) {
+          extractSourceArtifact(sourceElement.getAsJsonObject(), artifacts, appName);
+        }
+      }
+    }
+  }
+
+  private void extractImageArtifacts(JsonObject status, Set<AppArtifact> artifacts) {
+    if (status != null && status.has("summary") && status.get("summary").isJsonObject()) {
+      JsonObject summary = status.getAsJsonObject("summary");
+      if (summary.has("images") && summary.get("images").isJsonArray()) {
+        JsonArray images = summary.getAsJsonArray("images");
+        for (JsonElement imageElement : images) {
+          if (imageElement.isJsonPrimitive()) {
+            String imageName = imageElement.getAsString();
+            AppArtifact artifact = new AppArtifact(imageName, "containerImage");
+            artifacts.add(artifact);
+          }
+        }
+      }
+    }
+  }
+
   private void extractSourceArtifact(
-      JsonObject sourceObject, Set<AppArtifact> artifacts, String appName) {
-    String source = "";
-    String artifactType = "";
+      JsonObject source, Set<AppArtifact> artifacts, String appName) {
+    if (source == null) {
+      return;
+    }
 
-    String repoUrl =
-        sourceObject.has("repoURL") && sourceObject.get("repoURL").isJsonPrimitive()
-            ? sourceObject.get("repoURL").getAsString()
-            : null;
-    String chart =
-        sourceObject.has("chart") && sourceObject.get("chart").isJsonPrimitive()
-            ? sourceObject.get("chart").getAsString()
-            : null;
-    String path =
-        sourceObject.has("path") && sourceObject.get("path").isJsonPrimitive()
-            ? sourceObject.get("path").getAsString()
-            : null;
+    // Extract repository URL if available
+    if (source.has("repoURL") && source.get("repoURL").isJsonPrimitive()) {
+      String repoUrl = source.get("repoURL").getAsString();
+      String sourceType = determineSourceType(source);
 
-    if (chart != null) {
-      // It's a Helm chart source
-      artifactType = "helm";
-      if (repoUrl != null) {
-        source = repoUrl + "/" + chart;
-      } else {
-        source = chart; // Should ideally have repoURL, but handle if missing
-        logger.warn(
-            "Argo App {} source has 'chart' but no 'repoURL'. Source set to just chart name: {}",
-            appName,
-            chart);
+      // Create artifact with repo URL
+      AppArtifact artifact = new AppArtifact(repoUrl, sourceType);
+
+      // Add optional chart info for Helm charts
+      if ("helm".equals(sourceType)
+          && source.has("chart")
+          && source.get("chart").isJsonPrimitive()) {
+        artifact.addMetadata("chart", source.get("chart").getAsString());
       }
 
-    } else if (repoUrl != null && path != null) {
-      // It's a Git repository source (assuming not Helm if chart is null)
-      artifactType = "git";
-      source = repoUrl + "/" + path;
+      // Add path for non-root directory sources
+      if (source.has("path") && source.get("path").isJsonPrimitive()) {
+        String path = source.get("path").getAsString();
+        if (path != null && !path.isEmpty() && !"/".equals(path)) {
+          artifact.addMetadata("path", path);
+        }
+      }
 
+      artifacts.add(artifact);
     } else {
-      // Source type could not be determined based on chart/repoURL/path
-      logger.debug(
-          "Argo App {}: Could not determine source artifact type from source object: {}",
-          appName,
-          sourceObject);
+      logger.debug("Argo App {} source is missing repoURL", appName);
     }
-    AppArtifact sourceArtifact = new AppArtifact(source, artifactType);
-    artifacts.add(sourceArtifact);
-    logger.debug(
-        "Argo App {}: Added Helm source artifact: {}", appName, sourceArtifact.getSource());
+  }
+
+  private String determineSourceType(JsonObject source) {
+    if (source.has("chart") && source.get("chart").isJsonPrimitive()) {
+      return "helm";
+    } else if (source.has("plugin") && source.get("plugin").isJsonObject()) {
+      return "plugin";
+    } else if (source.has("directory") && source.get("directory").isJsonObject()) {
+      return "directory";
+    } else {
+      return "git"; // Default to git
+    }
   }
 
   private LocalDateTime now() {
     return LocalDateTime.now(ZoneId.of(AMSTERDAM_ZONE_ID));
   }
 
-  // Implement the interface method
   @Override
   public Set<App> getCollectedApplications() {
-
-    // return a copy
     return Collections.unmodifiableSet(argoApps);
   }
 }

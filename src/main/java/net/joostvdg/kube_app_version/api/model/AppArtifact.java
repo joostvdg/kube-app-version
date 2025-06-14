@@ -4,6 +4,8 @@ package net.joostvdg.kube_app_version.api.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
@@ -11,14 +13,16 @@ import org.springframework.data.redis.core.index.Indexed;
 @RedisHash("AppArtifact")
 public class AppArtifact implements Serializable {
 
+  private @Id String identifier;
   private @Indexed String source;
   private String artifactType;
   private LocalDateTime discoveredAt;
-  private @Id String identifier;
+  private Map<String, String> metaData;
 
   /** Default empty constructor for Serialization (JSON). */
   public AppArtifact() {
     // for JSON Serialization
+    this.metaData = new HashMap<>();
   }
 
   /**
@@ -32,6 +36,7 @@ public class AppArtifact implements Serializable {
     this.source = source;
     this.discoveredAt = LocalDateTime.now(ZoneId.systemDefault());
     this.identifier = source + "::" + artifactType;
+    this.metaData = new HashMap<>();
   }
 
   public String getSource() {
@@ -65,5 +70,26 @@ public class AppArtifact implements Serializable {
   // TODO: for JSON serialization  only?
   public void setIdentifier(String identifier) {
     this.identifier = identifier;
+  }
+
+  public Map<String, String> getMetaData() {
+    return metaData;
+  }
+
+  public void setMetaData(Map<String, String> metaData) {
+    this.metaData = metaData;
+  }
+
+  /**
+   * Adds a key-value pair to the metadata map.
+   *
+   * @param key the metadata key
+   * @param value the metadata value
+   */
+  public void addMetadata(String key, String value) {
+    if (this.metaData == null) {
+      this.metaData = new HashMap<>();
+    }
+    this.metaData.put(key, value);
   }
 }
