@@ -56,6 +56,10 @@ kubectl get sa,deploy,svc,po -n kav
 ## Run
 
 ```shell
+export GITHUB_TOKEN=
+```
+
+```shell
 mvn spring-boot:run
 ```
 
@@ -73,6 +77,10 @@ REDIS_MODE=REQUIRED mvn spring-boot:run
 
 ```shell
 REDIS_MODE=OPTIONAL mvn spring-boot:run
+```
+
+```shell
+KUBERNETES_CLUSTER_ENDPOINT=127.0.0.1:44177 mvn spring-boot:run
 ```
 
 ### Test Endpoints

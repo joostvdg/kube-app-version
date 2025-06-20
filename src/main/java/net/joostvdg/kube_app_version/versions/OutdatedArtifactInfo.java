@@ -1,24 +1,37 @@
 /* (C)2025 */
-package net.joostvdg.kube_app_version.versions.dto;
+package net.joostvdg.kube_app_version.versions;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
 
-public class OutdatedArtifactInfo {
-  private String appName;
-  private String appId;
-  private String deployedAppVersion; // Overall version of the deployed app
-  private String artifactSource;
-  private String artifactType;
-  private String currentArtifactVersion;
-  private String latestOverallVersion; // Could be GA or pre-release
-  private String latestGARelease; // Latest stable release
-  private String latestPreRelease; // Latest pre-release (if any)
-  private String nextMinorVersion; // Next available minor update for current
-  private String nextMajorVersion; // Next available major update for current
-  private Long majorVersionDelta; // Delta to latest GA Major
-  private Long minorVersionDelta; // Delta to latest GA Minor (within same Major)
-  private List<String> availableArtifactVersions; // Full list for context
+@RedisHash("outdated_artifact_info")
+public class OutdatedArtifactInfo implements Serializable {
+  private static final long serialVersionUID = 1L;
+
+  @Id private String id; // Composite key for Redis
+  private final String appName;
+  private final String appId;
+  private final String deployedAppVersion;
+  private final String artifactSource;
+  private final String artifactType;
+  private final String currentArtifactVersion;
+  private final String latestOverallVersion;
+  private final String latestGARelease;
+  private final String latestPreRelease;
+  private final String nextMinorVersion;
+  private final String nextMajorVersion;
+  private final Long majorVersionDelta;
+  private final Long minorVersionDelta;
+  private final List<String> availableArtifactVersions;
+  private final LocalDateTime lastUpdated;
+
+  @TimeToLive private Long timeToLive;
 
   public OutdatedArtifactInfo(
       String appName,
@@ -33,7 +46,7 @@ public class OutdatedArtifactInfo {
       String nextMinorVersion,
       String nextMajorVersion,
       Long majorVersionDelta,
-      Long minorVersionDelta, // New params
+      Long minorVersionDelta,
       List<String> availableArtifactVersions) {
     this.appName = appName;
     this.appId = appId;
@@ -46,12 +59,22 @@ public class OutdatedArtifactInfo {
     this.latestPreRelease = latestPreRelease;
     this.nextMinorVersion = nextMinorVersion;
     this.nextMajorVersion = nextMajorVersion;
-    this.majorVersionDelta = majorVersionDelta; // New field
-    this.minorVersionDelta = minorVersionDelta; // New field
+    this.majorVersionDelta = majorVersionDelta;
+    this.minorVersionDelta = minorVersionDelta;
     this.availableArtifactVersions = availableArtifactVersions;
+    this.lastUpdated = LocalDateTime.now(ZoneId.systemDefault());
+    this.id = generateId();
+  }
+
+  private String generateId() {
+    return appId + ":" + artifactSource + ":" + artifactType;
   }
 
   // --- Getters ---
+  public String getId() {
+    return id;
+  }
+
   public String getAppName() {
     return appName;
   }
@@ -98,14 +121,26 @@ public class OutdatedArtifactInfo {
 
   public Long getMajorVersionDelta() {
     return majorVersionDelta;
-  } // New getter
+  }
 
   public Long getMinorVersionDelta() {
     return minorVersionDelta;
-  } // New getter
+  }
 
   public List<String> getAvailableArtifactVersions() {
     return availableArtifactVersions;
+  }
+
+  public LocalDateTime getLastUpdated() {
+    return lastUpdated;
+  }
+
+  public Long getTimeToLive() {
+    return timeToLive;
+  }
+
+  public void setTimeToLive(Long timeToLive) {
+    this.timeToLive = timeToLive;
   }
 
   @Override
@@ -125,7 +160,8 @@ public class OutdatedArtifactInfo {
         && Objects.equals(nextMajorVersion, that.nextMajorVersion)
         && Objects.equals(majorVersionDelta, that.majorVersionDelta)
         && Objects.equals(minorVersionDelta, that.minorVersionDelta)
-        && Objects.equals(availableArtifactVersions, that.availableArtifactVersions);
+        && Objects.equals(availableArtifactVersions, that.availableArtifactVersions)
+        && Objects.equals(lastUpdated, that.lastUpdated);
   }
 
   @Override
@@ -144,6 +180,7 @@ public class OutdatedArtifactInfo {
     result = 31 * result + Objects.hashCode(majorVersionDelta);
     result = 31 * result + Objects.hashCode(minorVersionDelta);
     result = 31 * result + Objects.hashCode(availableArtifactVersions);
+    result = 31 * result + Objects.hashCode(lastUpdated);
     return result;
   }
 
@@ -185,12 +222,12 @@ public class OutdatedArtifactInfo {
         + '\''
         + ", majorVersionDelta="
         + majorVersionDelta
-        + // New field
-        ", minorVersionDelta="
+        + ", minorVersionDelta="
         + minorVersionDelta
-        + // New field
-        ", availableArtifactVersionsCount="
+        + ", availableArtifactVersionsCount="
         + (availableArtifactVersions != null ? availableArtifactVersions.size() : 0)
+        + ", lastUpdated="
+        + lastUpdated
         + '}';
   }
 }

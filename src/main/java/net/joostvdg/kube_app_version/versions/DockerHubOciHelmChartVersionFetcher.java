@@ -53,7 +53,7 @@ public class DockerHubOciHelmChartVersionFetcher implements VersionFetcher {
     }
 
     String source = artifact.getSource();
-    String cacheKey = source;
+    String cacheKey = artifact.getIdentifier();
 
     List<String> cachedVersions = versionCache.get(cacheKey);
     if (cachedVersions != null) {
@@ -69,6 +69,7 @@ public class DockerHubOciHelmChartVersionFetcher implements VersionFetcher {
 
     String registryDomain = matcher.group(1);
     String repositoryPath = matcher.group(2);
+    repositoryPath = String.join("/", repositoryPath, artifact.getArtifactName());
 
     // Step 1: Get authentication token
     String authScope = "repository:" + repositoryPath + ":pull";

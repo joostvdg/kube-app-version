@@ -52,7 +52,7 @@ public class GithubOciHelmChartVersionFetcher implements VersionFetcher {
     }
 
     String source = artifact.getSource();
-    String cacheKey = source;
+    String cacheKey = artifact.getIdentifier();
 
     List<String> cachedVersions = versionCache.get(cacheKey);
     if (cachedVersions != null) {
@@ -79,8 +79,9 @@ public class GithubOciHelmChartVersionFetcher implements VersionFetcher {
       return Collections.emptyList();
     }
 
+    logger.debug("Path parts of GitHub OCI URL: {}", Arrays.toString(pathParts));
     String username = pathParts[0];
-    String packagePath = pathParts[1];
+    String packagePath = pathParts[1] + "/" + artifact.getArtifactName();
     String encodedPackagePath =
         URLEncoder.encode(packagePath, StandardCharsets.UTF_8).replace("+", "%20");
 
@@ -101,13 +102,7 @@ public class GithubOciHelmChartVersionFetcher implements VersionFetcher {
             .timeout(Duration.ofSeconds(10))
             .build();
 
-    HttpResponse<String> response;
-    try {
-      response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-    } catch (Exception e) {
-      logger.error("Failed to send request to {}: {}", apiUrl, e.getMessage(), e);
-      throw new Exception("Failed to send request to " + apiUrl + ": " + e.getMessage(), e);
-    }
+    HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
 
     if (response.statusCode() != 200) {
       logger.error(
@@ -153,8 +148,7 @@ public class GithubOciHelmChartVersionFetcher implements VersionFetcher {
 
     Collections.sort(semVerList, Collections.reverseOrder());
 
-    List<String> sortedVersionStrings =
-        semVerList.stream().map(Version::toString).collect(Collectors.toList());
+    List<String> sortedVersionStrings = semVerList.stream().map(Version::toString).toList();
 
     logger.info(
         "Found and sorted {} versions for GitHub OCI chart: {}",

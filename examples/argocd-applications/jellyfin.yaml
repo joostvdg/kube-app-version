@@ -9,5 +9,5 @@ spec:
   project: default
   source:
     chart: jellyfin
-    repoURL: https://kriegalex.github.io/k8s-charts/
+    repoURL: https://kriegalex.github.io/k8s-charts
     targetRevision: "0.2.3"

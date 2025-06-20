@@ -39,23 +39,6 @@ public class HelmChartVersionFetcher implements VersionFetcher {
             .build();
   }
 
-  private String[] parseHelmSource(String source) {
-    if (source == null || source.isEmpty()) {
-      logger.warn("Helm source string is null or empty.");
-      return null;
-    }
-    int lastSlashIndex = source.lastIndexOf('/');
-    if (lastSlashIndex == -1 || lastSlashIndex == 0 || lastSlashIndex == source.length() - 1) {
-      logger.warn("Invalid Helm source format: '{}'. Expected 'repoUrl/chartName'.", source);
-      return null;
-    }
-    String repoUrl = source.substring(0, lastSlashIndex);
-    String chartName = source.substring(lastSlashIndex + 1);
-    return new String[] {repoUrl, chartName};
-  }
-
-  // parseAndNormalizeVersionString method is REMOVED from here.
-
   @Override
   @SuppressWarnings("MixedMutabilityReturnType") // not using Guava you stupid parser
   public List<String> getAvailableVersions(AppArtifact artifact) throws Exception {
@@ -65,14 +48,7 @@ public class HelmChartVersionFetcher implements VersionFetcher {
       return Collections.emptyList();
     }
 
-    String[] parsedSource = parseHelmSource(artifact.getSource());
-    if (parsedSource == null) {
-      return Collections.emptyList();
-    }
-    String repoUrl = parsedSource[0];
-    String chartName = parsedSource[1];
-    String cacheKey = repoUrl + "/" + chartName;
-
+    String cacheKey = artifact.getIdentifier();
     List<String> cachedVersions = versionCache.get(cacheKey);
     if (cachedVersions != null) {
       logger.debug("Returning cached versions for {}", cacheKey);
@@ -80,12 +56,14 @@ public class HelmChartVersionFetcher implements VersionFetcher {
     }
 
     logger.debug("No cache hit for {}. Fetching from remote.", cacheKey);
-    String indexFileUrl = repoUrl.endsWith("/") ? repoUrl + "index.yaml" : repoUrl + "/index.yaml";
-    logger.debug("Fetching Helm index file from: {}", indexFileUrl);
+
+    URI indexFileURI = new URI(artifact.getSource() + "/index.yaml");
+
+    logger.debug("Fetching Helm index file from: {}", indexFileURI);
 
     HttpRequest request =
         HttpRequest.newBuilder()
-            .uri(URI.create(indexFileUrl))
+            .uri(indexFileURI)
             .header("Accept", "application/yaml, text/yaml, */*")
             .timeout(Duration.ofSeconds(10))
             .build();
@@ -94,18 +72,18 @@ public class HelmChartVersionFetcher implements VersionFetcher {
     try {
       response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
     } catch (Exception e) {
-      logger.error("Failed to send request to {}: {}", indexFileUrl, e.getMessage(), e);
-      throw new Exception("Failed to send request to " + indexFileUrl + ": " + e.getMessage(), e);
+      logger.error("Failed to send request to {}: {}", indexFileURI, e.getMessage(), e);
+      throw new Exception("Failed to send request to " + indexFileURI + ": " + e.getMessage(), e);
     }
 
     if (response.statusCode() != 200) {
       logger.error(
           "Failed to fetch {}. HTTP status: {} - {}",
-          indexFileUrl,
+          indexFileURI,
           response.statusCode(),
           response.body());
       throw new RuntimeException(
-          "Failed to fetch " + indexFileUrl + ". HTTP status: " + response.statusCode());
+          "Failed to fetch " + indexFileURI + ". HTTP status: " + response.statusCode());
     }
 
     String yamlContent = response.body();
@@ -114,34 +92,35 @@ public class HelmChartVersionFetcher implements VersionFetcher {
     try {
       indexData = yaml.load(yamlContent);
     } catch (YAMLException e) {
-      logger.error("Failed to parse YAML from {}: {}", indexFileUrl, e.getMessage(), e);
-      throw new Exception("Failed to parse YAML from " + indexFileUrl + ": " + e.getMessage(), e);
+      logger.error("Failed to parse YAML from {}: {}", indexFileURI, e.getMessage(), e);
+      throw new Exception("Failed to parse YAML from " + indexFileURI + ": " + e.getMessage(), e);
     }
 
     List<String> rawVersions = new ArrayList<>();
     if (indexData == null || !indexData.containsKey("entries")) {
       logger.warn(
           "YAML content from {} does not contain 'entries' or is null. Caching empty list.",
-          indexFileUrl);
+          indexFileURI);
       versionCache.put(cacheKey, Collections.emptyList());
       return Collections.emptyList();
     }
 
     Object entriesObject = indexData.get("entries");
     if (!(entriesObject instanceof Map)) {
-      logger.warn("'entries' in YAML from {} is not a Map. Caching empty list.", indexFileUrl);
+      logger.warn("'entries' in YAML from {} is not a Map. Caching empty list.", indexFileURI);
       versionCache.put(cacheKey, Collections.emptyList());
       return Collections.emptyList();
     }
     Map<String, Object> entries = (Map<String, Object>) entriesObject;
 
-    if (entries.containsKey(chartName)) {
-      Object chartEntriesObject = entries.get(chartName);
+    String appName = artifact.getArtifactName();
+    if (entries.containsKey(appName)) {
+      Object chartEntriesObject = entries.get(appName);
       if (!(chartEntriesObject instanceof List)) {
         logger.warn(
             "Chart entry for '{}' in YAML from {} is not a List. Caching empty list.",
-            chartName,
-            indexFileUrl);
+            appName,
+            indexFileURI);
         versionCache.put(cacheKey, Collections.emptyList());
         return Collections.emptyList();
       }
@@ -157,7 +136,7 @@ public class HelmChartVersionFetcher implements VersionFetcher {
         }
       }
     } else {
-      logger.warn("Chart '{}' not found in {}. Caching empty list.", chartName, indexFileUrl);
+      logger.warn("Chart '{}' not found in {}. Caching empty list.", appName, indexFileURI);
       versionCache.put(cacheKey, Collections.emptyList());
       return Collections.emptyList();
     }
@@ -165,8 +144,8 @@ public class HelmChartVersionFetcher implements VersionFetcher {
     if (rawVersions.isEmpty()) {
       logger.info(
           "No raw versions found for chart '{}' in repo '{}'. Caching empty list.",
-          chartName,
-          repoUrl);
+          appName,
+          artifact.getSource());
       versionCache.put(cacheKey, Collections.emptyList());
       return Collections.emptyList();
     }
@@ -189,8 +168,8 @@ public class HelmChartVersionFetcher implements VersionFetcher {
     logger.info(
         "Found and sorted {} versions for chart '{}' in repo '{}'. Caching result.",
         sortedVersionStrings.size(),
-        chartName,
-        repoUrl);
+        appName,
+        artifact.getSource());
     versionCache.put(cacheKey, Collections.unmodifiableList(new ArrayList<>(sortedVersionStrings)));
 
     return sortedVersionStrings;

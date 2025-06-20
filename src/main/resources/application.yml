@@ -1,4 +1,7 @@
 app:
+  version:
+    cache:
+      minutes: 2
   kubernetes:
     mode: ${KUBERNETES_MODE:DIRECT}
     kubeconfig-path: ${KUBERNETES_KUBECONFIG_PATH:}
@@ -9,6 +12,11 @@ app:
     mode: ${REDIS_MODE:OPTIONAL}
     reconnectInterval: ${REDIS_RECONNECT_INTERVAL:60000}
 
+logging:
+  level:
+    net:
+      joostvdg:
+        kube_app_version: DEBUG
 
 cluster:
   name: "local"

@@ -15,6 +15,7 @@ public class AppArtifact implements Serializable {
 
   private @Id String identifier;
   private @Indexed String source;
+  private String artifactName;
   private String artifactType;
   private LocalDateTime discoveredAt;
   private Map<String, String> metaData;
@@ -31,9 +32,10 @@ public class AppArtifact implements Serializable {
    * @param source source of the artifact, e.g., oci://ghcr.io/gabe565/charts/gotify
    * @param artifactType the type of the artifact, e.g., containerImage, git, helm
    */
-  public AppArtifact(String source, String artifactType) {
+  public AppArtifact(String source, String artifactType, String artifactName) {
     this.artifactType = artifactType;
     this.source = source;
+    this.artifactName = artifactName;
     this.discoveredAt = LocalDateTime.now(ZoneId.systemDefault());
     this.identifier = source + "::" + artifactType;
     this.metaData = new HashMap<>();
@@ -78,6 +80,14 @@ public class AppArtifact implements Serializable {
 
   public void setMetaData(Map<String, String> metaData) {
     this.metaData = metaData;
+  }
+
+  public String getArtifactName() {
+    return artifactName;
+  }
+
+  public void setArtifactName(String artifactName) {
+    this.artifactName = artifactName;
   }
 
   /**

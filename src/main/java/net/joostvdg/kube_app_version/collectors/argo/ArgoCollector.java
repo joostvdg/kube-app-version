@@ -214,7 +214,7 @@ public class ArgoCollector implements ApplicationCollector {
     extractSourceArtifacts(spec, artifacts, appName);
 
     // Extract deployed image artifacts from status
-    extractImageArtifacts(status, artifacts);
+    extractImageArtifacts(status, artifacts, appName);
 
     return artifacts;
   }
@@ -238,7 +238,8 @@ public class ArgoCollector implements ApplicationCollector {
     }
   }
 
-  private void extractImageArtifacts(JsonObject status, Set<AppArtifact> artifacts) {
+  private void extractImageArtifacts(
+      JsonObject status, Set<AppArtifact> artifacts, String appName) {
     if (status != null && status.has("summary") && status.get("summary").isJsonObject()) {
       JsonObject summary = status.getAsJsonObject("summary");
       if (summary.has("images") && summary.get("images").isJsonArray()) {
@@ -246,7 +247,7 @@ public class ArgoCollector implements ApplicationCollector {
         for (JsonElement imageElement : images) {
           if (imageElement.isJsonPrimitive()) {
             String imageName = imageElement.getAsString();
-            AppArtifact artifact = new AppArtifact(imageName, "containerImage");
+            AppArtifact artifact = new AppArtifact(imageName, "containerImage", appName);
             artifacts.add(artifact);
           }
         }
@@ -266,7 +267,7 @@ public class ArgoCollector implements ApplicationCollector {
       String sourceType = determineSourceType(source);
 
       // Create artifact with repo URL
-      AppArtifact artifact = new AppArtifact(repoUrl, sourceType);
+      AppArtifact artifact = new AppArtifact(repoUrl, sourceType, appName);
 
       // Add optional chart info for Helm charts
       if ("helm".equals(sourceType)
