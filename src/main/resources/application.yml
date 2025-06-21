@@ -1,7 +1,10 @@
 app:
   version:
-    cache:
-      minutes: 2
+    outdated-artifacts:
+      collect-on-startup: ${APPS_COLLECT_ON_STARTUP:true}
+      refresh-on-startup: ${VERSIONS_REFRESH_ON_STARTUP:true}
+      interval-ms: ${VERSIONS_INTERVAL_MILLIS:3600000} # 3600000 = 1 hour
+      cache-validity-minutes: ${VERSIONS_CACHE_VALIDITY_MINUTES:60}
   kubernetes:
     mode: ${KUBERNETES_MODE:DIRECT}
     kubeconfig-path: ${KUBERNETES_KUBECONFIG_PATH:}

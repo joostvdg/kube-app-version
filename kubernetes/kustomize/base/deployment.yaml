@@ -23,6 +23,14 @@ spec:
               value: "REQUIRED"
             - name: KUBERNETES_MODE
               value: "IN_CLUSTER"
+            - name: APPS_COLLECT_ON_STARTUP
+              value: "true"
+            - name: VERSIONS_REFRESH_ON_STARTUP
+              value: "true"
+            - name: VERSIONS_INTERVAL_MILLIS
+              value: "3600000" # 3600000 = 1 hour
+            - name: VERSIONS_CACHE_VALIDITY_MINUTES
+              value: "30"
           # Startup probe - allows application to fully start before other probes begin
           startupProbe:
             httpGet:

@@ -29,7 +29,7 @@ public class OutdatedArtifactInfo implements Serializable {
   private final Long majorVersionDelta;
   private final Long minorVersionDelta;
   private final List<String> availableArtifactVersions;
-  private final LocalDateTime lastUpdated;
+  private LocalDateTime lastUpdated;
 
   @TimeToLive private Long timeToLive;
 
@@ -133,6 +133,10 @@ public class OutdatedArtifactInfo implements Serializable {
 
   public LocalDateTime getLastUpdated() {
     return lastUpdated;
+  }
+
+  public void setLastUpdated(LocalDateTime lastUpdated) {
+    this.lastUpdated = lastUpdated;
   }
 
   public Long getTimeToLive() {

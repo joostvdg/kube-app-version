@@ -1,6 +1,10 @@
 /* (C)2025 */
 package net.joostvdg.kube_app_version.versions;
 
+import jakarta.annotation.PostConstruct;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -10,52 +14,111 @@ import net.joostvdg.kube_app_version.api.model.App;
 import net.joostvdg.kube_app_version.api.model.AppArtifact;
 import net.joostvdg.kube_app_version.api.model.AppVersion;
 import net.joostvdg.kube_app_version.collectors.CollectorService;
+import net.joostvdg.kube_app_version.config.OutdatedArtifactsProperties;
 import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VersionComparatorService {
+public class OutdatedArtifactsService {
 
-  private static final Logger logger = LoggerFactory.getLogger(VersionComparatorService.class);
+  private static final Logger logger = LoggerFactory.getLogger(OutdatedArtifactsService.class);
   private final CollectorService collectorService;
   private final List<VersionFetcher> versionFetchers;
   private final AppArtifactRepository appVersionRepository;
+  private final OutdatedArtifactInfoRepository outdatedArtifactInfoRepository;
+  private final OutdatedArtifactsProperties properties;
 
-  public VersionComparatorService(
+  public OutdatedArtifactsService(
       CollectorService collectorService,
       List<VersionFetcher> versionFetchers,
-      AppArtifactRepository appVersionRepository) {
+      AppArtifactRepository appVersionRepository,
+      OutdatedArtifactInfoRepository outdatedArtifactInfoRepository,
+      OutdatedArtifactsProperties properties) {
     this.collectorService = collectorService;
     this.versionFetchers = versionFetchers;
     this.appVersionRepository = appVersionRepository;
+    this.outdatedArtifactInfoRepository = outdatedArtifactInfoRepository;
+    this.properties = properties;
     logger.info(
-        "VersionComparatorService initialized with {} version fetchers.",
+        "OutdatedArtifactsService initialized with {} version fetchers.",
         Optional.of(versionFetchers.size()));
   }
 
-  // TODO: rewrite Switch to cleanly become a return expression
-  @SuppressWarnings(
-      "StatementSwitchToExpressionSwitch") // the warning is dumb, either rewrite the logic or not,
-  // but just making these expression statements is useless
+  @PostConstruct
+  public void onStartup() {
+    logger.info("OutdatedArtifactsService startup initiated.");
+    if (properties.isCollectOnStartup()) {
+      logger.info("Collecting all available versions for all app artifacts on startup...");
+      getAvailableVersionsForAllAppArtifacts();
+      logger.info("Finished collecting available versions.");
+    } else {
+      logger.info("Skipping collection of available versions on startup as per configuration.");
+    }
+
+    if (properties.isRefreshOnStartup()) {
+      logger.info("Refreshing outdated artifacts cache on startup...");
+      refreshOutdatedArtifacts();
+      logger.info("Finished refreshing outdated artifacts cache.");
+    } else {
+      logger.info("Skipping refresh of outdated artifacts cache on startup as per configuration.");
+    }
+  }
+
+  public List<OutdatedArtifactInfo> getOutdatedArtifacts() {
+    if (needsRefresh()) {
+      refreshOutdatedArtifacts();
+    }
+
+    List<OutdatedArtifactInfo> artifacts = fetchFromCache();
+    return artifacts.isEmpty() ? getOutdatedArtifactsParallel() : artifacts;
+  }
+
+  private boolean needsRefresh() {
+    Optional<OutdatedArtifactInfo> latestEntry = findLatestCachedEntry();
+    return latestEntry.isEmpty()
+        || Duration.between(
+                    latestEntry.get().getLastUpdated(), LocalDateTime.now(ZoneId.systemDefault()))
+                .toMinutes()
+            >= properties.getCacheValidityMinutes();
+  }
+
+  private Optional<OutdatedArtifactInfo> findLatestCachedEntry() {
+    List<OutdatedArtifactInfo> all = fetchFromCache();
+    return all.stream().max(Comparator.comparing(OutdatedArtifactInfo::getLastUpdated));
+  }
+
+  private List<OutdatedArtifactInfo> fetchFromCache() {
+    List<OutdatedArtifactInfo> all = new ArrayList<>();
+    outdatedArtifactInfoRepository.findAll().forEach(all::add);
+    return all;
+  }
+
+  @Scheduled(fixedDelayString = "${app.version.outdated-artifacts.interval-ms:3600000}")
+  public void refreshOutdatedArtifacts() {
+    List<OutdatedArtifactInfo> outdated = getOutdatedArtifactsParallel();
+    outdated.forEach(info -> info.setTimeToLive(properties.getCacheValidityMinutes() * 60));
+    outdatedArtifactInfoRepository.saveAll(outdated);
+  }
+
   private String determineCurrentArtifactVersion(AppArtifact artifact, AppVersion appVersion) {
     String artifactType = artifact.getArtifactType();
     if (artifactType == null) return null;
 
-    switch (artifactType.toLowerCase(Locale.ROOT)) {
-      case "helm", "git":
-        return appVersion.getVersion();
-      case "containerimage":
+    return switch (artifactType.toLowerCase(Locale.ROOT)) {
+      case "helm", "git" -> appVersion.getVersion();
+      case "containerimage" -> {
         String source = artifact.getSource();
-        if (source == null) return null;
+        if (source == null) yield null;
         int colonIndex = source.lastIndexOf(':');
         int atIndex = source.lastIndexOf('@');
 
         if (colonIndex > 0 && (atIndex == -1 || colonIndex > atIndex)) {
           String tag = source.substring(colonIndex + 1);
-          return SemanticVersionUtil.parseVersion(tag)
+          yield SemanticVersionUtil.parseVersion(tag)
               .map(com.github.zafarkhaja.semver.Version::toString)
               .orElse(tag);
         } else if (atIndex > 0 && colonIndex == -1) {
@@ -64,14 +127,16 @@ public class VersionComparatorService {
                   + " version' checks.",
               source,
               source.substring(atIndex + 1));
-          return null;
+          yield null;
         }
         logger.warn("Could not parse version tag from containerImage source: {}", source);
-        return null;
-      default:
+        yield null;
+      }
+      default -> {
         logger.debug("Unsupported artifact type for version determination: {}", artifactType);
-        return null;
-    }
+        yield null;
+      }
+    };
   }
 
   @Cacheable(value = "availableVersions")
@@ -128,7 +193,7 @@ public class VersionComparatorService {
     return artifactVersionsMap;
   }
 
-  public List<OutdatedArtifactInfo> getOutdatedArtifactsParallel() {
+  private List<OutdatedArtifactInfo> getOutdatedArtifactsParallel() {
     long startTime = System.nanoTime();
     ExecutorService executor =
         Executors.newFixedThreadPool(10); // Adjust thread pool size as needed
@@ -149,7 +214,7 @@ public class VersionComparatorService {
                         artifact.getSource(),
                         e.getMessage(),
                         e);
-                    return null;
+                    return Optional.empty();
                   }
                 },
                 executor);
@@ -161,7 +226,6 @@ public class VersionComparatorService {
         futures.stream()
             .map(CompletableFuture::join)
             .filter(Objects::nonNull)
-            .filter(Optional::isPresent)
             .flatMap(Optional::stream)
             .toList();
 
@@ -177,7 +241,6 @@ public class VersionComparatorService {
 
   private Optional<OutdatedArtifactInfo> processArtifact(
       App app, AppVersion appVersion, AppArtifact artifact) throws Exception {
-    Optional<OutdatedArtifactInfo> optionalOutdatedArtifactInfo = Optional.empty();
     saveAppArtifact(artifact);
     String currentArtifactVersionStr = determineCurrentArtifactVersion(artifact, appVersion);
 
@@ -189,112 +252,61 @@ public class VersionComparatorService {
           artifact.getSource(),
           artifact.getArtifactType(),
           app.getName());
+      return Optional.empty();
     }
 
     // Count number of dots, if we only have X.Y, we add .0 at the end
     int dotCount = currentArtifactVersionStr.split("\\.").length;
     if (dotCount == 1) {
-      // verify we don't have a -abc
       if (currentArtifactVersionStr.contains("-")) {
-        // find the index of the hyphen, collect it as a suffix, add the .0 before the index
-        // of - and then add the suffix back
         int hyphenIndex = currentArtifactVersionStr.indexOf('-');
         String suffix = currentArtifactVersionStr.substring(hyphenIndex);
-        currentArtifactVersionStr = currentArtifactVersionStr.substring(0, hyphenIndex);
-        currentArtifactVersionStr += ".0" + suffix;
+        currentArtifactVersionStr =
+            currentArtifactVersionStr.substring(0, hyphenIndex) + ".0" + suffix;
+      } else {
+        currentArtifactVersionStr += ".0";
       }
-      currentArtifactVersionStr += ".0";
     }
 
-    Optional<com.github.zafarkhaja.semver.Version> currentParsedVersionOpt =
-        SemanticVersionUtil.parseVersion(currentArtifactVersionStr);
+    // TODO: can this be removed?
+    //    Optional<com.github.zafarkhaja.semver.Version> currentParsedVersionOpt =
+    //        SemanticVersionUtil.parseVersion(currentArtifactVersionStr);
 
     for (VersionFetcher fetcher : versionFetchers) {
       if (fetcher.supports(artifact)) {
         try {
-          logger.debug(
-              "Fetching available versions for artifact: {} (type: {}) using {}",
-              artifact.getSource(),
-              artifact.getArtifactType(),
-              fetcher.getClass().getSimpleName());
           List<String> availableVersions = fetcher.getAvailableVersions(artifact);
-
           if (availableVersions == null || availableVersions.isEmpty()) {
-            logger.debug("No available versions found for artifact {}", artifact.getSource());
-            continue;
+            return Optional.empty();
           }
 
           Optional<com.github.zafarkhaja.semver.Version> latestOverallOpt =
               SemanticVersionUtil.getLatestOverallVersion(availableVersions);
           Optional<com.github.zafarkhaja.semver.Version> latestGAOpt =
               SemanticVersionUtil.getLatestGARelease(availableVersions);
-          Optional<com.github.zafarkhaja.semver.Version> latestPreOpt =
-              SemanticVersionUtil.getLatestPreRelease(availableVersions);
 
-          String latestOverallVersionStr = latestOverallOpt.map(Object::toString).orElse(null);
           String latestGAVersionStr = latestGAOpt.map(Object::toString).orElse(null);
-          String latestPreVersionStr = latestPreOpt.map(Object::toString).orElse(null);
+          String latestOverallVersionStr = latestOverallOpt.map(Object::toString).orElse(null);
 
-          Optional<String> nextMinorOpt =
-              SemanticVersionUtil.findNextMinorVersion(
-                  currentArtifactVersionStr, availableVersions);
-          Optional<String> nextMajorOpt =
-              SemanticVersionUtil.findNextMajorVersion(
-                  currentArtifactVersionStr, availableVersions);
+          boolean isOutdated =
+              (latestGAVersionStr != null
+                      && SemanticVersionUtil.isOutdated(
+                          currentArtifactVersionStr, latestGAVersionStr))
+                  || (latestGAVersionStr == null
+                      && latestOverallVersionStr != null
+                      && SemanticVersionUtil.isOutdated(
+                          currentArtifactVersionStr, latestOverallVersionStr));
 
-          // Calculate Deltas
-          Optional<Long> minorDeltaOpt =
-              SemanticVersionUtil.calculateMinorVersionDelta(currentParsedVersionOpt, nextMinorOpt);
-          Optional<Long> majorDeltaOpt =
-              SemanticVersionUtil.calculateMajorVersionDelta(currentParsedVersionOpt, nextMajorOpt);
-
-          // Determine if outdated primarily based on latest GA release
-          boolean isOutdated = false;
-          if (latestGAVersionStr != null) {
-            isOutdated =
-                SemanticVersionUtil.isOutdated(currentArtifactVersionStr, latestGAVersionStr);
-          } else if (latestOverallVersionStr != null) {
-            isOutdated =
-                SemanticVersionUtil.isOutdated(currentArtifactVersionStr, latestOverallVersionStr);
-            if (isOutdated) {
-              logger.info(
-                  "Artifact {} is outdated against latest overall (pre-release: {}), as no GA"
-                      + " was found.",
-                  artifact.getSource(),
-                  latestOverallVersionStr);
-            }
-          }
-
-          if (isOutdated) { // Only add to list if outdated
-            logger.info(
-                "Artifact outdated: App: '{}', Artifact: '{}', Current: '{}', Latest GA:"
-                    + " '{}', Major Delta: {}, Minor Delta: {}, Next Minor: {}, Next Major:"
-                    + " {}",
-                app.getName(),
-                artifact.getSource(),
-                currentArtifactVersionStr,
-                latestGAVersionStr,
-                majorDeltaOpt.orElse(null),
-                minorDeltaOpt.orElse(null),
-                nextMinorOpt.orElse(null),
-                nextMajorOpt.orElse(null));
-            OutdatedArtifactInfo outdatedArtifactInfo =
-                new OutdatedArtifactInfo(
-                    app.getName(),
-                    app.getId(),
-                    appVersion.getVersion(),
-                    artifact.getSource(),
-                    artifact.getArtifactType(),
+          if (isOutdated) {
+            return Optional.of(
+                createOutdatedInfo(
+                    app,
+                    appVersion,
+                    artifact,
                     currentArtifactVersionStr,
-                    latestOverallVersionStr,
-                    latestGAVersionStr,
-                    latestPreVersionStr,
-                    nextMinorOpt.orElse(null),
-                    nextMajorOpt.orElse(null),
-                    majorDeltaOpt.orElse(null), // Add delta
-                    minorDeltaOpt.orElse(null), // Add delta
-                    availableVersions);
-            optionalOutdatedArtifactInfo = Optional.of(outdatedArtifactInfo);
+                    availableVersions,
+                    latestOverallOpt,
+                    latestGAOpt));
           }
         } catch (Exception e) {
           logger.error(
@@ -303,10 +315,47 @@ public class VersionComparatorService {
               e.getMessage(),
               e);
         }
-        break; // Found a supporting fetcher
+        break;
       }
     }
-    return optionalOutdatedArtifactInfo;
+    return Optional.empty();
+  }
+
+  private OutdatedArtifactInfo createOutdatedInfo(
+      App app,
+      AppVersion appVersion,
+      AppArtifact artifact,
+      String currentVersion,
+      List<String> availableVersions,
+      Optional<com.github.zafarkhaja.semver.Version> latestOverallOpt,
+      Optional<com.github.zafarkhaja.semver.Version> latestGAOpt) {
+
+    Optional<String> nextMinorOpt =
+        SemanticVersionUtil.findNextMinorVersion(currentVersion, availableVersions);
+    Optional<String> nextMajorOpt =
+        SemanticVersionUtil.findNextMajorVersion(currentVersion, availableVersions);
+    Optional<com.github.zafarkhaja.semver.Version> currentParsedVersionOpt =
+        SemanticVersionUtil.parseVersion(currentVersion);
+
+    return new OutdatedArtifactInfo(
+        app.getName(),
+        app.getId(),
+        appVersion.getVersion(),
+        artifact.getSource(),
+        artifact.getArtifactType(),
+        currentVersion,
+        latestOverallOpt.map(Object::toString).orElse(null),
+        latestGAOpt.map(Object::toString).orElse(null),
+        SemanticVersionUtil.getLatestPreRelease(availableVersions)
+            .map(Object::toString)
+            .orElse(null),
+        nextMinorOpt.orElse(null),
+        nextMajorOpt.orElse(null),
+        SemanticVersionUtil.calculateMajorVersionDelta(currentParsedVersionOpt, nextMajorOpt)
+            .orElse(null),
+        SemanticVersionUtil.calculateMinorVersionDelta(currentParsedVersionOpt, nextMinorOpt)
+            .orElse(null),
+        availableVersions);
   }
 
   public void saveAppArtifact(AppArtifact appArtifact) {
@@ -317,7 +366,7 @@ public class VersionComparatorService {
     }
   }
 
-  @SuppressWarnings("MixedMutabilityReturnType") // not using Guava you stupid parser
+  @SuppressWarnings("MixedMutabilityReturnType")
   public List<AppArtifact> getAllAppArtifacts() {
     try {
       List<AppArtifact> appArtifacts = new ArrayList<>();

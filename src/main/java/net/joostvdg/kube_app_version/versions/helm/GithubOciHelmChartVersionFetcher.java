@@ -1,5 +1,5 @@
 /* (C)2025 */
-package net.joostvdg.kube_app_version.versions;
+package net.joostvdg.kube_app_version.versions.helm;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import net.joostvdg.kube_app_version.api.model.AppArtifact;
+import net.joostvdg.kube_app_version.versions.VersionFetcher;
 import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

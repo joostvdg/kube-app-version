@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/versions")
-public class VersionComparatorController {
+public class OutdatedArtifactsController {
 
-  private final VersionComparatorService versionComparatorService;
+  private final OutdatedArtifactsService outdatedArtifactsService;
 
-  public VersionComparatorController(VersionComparatorService versionComparatorService) {
-    this.versionComparatorService = versionComparatorService;
+  public OutdatedArtifactsController(OutdatedArtifactsService outdatedArtifactsService) {
+    this.outdatedArtifactsService = outdatedArtifactsService;
   }
 
   @GetMapping("/outdated")
   public List<OutdatedArtifactInfo> getOutdatedApplications() {
-    return versionComparatorService.getOutdatedArtifactsParallel();
+    return outdatedArtifactsService.getOutdatedArtifacts();
   }
 
   @GetMapping("/available")
   public Map<String, List<String>> getAllAvailableVersions() {
-    return versionComparatorService.getAvailableVersionsForAllAppArtifacts();
+    return outdatedArtifactsService.getAvailableVersionsForAllAppArtifacts();
   }
 
   // TODO: temp debug, remove or move
   @GetMapping("/artifacts")
   public List<AppArtifact> getAllAppArtifacts() {
-    return versionComparatorService.getAllAppArtifacts();
+    return outdatedArtifactsService.getAllAppArtifacts();
   }
 }

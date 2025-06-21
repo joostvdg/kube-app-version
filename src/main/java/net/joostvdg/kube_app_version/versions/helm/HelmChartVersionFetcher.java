@@ -1,5 +1,5 @@
 /* (C)2025 */
-package net.joostvdg.kube_app_version.versions;
+package net.joostvdg.kube_app_version.versions.helm;
 
 import com.github.zafarkhaja.semver.Version;
 import java.net.URI;
@@ -15,6 +15,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import net.joostvdg.kube_app_version.api.model.AppArtifact;
+import net.joostvdg.kube_app_version.versions.VersionFetcher;
 import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

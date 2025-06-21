@@ -7,10 +7,18 @@ spec:
     spec:
       containers:
         - name: kube-app-version
-          image:  ghcr.io/joostvdg/kube-app-version:0.3.3@sha256:16ceba5b379752363537fc73a6dc18a7d567eceba83478d94786feadd3cc6f9f
+          image: ghcr.io/joostvdg/kube-app-version:0.4.0@sha256:02ec301d9fc286a7644501bb8c376e8012be69488b6563bd8b1b82b8e4303b12
           env:
             - name: APP_REDIS_MODE
               value: "OPTIONAL"
+            - name: APPS_COLLECT_ON_STARTUP
+              value: "true"
+            - name: VERSIONS_REFRESH_ON_STARTUP
+              value: "false"
+            - name: VERSIONS_INTERVAL_MILLIS
+              value: "600000" # 3600000 = 1 hour, 10 minutes = 600000
+            - name: VERSIONS_CACHE_VALIDITY_MINUTES
+              value: "20"
             - name: LOGGING_LEVEL_net_joostvdg_kube_app_version
               value: "DEBUG"
           resources:
