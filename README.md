@@ -53,6 +53,26 @@ kustomize build kubernetes/kustomize/overlays/kind | kubectl apply -n kav -f -
 kubectl get sa,deploy,svc,po -n kav
 ```
 
+### Create Secret for GitHub
+
+```shell
+export GITHUB_TOKEN=
+```
+
+```shell
+kubectl create secret generic github-token \
+    -n kav \
+    --from-literal=token="${GITHUB_TOKEN}"
+```
+
+### Install Redis
+
+```shell
+helm upgrade --install \
+  redis  oci://registry-1.docker.io/bitnamicharts/redis \
+  --namespace kav
+```
+
 ## Run
 
 ```shell
@@ -192,6 +212,70 @@ curl -fsSL \
 http -A bearer -a ${DHUB_TOKEN} "https://registry-1.docker.io/v2/bitnamicharts/keycloak/tags/list"
 ```
 
+## Kube Prometheus Stack
+
+* https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
+
+### Install
+
+```shell
+helm upgrade --install \
+  --values prom-values.yaml \
+  prom-stack prometheus-community/kube-prometheus-stack
+```
+
+### Retrieve Grafana Password
+
+```shell
+kubectl --namespace default get secrets prom-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
+```
+
+### Port-Forward to open locally
+
+```shell
+export POD_NAME=$(kubectl --namespace default get pod -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=prom-stack" -oname)
+kubectl --namespace default port-forward $POD_NAME 3000
+```
+
+### Open Telemetry Operator
+
+* https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-kube-stack
+
+### Add Helm Repo
+
+```shell
+helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+helm repo update
+```
+
+```shell
+helm upgrade --install \
+    --set opentelemetry-operator.admissionWebhooks.certManager.enabled=false \
+    --set admissionWebhooks.autoGenerateCert.enabled=true \
+    otel-stack open-telemetry/opentelemetry-kube-stack
+```
+
+## OpenTelemetry Collector Standalone
+
+* https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-collector
+
+```shell
+helm upgrade --install otel-collector \
+  --values otel-values.yaml \
+  open-telemetry/opentelemetry-collector 
+```
+
+## Tempo
+
+```shell
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+```
+
+```shell
+helm upgrade --install tempo grafana/tempo
+```
+
 ## ValKey Cluster
 
 ### Docker Compose
@@ -204,4 +288,34 @@ Once connected, you can add the cluster by connecting to one of the nodes.
 It is in the same network, so use a local address: `10.0.0.13` for example.
 The password in `.env`.
 
-`
+
+## Error To Solve
+
+```shell
+.ClassNotFoundException: io.opentelemetry.sdk.internal.StandardComponentId$ExporterType
+```
+
+```shell
+kube-app-version-74b98cbf94-vgz6m kube-app-version      ... 206 common frames omitted
+kube-app-version-74b98cbf94-vgz6m kube-app-version Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter]: Factory method 'otlpHttpSpanExporter' threw exception with message: io/opentelemetry/sdk/internal/StandardComponentId$ExporterType
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199) ~[spring-beans-6.2.8.jar!/:6.2.8]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88) ~[spring-beans-6.2.8.jar!/:6.2.8]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168) ~[spring-beans-6.2.8.jar!/:6.2.8]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.8.jar!/:6.2.8]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      ... 226 common frames omitted
+kube-app-version-74b98cbf94-vgz6m kube-app-version Caused by: java.lang.NoClassDefFoundError: io/opentelemetry/sdk/internal/StandardComponentId$ExporterType
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporterBuilder.<init>(OtlpHttpSpanExporterBuilder.java:53) ~[opentelemetry-exporter-otlp-1.51.0.jar!/:1.51.0]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter.builder(OtlpHttpSpanExporter.java:59) ~[opentelemetry-exporter-otlp-1.51.0.jar!/:1.51.0]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.boot.actuate.autoconfigure.tracing.otlp.OtlpTracingConfigurations$Exporters.otlpHttpSpanExporter(OtlpTracingConfigurations.java:88) ~[spring-boot-actuator-autoconfigure-3.5.3.jar!/:3.5.3]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) ~[na:na]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171) ~[spring-beans-6.2.8.jar!/:6.2.8]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      ... 229 common frames omitted
+kube-app-version-74b98cbf94-vgz6m kube-app-version Caused by: java.lang.ClassNotFoundException: io.opentelemetry.sdk.internal.StandardComponentId$ExporterType
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at java.base/java.net.URLClassLoader.findClass(Unknown Source) ~[na:na]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at java.base/java.lang.ClassLoader.loadClass(Unknown Source) ~[na:na]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.boot.loader.net.protocol.jar.JarUrlClassLoader.loadClass(JarUrlClassLoader.java:107) ~[app.jar:0.0.1-SNAPSHOT]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.boot.loader.launch.LaunchedClassLoader.loadClass(LaunchedClassLoader.java:91) ~[app.jar:0.0.1-SNAPSHOT]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      at java.base/java.lang.ClassLoader.loadClass(Unknown Source) ~[na:na]
+kube-app-version-74b98cbf94-vgz6m kube-app-version      ... 235 common frames omitted
+```

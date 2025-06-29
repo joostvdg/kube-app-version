@@ -1,0 +1,6 @@
+# prometheus.prometheusSpec.additionalArgs
+prometheus:
+  prometheusSpec:
+    additionalArgs:
+      - name: web.enable-otlp-receiver
+        value: ""

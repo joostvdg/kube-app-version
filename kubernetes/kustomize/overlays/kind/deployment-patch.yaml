@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: kube-app-version
-          image: ghcr.io/joostvdg/kube-app-version:0.4.0@sha256:02ec301d9fc286a7644501bb8c376e8012be69488b6563bd8b1b82b8e4303b12
+          image: ghcr.io/joostvdg/kube-app-version:0.5.5@sha256:4a855b72db622f8e4bc544c25ef813ddedbf781cdcf2bc1d020764df1e277977
           env:
             - name: APP_REDIS_MODE
               value: "OPTIONAL"
@@ -21,6 +21,18 @@ spec:
               value: "20"
             - name: LOGGING_LEVEL_net_joostvdg_kube_app_version
               value: "DEBUG"
+            - name: GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github-token
+                  key: token
+            - name: REDIS_HOST
+              value: redis-master
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis
+                  key: redis-password
           resources:
             requests:
               memory: "512Mi"
