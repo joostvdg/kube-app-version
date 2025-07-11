@@ -4,3 +4,10 @@ prometheus:
     additionalArgs:
       - name: web.enable-otlp-receiver
         value: ""
+
+grafana:
+  plugins:
+    - fetzerch-sunandmoon-datasource
+    - yesoreyeram-infinity-datasource
+    - digrich-bubblechart-panel
+    - grafana-clock-panel
