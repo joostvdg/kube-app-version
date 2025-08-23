@@ -20,6 +20,7 @@ import net.joostvdg.kube_app_version.versions.util.SemanticVersionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.error.YAMLException;
 
@@ -32,12 +33,8 @@ public class HelmChartVersionFetcher implements VersionFetcher {
 
   // XY_PRERELEASE_PATTERN is removed as normalization is now in SemanticVersionUtil
 
-  public HelmChartVersionFetcher() {
-    this.httpClient =
-        HttpClient.newBuilder()
-            .followRedirects(HttpClient.Redirect.NORMAL)
-            .connectTimeout(Duration.ofSeconds(10))
-            .build();
+  public HelmChartVersionFetcher(HttpClient httpClient) {
+    this.httpClient = httpClient;
   }
 
   @Override
@@ -88,7 +85,11 @@ public class HelmChartVersionFetcher implements VersionFetcher {
     }
 
     String yamlContent = response.body();
-    Yaml yaml = new Yaml();
+    // Increase the code point limit to handle large YAML files.
+    // The default is 3MB, which can be too small for large Helm chart repositories.
+    LoaderOptions loaderOptions = new LoaderOptions();
+    loaderOptions.setCodePointLimit(5 * 1024 * 1024); // 5 MB limit
+    Yaml yaml = new Yaml(loaderOptions);
     Map<String, Object> indexData;
     try {
       indexData = yaml.load(yamlContent);

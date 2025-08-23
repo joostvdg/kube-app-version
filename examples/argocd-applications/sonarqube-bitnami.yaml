@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sonarqube-bitnami
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: sonarqube-bitnami
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: "8.1.11"

@@ -1,0 +1,4837 @@
+apiVersion: v1
+entries:
+  cloudbees-sda:
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.418+84ee728ab44b
+    created: 2022-01-28T18:03:50.832Z
+    appVersion: 10.3.8.152966+2.319.2.9
+    urls:
+    - cloudbees-sda-1.418+84ee728ab44b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.420+4218896ed803
+    created: 2022-01-31T14:55:17.821Z
+    appVersion: 10.4.0.153077+2.319.2.9
+    urls:
+    - cloudbees-sda-1.420+4218896ed803.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.424+4455f8a2ae70
+    created: 2022-01-31T21:00:29.585Z
+    appVersion: 10.4.0.153077+2.319.2.9
+    urls:
+    - cloudbees-sda-1.424+4455f8a2ae70.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.427+66412d5df4ee
+    created: 2022-02-09T18:41:49.365Z
+    appVersion: 10.4.0.153077+2.319.3.3
+    urls:
+    - cloudbees-sda-1.427+66412d5df4ee.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.429+da9173096814
+    created: 2022-02-15T17:07:19.340Z
+    appVersion: 10.4.0.153077+2.319.3.4
+    urls:
+    - cloudbees-sda-1.429+da9173096814.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.431+ae8c216dcdb9
+    created: 2022-02-21T13:48:43.403Z
+    appVersion: 10.4.1.153503+2.319.3.4
+    urls:
+    - cloudbees-sda-1.431+ae8c216dcdb9.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.434+e7cb15b1e084
+    created: 2022-03-09T20:55:38.726Z
+    appVersion: 10.4.1.153503+2.332.1.4
+    urls:
+    - cloudbees-sda-1.434+e7cb15b1e084.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.436+b89c67c3deb2
+    created: 2022-03-15T18:42:29.963Z
+    appVersion: 10.4.1.153503+2.332.1.5
+    urls:
+    - cloudbees-sda-1.436+b89c67c3deb2.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.439+2fac343ffaed
+    created: 2022-04-06T20:28:10.963Z
+    appVersion: 10.4.0.153077+2.332.2.4
+    urls:
+    - cloudbees-sda-1.439+2fac343ffaed.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.440+613c03518131
+    created: 2022-04-07T13:38:34.171Z
+    appVersion: 10.4.1.153503+2.332.2.4
+    urls:
+    - cloudbees-sda-1.440+613c03518131.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.442+0b5b0c5ac420
+    created: 2022-04-12T13:27:23.377Z
+    appVersion: 10.4.1.153503+2.332.2.6
+    urls:
+    - cloudbees-sda-1.442+0b5b0c5ac420.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.447+7e2e96934e56
+    created: 2022-04-28T19:25:39.599Z
+    appVersion: 10.5.0.154362+2.332.2.6
+    urls:
+    - cloudbees-sda-1.447+7e2e96934e56.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.452+b4ecc412611b
+    created: 2022-05-04T16:40:12.407Z
+    appVersion: 10.4.2.153852+2.332.3.2
+    urls:
+    - cloudbees-sda-1.452+b4ecc412611b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.454+103f2ae4a99d
+    created: 2022-05-06T22:01:48.547Z
+    appVersion: 10.5.0.154362+2.332.3.2
+    urls:
+    - cloudbees-sda-1.454+103f2ae4a99d.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.456+69c0245eb8df
+    created: 2022-05-17T15:37:06.533Z
+    appVersion: 10.5.0.154362+2.332.3.4
+    urls:
+    - cloudbees-sda-1.456+69c0245eb8df.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.458+8709a08d0d34
+    created: 2022-05-31T16:14:46.578Z
+    appVersion: 10.5.1.154796+2.332.3.4
+    urls:
+    - cloudbees-sda-1.458+8709a08d0d34.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.468+b46ca8221ab3
+    created: 2022-06-23T17:56:43.233Z
+    appVersion: 10.5.1.154796+2.346.1.4
+    urls:
+    - cloudbees-sda-1.468+b46ca8221ab3.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.470+477d96a25841
+    created: 2022-06-30T19:58:39.110Z
+    appVersion: 10.6.0.155529+2.346.1.4
+    urls:
+    - cloudbees-sda-1.470+477d96a25841.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.473+aaac4c029632
+    created: 2022-07-01T15:21:21.033Z
+    appVersion: 10.6.0.155529+2.346.1.4
+    urls:
+    - cloudbees-sda-1.473+aaac4c029632.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.477+7d80162bc5cb
+    created: 2022-07-14T13:18:05.939Z
+    appVersion: 10.6.0.155529+2.346.2.2
+    urls:
+    - cloudbees-sda-1.477+7d80162bc5cb.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.481+e734f272b29d
+    created: 2022-07-28T12:00:38.049Z
+    appVersion: 10.6.0.155529+2.346.2.3
+    urls:
+    - cloudbees-sda-1.481+e734f272b29d.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.483+fc2be5440893
+    created: 2022-08-05T16:36:33.209Z
+    appVersion: 10.7.0.156355+2.346.2.3
+    urls:
+    - cloudbees-sda-1.483+fc2be5440893.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.485+3687be44f58c
+    created: 2022-08-16T09:00:36.740Z
+    appVersion: 10.7.0.156355+2.346.3.4
+    urls:
+    - cloudbees-sda-1.485+3687be44f58c.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.487+42d7147c50b9
+    created: 2022-08-23T22:31:40.239Z
+    appVersion: 10.7.0.156355+2.346.4.1
+    urls:
+    - cloudbees-sda-1.487+42d7147c50b9.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.498+4e4385dbd03b
+    created: 2022-09-09T11:28:47.326Z
+    appVersion: 10.8.0.156807+2.346.4.1
+    urls:
+    - cloudbees-sda-1.498+4e4385dbd03b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.504+125db919fc9f
+    created: 2022-09-09T15:11:22.358Z
+    appVersion: 10.8.0.156807+2.361.1.2
+    urls:
+    - cloudbees-sda-1.504+125db919fc9f.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.507+d06687e32be8
+    created: 2022-10-06T14:08:15.551Z
+    appVersion: 10.9.0.157496+2.361.2.1
+    urls:
+    - cloudbees-sda-1.507+d06687e32be8.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.509+f13af8e36ace
+    created: 2022-11-09T17:03:30.675Z
+    appVersion: 10.9.0.157496+2.361.3.2
+    urls:
+    - cloudbees-sda-1.509+f13af8e36ace.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.510+20450a53f92f
+    created: 2022-11-10T22:12:29.029Z
+    appVersion: 10.10.0.158216+2.361.3.2
+    urls:
+    - cloudbees-sda-1.510+20450a53f92f.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.515+c7e549c60b7e
+    created: 2022-11-18T18:43:41.931Z
+    appVersion: 10.10.0.158216+2.361.4.1
+    urls:
+    - cloudbees-sda-1.515+c7e549c60b7e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.517+bf2ca8cc1e43
+    created: 2022-11-30T23:02:34.310Z
+    appVersion: 10.10.0.158216+2.375.1.1
+    urls:
+    - cloudbees-sda-1.517+bf2ca8cc1e43.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.518+2ee9dd6a3a70
+    created: 2022-12-13T23:17:40.896Z
+    appVersion: 10.11.0.159109+2.375.1.1
+    urls:
+    - cloudbees-sda-1.518+2ee9dd6a3a70.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.520+e97f7e42469a
+    created: 2023-01-11T18:26:19.004Z
+    appVersion: 10.11.0.159109+2.375.2.2
+    urls:
+    - cloudbees-sda-1.520+e97f7e42469a.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.522+0c8e36f0cbd8
+    created: 2023-01-25T13:54:52.681Z
+    appVersion: 10.11.0.159109+2.375.2.3
+    urls:
+    - cloudbees-sda-1.522+0c8e36f0cbd8.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.523+98340c252602
+    created: 2023-02-03T19:01:03.651Z
+    appVersion: 2023.02.0.160256+2.375.2.3
+    urls:
+    - cloudbees-sda-1.523+98340c252602.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.525+f09778ad31cd
+    created: 2023-02-08T14:31:29.553Z
+    appVersion: 2023.02.0.160256+2.375.3.3
+    urls:
+    - cloudbees-sda-1.525+f09778ad31cd.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.527+26d8919db6bc
+    created: 2023-02-09T11:46:39.342Z
+    appVersion: 2023.02.0.160256+2.375.3.4
+    urls:
+    - cloudbees-sda-1.527+26d8919db6bc.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.529+df99ddb61f78
+    created: 2023-02-15T14:25:25.744Z
+    appVersion: 2023.02.0.160256+2.375.3.5
+    urls:
+    - cloudbees-sda-1.529+df99ddb61f78.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.532+ddfbefd38743
+    created: 2023-03-10T10:04:12.970Z
+    appVersion: 2023.03.0.161439+2.375.3.5
+    urls:
+    - cloudbees-sda-1.532+ddfbefd38743.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.538+6243a56a1e72
+    created: 2023-03-10T15:45:04.256Z
+    appVersion: 2023.03.0.161439+2.387.1.2
+    urls:
+    - cloudbees-sda-1.538+6243a56a1e72.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.539+8f017fd1ed3a
+    created: 2023-03-16T00:42:31.104Z
+    appVersion: 2023.03.1.161626+2.387.1.2
+    urls:
+    - cloudbees-sda-1.539+8f017fd1ed3a.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.543+2b278418dc46
+    created: 2023-04-06T12:37:46.361Z
+    appVersion: 2023.03.1.161626+2.387.2.3
+    urls:
+    - cloudbees-sda-1.543+2b278418dc46.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.544+13b1ecfab7c7
+    created: 2023-04-10T11:33:53.516Z
+    appVersion: 2023.04.0.162443+2.387.2.3
+    urls:
+    - cloudbees-sda-1.544+13b1ecfab7c7.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.546+d86350feaeb1
+    created: 2023-04-12T19:53:48.349Z
+    appVersion: 2023.04.0.162443+2.387.2.3
+    urls:
+    - cloudbees-sda-1.546+d86350feaeb1.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.547+71b0b691152b
+    created: 2023-05-03T16:16:32.376Z
+    appVersion: 2023.04.0.162443+2.387.1.2
+    urls:
+    - cloudbees-sda-1.547+71b0b691152b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.548+c7b89667ad8c
+    created: 2023-05-03T16:24:21.806Z
+    appVersion: 2023.04.1.163232+2.387.1.2
+    urls:
+    - cloudbees-sda-1.548+c7b89667ad8c.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.551+d3f33d885908
+    created: 2023-05-25T18:47:57.401Z
+    appVersion: 2023.04.1.163232+2.387.1.2
+    digest: 6647cd819565c3fd9c93f91f13a6e328b5915bff04851cbbc0cc34984fd36c0c
+    urls:
+    - cloudbees-sda-1.551+d3f33d885908.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.557+814a8520578f
+    created: 2023-05-31T15:25:09.509Z
+    appVersion: "+"
+    urls:
+    - cloudbees-sda-1.557+814a8520578f.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.563+d0ad739b4564
+    created: 2023-05-31T23:00:22.659Z
+    appVersion: "+"
+    urls:
+    - cloudbees-sda-1.563+d0ad739b4564.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.566+ab3dab918a96
+    created: 2023-06-01T14:38:12.874Z
+    appVersion: 2023.04.1.163232+2.401.1.3
+    urls:
+    - cloudbees-sda-1.566+ab3dab918a96.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.568+881dd990efe0
+    created: 2023-06-30T13:23:44.546Z
+    appVersion: 2023.04.1.163232+2.401.2.3
+    urls:
+    - cloudbees-sda-1.568+881dd990efe0.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.570+0815880b5c1b
+    created: 2023-07-03T20:33:16.144Z
+    appVersion: 2023.04.1.163232+2.401.2.5
+    urls:
+    - cloudbees-sda-1.570+0815880b5c1b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.571+acbdd9f15c23
+    created: 2023-07-08T18:16:59.310Z
+    appVersion: 2023.06.1.165376+2.401.2.5
+    urls:
+    - cloudbees-sda-1.571+acbdd9f15c23.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.573+8884fd629246
+    created: 2023-07-13T03:29:17.089Z
+    appVersion: 2023.06.1.165376+2.401.2.6
+    urls:
+    - cloudbees-sda-1.573+8884fd629246.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.575+cbba19b6defd
+    created: 2023-07-27T07:07:31.453Z
+    appVersion: 2023.06.1.165376+2.401.3.3
+    urls:
+    - cloudbees-sda-1.575+cbba19b6defd.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.578+1380202fe910
+    created: 2023-08-15T17:00:25.030Z
+    appVersion: 2023.08.0.167214+2.401.3.3
+    urls:
+    - cloudbees-sda-1.578+1380202fe910.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.580+7652111702e1
+    created: 2023-08-16T14:00:47.565Z
+    appVersion: 2023.08.0.167214+2.401.3.4
+    urls:
+    - cloudbees-sda-1.580+7652111702e1.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.583+11b808b24414
+    created: 2023-08-29T15:40:25.097Z
+    appVersion: 2023.08.0.167214+2.414.1.4
+    urls:
+    - cloudbees-sda-1.583+11b808b24414.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.585+4b047f133461
+    created: 2023-09-20T21:17:52.629Z
+    appVersion: 2023.08.0.167214+2.414.2.2
+    urls:
+    - cloudbees-sda-1.585+4b047f133461.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.587+9fa8f7baa8d4
+    created: 2023-10-18T15:23:37.150Z
+    appVersion: 2023.08.0.167214+2.414.3.7
+    urls:
+    - cloudbees-sda-1.587+9fa8f7baa8d4.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.588+48c1d7227d60
+    created: 2023-10-24T18:01:40.995Z
+    appVersion: 2023.10.0.169425+2.414.3.7
+    urls:
+    - cloudbees-sda-1.588+48c1d7227d60.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.590+112e1791217c
+    created: 2023-10-26T13:29:45.293Z
+    appVersion: 2023.10.0.169425+2.414.3.8
+    urls:
+    - cloudbees-sda-1.590+112e1791217c.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.592+9ec62ee1b908
+    created: 2023-11-15T09:18:12.826Z
+    appVersion: 2023.10.0.169425+2.426.1.2
+    urls:
+    - cloudbees-sda-1.592+9ec62ee1b908.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.594+366c1b814710
+    created: 2023-11-29T14:01:38.256Z
+    appVersion: 2023.10.0.169425+2.426.1.3
+    urls:
+    - cloudbees-sda-1.594+366c1b814710.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.596+96b6ca80a239
+    created: 2023-12-13T18:30:09.285Z
+    appVersion: 2023.10.0.169425+2.426.2.2
+    urls:
+    - cloudbees-sda-1.596+96b6ca80a239.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.597+072dc6b0a725
+    created: 2023-12-15T15:35:15.651Z
+    appVersion: 2023.12.0.171596+2.426.2.2
+    urls:
+    - cloudbees-sda-1.597+072dc6b0a725.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.599+9e604911a542
+    created: 2024-01-24T14:37:24.659Z
+    appVersion: 2023.12.0.171596+2.426.3.3
+    urls:
+    - cloudbees-sda-1.599+9e604911a542.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.601+1a4db3c69512
+    created: 2024-02-21T20:43:11.974Z
+    appVersion: 2023.12.0.171596+2.440.1.3
+    urls:
+    - cloudbees-sda-1.601+1a4db3c69512.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.603+cdb22069c87e
+    created: 2024-03-06T15:27:01.968Z
+    appVersion: 2023.12.0.171596+2.440.1.4
+    urls:
+    - cloudbees-sda-1.603+cdb22069c87e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.253+657471732ccb
+    created: 2022-01-25T09:42:00.067Z
+    appVersion: 10.1.0.145850+2.263.4.2
+    urls:
+    - cloudbees-sda-1.253+657471732ccb.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.262+62dc167b2d4b
+    created: 2022-01-25T09:42:06.534Z
+    appVersion: 10.1.0.145850+2.277.1.2
+    urls:
+    - cloudbees-sda-1.262+62dc167b2d4b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.270+625596de7f32
+    created: 2022-01-25T09:42:09.876Z
+    appVersion: 10.1.0.145850+2.277.2.3
+    urls:
+    - cloudbees-sda-1.270+625596de7f32.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.605+d099f0aee2b2
+    created: 2024-03-21T00:22:33.555Z
+    appVersion: 2023.12.0.171596+2.440.2.1
+    urls:
+    - cloudbees-sda-1.605+d099f0aee2b2.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.606+2c77d14a5c98
+    created: 2024-03-21T13:51:46.035Z
+    appVersion: 2024.03.0.173398+2.440.2.1
+    urls:
+    - cloudbees-sda-1.606+2c77d14a5c98.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.271+ab2514d38b2b
+    created: 2022-01-25T09:42:23.057Z
+    appVersion: 10.1.0.145850+2.277.3.1
+    urls:
+    - cloudbees-sda-1.271+ab2514d38b2b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.611+343f39d1b434
+    created: 2024-04-18T14:39:42.989Z
+    appVersion: 2024.03.0.173398+2.440.3.7
+    urls:
+    - cloudbees-sda-1.611+343f39d1b434.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.275+efae3d375ebe
+    created: 2022-01-25T09:42:47.563Z
+    appVersion: 10.1.0.145850+2.277.4.2
+    urls:
+    - cloudbees-sda-1.275+efae3d375ebe.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.276+bed25f6bcc68
+    created: 2022-01-25T09:42:51.360Z
+    appVersion: 10.1.0.145850+2.277.4.3
+    urls:
+    - cloudbees-sda-1.276+bed25f6bcc68.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.613+d2ecb7c995e4
+    created: 2024-05-02T15:43:58.927Z
+    appVersion: 2024.03.0.173398+2.440.3.8
+    urls:
+    - cloudbees-sda-1.613+d2ecb7c995e4.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.617+3249e90ebd37
+    created: 2024-05-15T18:13:47.606Z
+    appVersion: 2024.03.0.173398+2.452.1.2
+    urls:
+    - cloudbees-sda-1.617+3249e90ebd37.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.619+efa81398f793
+    created: 2024-06-12T18:54:37.722Z
+    appVersion: 2024.03.0.173398+2.452.2.3
+    digest: 99e331876dbe2d50268452d40185cdf17c69ba764db5c9a4fe8ed95658782afa
+    urls:
+    - cloudbees-sda-1.619+efa81398f793.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.280+5c7f0f0c4d0e
+    created: 2022-01-25T09:43:32.458Z
+    appVersion: 10.2.0.148735+2.289.1.2
+    urls:
+    - cloudbees-sda-1.280+5c7f0f0c4d0e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.621+d954e95a487a
+    created: 2024-06-19T11:47:03.953Z
+    appVersion: 2024.06.0.175153+2.452.2.3
+    digest: 61bb53657c4930771113032f1b003899e443d85603bd79ab91e0b0d5edde6f87
+    urls:
+    - cloudbees-sda-1.621+d954e95a487a.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.297+96f06407937b
+    created: 2022-01-25T09:43:42.479Z
+    appVersion: 10.2.0.148735+2.289.2.2
+    urls:
+    - cloudbees-sda-1.297+96f06407937b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.623+7dc39ce9796e
+    created: 2024-06-26T13:05:24.328Z
+    appVersion: 2024.06.0.175153+2.452.2.4
+    digest: cafec79ba119d60a54b3ff91a372d21538493a8703c3fb9081900ea9cf1ae293
+    urls:
+    - cloudbees-sda-1.623+7dc39ce9796e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.625+6b0a9b7f2f49
+    created: 2024-07-10T07:16:51.272Z
+    appVersion: 2024.06.0.175153+2.452.3.2
+    digest: a39f9712d174fb2e752eda6db58f4f9b05e0a5caa0f8d586c8e4811422e4ff2f
+    urls:
+    - cloudbees-sda-1.625+6b0a9b7f2f49.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.627+d374f99f6737
+    created: 2024-08-07T11:25:18.946Z
+    appVersion: 2024.06.0.175153+2.462.1.3
+    digest: f05b4e364b902ed8a097b8da771d9f64dd43582c71adadcf8be5d61404b5a8a5
+    urls:
+    - cloudbees-sda-1.627+d374f99f6737.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.629+145c7d6eb825
+    created: 2024-09-04T10:46:48.800Z
+    appVersion: 2024.06.0.175153+2.462.2.2
+    digest: d9fd6d6f43132ffc9dfb84e2005039d75577b131cd6b82e6dcd5150d109b851d
+    urls:
+    - cloudbees-sda-1.629+145c7d6eb825.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.630+a2c5ca3f5aae
+    created: 2024-09-30T13:08:36.864Z
+    appVersion: 2024.09.0.176472+2.462.2.2
+    digest: 04c0b048a364694d9ef93a618daa710c929e8bcdd6761e13edca01abc06756ca
+    urls:
+    - cloudbees-sda-1.630+a2c5ca3f5aae.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.632+2ea8fe14789b
+    created: 2024-10-02T11:48:09.709Z
+    appVersion: 2024.09.0.176472+2.462.3.3
+    digest: 3658300a4f966084bba96645a0521f3dfe54ea480a579597eedf564b756d1573
+    urls:
+    - cloudbees-sda-1.632+2ea8fe14789b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.300+3fe08e9f81e3
+    created: 2022-01-25T09:45:33.298Z
+    appVersion: 10.2.0.148735+2.289.3.2
+    urls:
+    - cloudbees-sda-1.300+3fe08e9f81e3.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.636+57b4bea0116e
+    created: 2024-10-30T15:31:20.269Z
+    appVersion: 2024.09.0.176472+2.479.1.3
+    digest: 3180c5c33a1d781a02cfb90989bbbe8add8d16587430f2989541a41968f8a26e
+    urls:
+    - cloudbees-sda-1.636+57b4bea0116e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.644+793e5c42072e
+    created: 2024-11-13T16:30:11.383Z
+    appVersion: 2024.09.0.176472+2.479.1.4
+    digest: d7335aa601d7c7e31643836437de18a821ed57a1f31e12b8d7ba9363c27329a2
+    urls:
+    - cloudbees-sda-1.644+793e5c42072e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.646+d6c8bb9fc1e6
+    created: 2024-11-27T16:40:18.899Z
+    appVersion: 2024.09.0.176472+2.479.2.3
+    digest: 04a1946a6d70a49a41d54de9aea96b74ca794070a8dadf7359447b324aed19e8
+    urls:
+    - cloudbees-sda-1.646+d6c8bb9fc1e6.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.647+c14cff26a3e1
+    created: 2024-12-12T04:16:06.879Z
+    appVersion: 2024.12.0.177508+2.479.2.3
+    digest: e03443e73f999ceba01dfa9eafbe01dd39d4f24256d58e60aece88686dea8c29
+    urls:
+    - cloudbees-sda-1.647+c14cff26a3e1.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.649+fedbe965e8ca
+    created: 2025-01-08T13:09:47.857Z
+    appVersion: 2024.12.0.177508+2.479.3.1
+    digest: 595f32d79bfba67a406ccf7e1b5d53c87326a659c2e9f986f235ffc9db96a637
+    urls:
+    - cloudbees-sda-1.649+fedbe965e8ca.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.650+a36221b6649c
+    created: 2025-01-22T15:56:16.656Z
+    appVersion: 2024.12.0.177508+2.479.3.2
+    digest: a8f3813839b3e91209c517b7c5ddddd0e2da4f67fbc30fd5e3b1d366c4aa5a10
+    urls:
+    - cloudbees-sda-1.650+a36221b6649c.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.652+14a03920c513
+    created: 2025-02-05T15:45:02.005Z
+    appVersion: 2024.12.0.177508+2.492.1.3
+    digest: 6da296bf4cf584f79446aaf9be5f63cfaedfcf7291b46609dd69e8e7dcd7efdd
+    urls:
+    - cloudbees-sda-1.652+14a03920c513.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.653+9a29528e800b
+    created: 2025-02-17T15:28:53.736Z
+    appVersion: 2024.12.1.178274+2.492.1.3
+    digest: de9717c6ac2a7cae28e0002ef79e9aa660a620b1d3c098bb92924ff66ec684a5
+    urls:
+    - cloudbees-sda-1.653+9a29528e800b.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.655+b1b7f39f681d
+    created: 2025-03-05T18:07:21.901Z
+    appVersion: 2024.12.1.178274+2.492.2.2
+    digest: 6b8df1c5d4caceb950c4bf28bf8376a52df8acea37c021d6186f42e936c30e52
+    urls:
+    - cloudbees-sda-1.655+b1b7f39f681d.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.302+3b05a6df0fbc
+    created: 2022-01-25T09:48:07.963Z
+    appVersion: 10.2.0.148735+2.303.1.5
+    urls:
+    - cloudbees-sda-1.302+3b05a6df0fbc.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.657+06ad9895de9e
+    created: 2025-03-19T12:18:04.981Z
+    appVersion: 2024.12.1.178274+2.492.2.3
+    digest: d201c1420396383ce4ac8886186cb120ae8958976e6cca262f13c54fa1b1efd8
+    urls:
+    - cloudbees-sda-1.657+06ad9895de9e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.659+0a71e6d8c986
+    created: 2025-04-02T11:44:20.817Z
+    appVersion: 2024.12.1.178274+2.492.3.5
+    digest: 24f5c19f4aca323704a21baedc3b0bf5f4758d5d95bf1e76abe547350e08dba7
+    urls:
+    - cloudbees-sda-1.659+0a71e6d8c986.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.318+4169ada66ae0
+    created: 2022-01-25T09:48:38.450Z
+    appVersion: "+"
+    urls:
+    - cloudbees-sda-1.318+4169ada66ae0.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.321+97670c56a16f
+    created: 2022-01-25T09:48:41.848Z
+    appVersion: 10.2.1.150122+2.303.1.6
+    urls:
+    - cloudbees-sda-1.321+97670c56a16f.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.334+0f368e7c946d
+    created: 2022-01-25T09:49:55.342Z
+    appVersion: 10.3.0.150739+2.303.1.6
+    urls:
+    - cloudbees-sda-1.334+0f368e7c946d.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.335+dd0d63633964
+    created: 2022-01-25T09:49:58.572Z
+    appVersion: 10.2.1.150122+2.303.1.6
+    urls:
+    - cloudbees-sda-1.335+dd0d63633964.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.338+14d2de53c70e
+    created: 2022-01-25T09:50:08.255Z
+    appVersion: 10.3.0.150860+2.303.1.6
+    urls:
+    - cloudbees-sda-1.338+14d2de53c70e.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.342+0dec7b002e34
+    created: 2022-01-25T09:50:32.477Z
+    appVersion: 10.3.0.150860+2.303.2.3
+    urls:
+    - cloudbees-sda-1.342+0dec7b002e34.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.345+9bc15587e8a1
+    created: 2022-01-25T09:50:39.135Z
+    appVersion: 10.3.0.150860+2.303.2.5
+    urls:
+    - cloudbees-sda-1.345+9bc15587e8a1.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.348+24be8a8d71eb
+    created: 2022-01-25T09:50:55.088Z
+    appVersion: 10.3.0.150860+2.303.2.6
+    urls:
+    - cloudbees-sda-1.348+24be8a8d71eb.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.388+8375734ac36c
+    created: 2022-01-25T09:51:25.835Z
+    appVersion: 10.3.0.150860+2.303.3.3
+    urls:
+    - cloudbees-sda-1.388+8375734ac36c.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.393+bc6c4f463932
+    created: 2022-01-25T09:51:29.150Z
+    appVersion: 10.3.0.150860+2.303.3.3
+    urls:
+    - cloudbees-sda-1.393+bc6c4f463932.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.394+26c9538c9e59
+    created: 2022-01-25T09:51:53.901Z
+    appVersion: 10.3.2.151906+2.303.3.3
+    urls:
+    - cloudbees-sda-1.394+26c9538c9e59.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.398+ec76889c9a7d
+    created: 2022-01-25T09:52:09.453Z
+    appVersion: 10.3.2.151906+2.319.1.5
+    urls:
+    - cloudbees-sda-1.398+ec76889c9a7d.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.400+4985bf6a1ea4
+    created: 2022-01-25T09:52:28.848Z
+    appVersion: 10.3.3.152331+2.319.1.5
+    urls:
+    - cloudbees-sda-1.400+4985bf6a1ea4.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.402+c5d7474f2c59
+    created: 2022-01-25T09:52:42.157Z
+    appVersion: 10.3.4.152496+2.319.1.5
+    urls:
+    - cloudbees-sda-1.402+c5d7474f2c59.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.406+0951e4d72797
+    created: 2022-01-25T09:52:57.603Z
+    appVersion: 10.3.6.152801+2.319.2.5
+    urls:
+    - cloudbees-sda-1.406+0951e4d72797.tgz
+  - name: cloudbees-sda
+    description: CloudBees Software Delivery Automation
+    version: 1.410+f27ed0afbd40
+    created: 2022-01-25T14:08:38.133Z
+    appVersion: 10.3.6.152801+2.319.2.7
+    urls:
+    - cloudbees-sda-1.410+f27ed0afbd40.tgz
+  cloudbees-sidecar-injector:
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.2.1
+    created: 2022-01-26T08:21:44.632Z
+    appVersion: 2.2.1
+    urls:
+    - cloudbees-sidecar-injector-2.2.1.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.2.2
+    created: 2022-02-01T07:49:07.212Z
+    appVersion: 2.2.2
+    urls:
+    - cloudbees-sidecar-injector-2.2.2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.3.0
+    created: 2022-04-13T12:35:57.541Z
+    appVersion: 2.3.0
+    urls:
+    - cloudbees-sidecar-injector-2.3.0.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.3.1
+    created: 2022-06-10T08:10:56.924Z
+    appVersion: 2.3.1
+    urls:
+    - cloudbees-sidecar-injector-2.3.1.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.3.2
+    created: 2023-05-25T18:41:56.272Z
+    appVersion: 2.3.2
+    digest: a2e4db1d7955c4387141cf3ef1a2a252bb7685345eb05100590e62492206f4cc
+    urls:
+    - cloudbees-sidecar-injector-2.3.2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.3.3
+    created: 2023-03-07T11:20:09.536Z
+    appVersion: 2.3.3
+    urls:
+    - cloudbees-sidecar-injector-2.3.3.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 293+f32a67bed66e
+    created: 2023-04-20T10:51:03.691Z
+    appVersion: 293.f32a67bed66e
+    urls:
+    - cloudbees-sidecar-injector-293+f32a67bed66e.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 295+b1a6c98af7e2
+    created: 2023-04-26T10:20:24.003Z
+    appVersion: 295.b1a6c98af7e2
+    urls:
+    - cloudbees-sidecar-injector-295+b1a6c98af7e2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 298+2bcda33ddb02
+    created: 2023-04-27T09:42:39.209Z
+    appVersion: 298.2bcda33ddb02
+    urls:
+    - cloudbees-sidecar-injector-298+2bcda33ddb02.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 302+177d8a1ee471
+    created: 2023-05-03T11:22:48.820Z
+    appVersion: 302.177d8a1ee471
+    urls:
+    - cloudbees-sidecar-injector-302+177d8a1ee471.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 304+d66c99d895f1
+    created: 2023-06-01T09:33:15.477Z
+    appVersion: 304.d66c99d895f1
+    urls:
+    - cloudbees-sidecar-injector-304+d66c99d895f1.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 306+b20a9c9ba2d4
+    created: 2023-06-05T14:12:55.973Z
+    appVersion: 306.b20a9c9ba2d4
+    urls:
+    - cloudbees-sidecar-injector-306+b20a9c9ba2d4.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.0-alpha-1
+    created: 2022-01-25T09:37:56.165Z
+    appVersion: 2.0.0-alpha-1
+    urls:
+    - cloudbees-sidecar-injector-2.0.0-alpha-1.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 308+b624d289a5d2
+    created: 2023-06-13T19:27:39.308Z
+    appVersion: 308.b624d289a5d2
+    urls:
+    - cloudbees-sidecar-injector-308+b624d289a5d2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.0-alpha-2
+    created: 2022-01-25T09:38:02.288Z
+    appVersion: 2.0.0-alpha-2
+    urls:
+    - cloudbees-sidecar-injector-2.0.0-alpha-2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.0-beta-1
+    created: 2022-01-25T09:38:11.572Z
+    appVersion: 2.0.0-beta-1
+    urls:
+    - cloudbees-sidecar-injector-2.0.0-beta-1.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.0-beta-2
+    created: 2022-01-25T09:38:14.558Z
+    appVersion: 2.0.0-beta-2
+    urls:
+    - cloudbees-sidecar-injector-2.0.0-beta-2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 310+e5a30b7db80c
+    created: 2023-07-03T14:36:51.206Z
+    appVersion: 310.e5a30b7db80c
+    urls:
+    - cloudbees-sidecar-injector-310+e5a30b7db80c.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.0
+    created: 2022-01-25T09:38:17.740Z
+    appVersion: 2.0.0
+    urls:
+    - cloudbees-sidecar-injector-2.0.0.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.1
+    created: 2022-01-25T09:38:29.927Z
+    appVersion: 2.0.1
+    urls:
+    - cloudbees-sidecar-injector-2.0.1.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.2
+    created: 2022-01-25T09:38:52.441Z
+    appVersion: 2.0.2
+    urls:
+    - cloudbees-sidecar-injector-2.0.2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 312+79009ae6dbe6
+    created: 2023-08-17T15:14:18.872Z
+    appVersion: 312.79009ae6dbe6
+    urls:
+    - cloudbees-sidecar-injector-312+79009ae6dbe6.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.3
+    created: 2022-01-25T09:39:38.209Z
+    appVersion: 2.0.3
+    urls:
+    - cloudbees-sidecar-injector-2.0.3.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.4
+    created: 2022-01-25T09:39:44.463Z
+    appVersion: 2.0.4
+    urls:
+    - cloudbees-sidecar-injector-2.0.4.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.5
+    created: 2022-01-25T09:39:51.235Z
+    appVersion: 2.0.5
+    urls:
+    - cloudbees-sidecar-injector-2.0.5.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.6
+    created: 2022-01-25T09:40:19.408Z
+    appVersion: 2.0.6
+    urls:
+    - cloudbees-sidecar-injector-2.0.6.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.0.7
+    created: 2022-01-25T09:40:31.685Z
+    appVersion: 2.0.7
+    urls:
+    - cloudbees-sidecar-injector-2.0.7.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.1.0
+    created: 2022-01-25T09:40:37.905Z
+    appVersion: 2.1.0
+    urls:
+    - cloudbees-sidecar-injector-2.1.0.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.1.1
+    created: 2022-01-25T09:41:31.558Z
+    appVersion: 2.1.1
+    urls:
+    - cloudbees-sidecar-injector-2.1.1.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.1.2
+    created: 2022-01-25T09:41:34.535Z
+    appVersion: 2.1.2
+    urls:
+    - cloudbees-sidecar-injector-2.1.2.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 338+df884b119074
+    created: 2024-02-15T11:00:36.987Z
+    appVersion: 338.df884b119074
+    urls:
+    - cloudbees-sidecar-injector-338+df884b119074.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.1.3
+    created: 2022-01-25T09:41:44.100Z
+    appVersion: 2.1.3
+    urls:
+    - cloudbees-sidecar-injector-2.1.3.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 340+6d242f978640
+    created: 2024-03-08T09:17:14.061Z
+    appVersion: 340.6d242f978640
+    urls:
+    - cloudbees-sidecar-injector-340+6d242f978640.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 342+c0ef08f95323
+    created: 2024-04-10T08:50:52.314Z
+    appVersion: 342.c0ef08f95323
+    urls:
+    - cloudbees-sidecar-injector-342+c0ef08f95323.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 345+1e681f249752
+    created: 2024-04-10T08:52:15.167Z
+    appVersion: 345.1e681f249752
+    urls:
+    - cloudbees-sidecar-injector-345+1e681f249752.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 347+e33c7d48327f
+    created: 2024-04-10T12:52:44.816Z
+    appVersion: 347.e33c7d48327f
+    urls:
+    - cloudbees-sidecar-injector-347+e33c7d48327f.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 349+b5cf6b3d05cc
+    created: 2024-04-15T15:04:06.730Z
+    appVersion: 349.b5cf6b3d05cc
+    urls:
+    - cloudbees-sidecar-injector-349+b5cf6b3d05cc.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 352+b2992c2e8237
+    created: 2024-04-25T14:18:25.184Z
+    appVersion: 352.b2992c2e8237
+    urls:
+    - cloudbees-sidecar-injector-352+b2992c2e8237.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 357+10380ca7baa4
+    created: 2024-05-13T16:14:46.269Z
+    appVersion: 357.10380ca7baa4
+    urls:
+    - cloudbees-sidecar-injector-357+10380ca7baa4.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 360+93de2f415d98
+    created: 2024-05-17T15:09:37.059Z
+    appVersion: 360.93de2f415d98
+    urls:
+    - cloudbees-sidecar-injector-360+93de2f415d98.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 362+4d1e4defa169
+    created: 2024-05-23T07:44:33.700Z
+    appVersion: 362.4d1e4defa169
+    urls:
+    - cloudbees-sidecar-injector-362+4d1e4defa169.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 364+cae84cbc0005
+    created: 2024-06-05T15:27:39.503Z
+    appVersion: 364.cae84cbc0005
+    digest: 084e8e17b16a1379ff9c54ee4ac06b474b08c339f073eaadfa088a1c9a63165d
+    urls:
+    - cloudbees-sidecar-injector-364+cae84cbc0005.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 369+d9434dcdeb00
+    created: 2024-06-20T20:54:23.316Z
+    appVersion: 369.d9434dcdeb00
+    digest: b224279f89b5fa40c20fe599396e72973fe754264255be841616c888ee49d243
+    urls:
+    - cloudbees-sidecar-injector-369+d9434dcdeb00.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 371+9e3b7fe3355c
+    created: 2024-06-24T22:31:18.427Z
+    appVersion: 371.9e3b7fe3355c
+    digest: 829677aa0fbb786b6daad170b8f7cc3746bafc0b4eb7a8758aa2a3bf5954faf7
+    urls:
+    - cloudbees-sidecar-injector-371+9e3b7fe3355c.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 375+87f07a5ccd77
+    created: 2024-07-23T15:19:18.803Z
+    appVersion: 375.87f07a5ccd77
+    digest: a2145dab97a3013269f9a4cf3ce662fdd5d11d08ac3fdadd3217d2cfda2d9e41
+    urls:
+    - cloudbees-sidecar-injector-375+87f07a5ccd77.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 377+ca54b05e2c23
+    created: 2024-09-23T13:24:05.293Z
+    appVersion: 377.ca54b05e2c23
+    digest: 8f76e71dd94fb0fb464ef5c604c7e669d2f9b7f5ac4116983fe5158d2301fc45
+    urls:
+    - cloudbees-sidecar-injector-377+ca54b05e2c23.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 379+01d59e926033
+    created: 2024-10-07T14:10:45.422Z
+    appVersion: 379.01d59e926033
+    digest: 6712c4e356135a917f652e90c58a36222f1abb25c4e1f90bc75068ccee1ee506
+    urls:
+    - cloudbees-sidecar-injector-379+01d59e926033.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 381+40df5a940483
+    created: 2024-10-11T07:00:13.674Z
+    appVersion: 381.40df5a940483
+    digest: 345c81c60d268ba5737e568cb3bbcaf0fa5a8e8fd3e3653043afbaa79a1fa668
+    urls:
+    - cloudbees-sidecar-injector-381+40df5a940483.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 383+79f7a5221812
+    created: 2024-10-11T07:56:11.890Z
+    appVersion: 383.79f7a5221812
+    digest: 1b7934d54588ba80dd903f5d34639894c46dcb7e6be17a6d157d0696d67c32c3
+    urls:
+    - cloudbees-sidecar-injector-383+79f7a5221812.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 385+040d6c197df0
+    created: 2024-10-11T08:11:21.693Z
+    appVersion: 385.040d6c197df0
+    digest: d7d8ca67d3edcc50a9c5ce56a02667ed941bbdfc85a58f5420a8b93c6650e0d2
+    urls:
+    - cloudbees-sidecar-injector-385+040d6c197df0.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 397+6057f29607d9
+    created: 2024-11-19T20:18:17.382Z
+    appVersion: 397.6057f29607d9
+    digest: 57b8e8b87fcd355d355ed1dad120bcb36ffc50b4f695ebf9faa97ded39822db9
+    urls:
+    - cloudbees-sidecar-injector-397+6057f29607d9.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 399+20de0d510dc8
+    created: 2025-02-17T11:23:47.820Z
+    appVersion: 399.20de0d510dc8
+    digest: c3494fdff3e7e3641ee11ed15ce37c8ccfcf4e3068dbf104b8fa3045a362bdfe
+    urls:
+    - cloudbees-sidecar-injector-399+20de0d510dc8.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 400+1d11d0517616
+    created: 2025-02-27T21:53:23.873Z
+    appVersion: 400.1d11d0517616
+    digest: 52da9b709f764f55e98fa5018aaaf087a528cc206e21fd4dae1f2d33302993de
+    urls:
+    - cloudbees-sidecar-injector-400+1d11d0517616.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 405+4273e9a2265b
+    created: 2025-05-14T15:28:38.802Z
+    appVersion: 405.4273e9a2265b
+    digest: efc6b124da52094bb170dff537c238af7739cac4d5ea850798cf1501c3a0f3c6
+    urls:
+    - cloudbees-sidecar-injector-405+4273e9a2265b.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 406+09f37ac3867f
+    created: 2025-05-16T09:41:02.138Z
+    appVersion: 406.09f37ac3867f
+    digest: 62240ee2220abd49922339d6d148f570c76e845613bf7105ccbd0188afef6dfd
+    urls:
+    - cloudbees-sidecar-injector-406+09f37ac3867f.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 407+be7e4a904889
+    created: 2025-05-19T07:48:48.085Z
+    appVersion: 407.be7e4a904889
+    digest: 678aa34a82b30dab2f6c6c597aaa988bd48f6b71afba185068dd429723a63f39
+    urls:
+    - cloudbees-sidecar-injector-407+be7e4a904889.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 408+0ecbfd23c9e9
+    created: 2025-07-16T09:08:06.766Z
+    appVersion: 408.0ecbfd23c9e9
+    digest: 963573bf60739e340d15de474b0f585821ecca269c981c9a18b3fd058201e774
+    urls:
+    - cloudbees-sidecar-injector-408+0ecbfd23c9e9.tgz
+  - name: cloudbees-sidecar-injector
+    description: Helm chart for sidecar injector webhook deployment
+    version: 2.2.0
+    created: 2022-01-25T09:52:31.894Z
+    appVersion: 2.2.0
+    urls:
+    - cloudbees-sidecar-injector-2.2.0.tgz
+  cloudbees-flow:
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.13.0
+    created: 2022-01-31T14:13:49.303Z
+    appVersion: 10.4.0.153077
+    urls:
+    - cloudbees-flow-2.13.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.13.1
+    created: 2022-02-17T20:44:41.386Z
+    appVersion: 10.4.1.153450
+    urls:
+    - cloudbees-flow-2.13.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.13.2
+    created: 2022-02-21T10:18:10.983Z
+    appVersion: 10.4.1.153503
+    urls:
+    - cloudbees-flow-2.13.2.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.13.3
+    created: 2022-03-25T15:13:46.085Z
+    appVersion: 10.4.2.153852
+    urls:
+    - cloudbees-flow-2.13.3.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.14.0
+    created: 2022-04-28T20:18:50.759Z
+    appVersion: 10.5.0.154362
+    urls:
+    - cloudbees-flow-2.14.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.15.0
+    created: 2022-05-27T09:00:02.180Z
+    appVersion: 10.5.1.154796
+    urls:
+    - cloudbees-flow-2.15.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.16.0
+    created: 2022-06-30T17:42:59.371Z
+    appVersion: 10.6.0.155529
+    urls:
+    - cloudbees-flow-2.16.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.17.0
+    created: 2022-08-05T12:29:53.063Z
+    appVersion: 10.7.0.156355
+    urls:
+    - cloudbees-flow-2.17.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.18.0
+    created: 2022-09-02T20:25:05.659Z
+    appVersion: 10.8.0.156807
+    urls:
+    - cloudbees-flow-2.18.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.19.0
+    created: 2022-10-06T12:00:17.113Z
+    appVersion: 10.9.0.157496
+    urls:
+    - cloudbees-flow-2.19.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.20.0
+    created: 2022-11-10T16:45:11.489Z
+    appVersion: 10.10.0.158216
+    urls:
+    - cloudbees-flow-2.20.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.21.0
+    created: 2022-12-13T17:59:41.002Z
+    appVersion: 10.11.0.159109
+    urls:
+    - cloudbees-flow-2.21.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.22.0
+    created: 2023-02-03T17:18:51.727Z
+    appVersion: 2023.02.0.160256
+    urls:
+    - cloudbees-flow-2.22.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.23.0
+    created: 2023-03-09T16:53:01.105Z
+    appVersion: 2023.03.0.161439
+    urls:
+    - cloudbees-flow-2.23.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.23.1
+    created: 2023-03-15T20:43:08.055Z
+    appVersion: 2023.03.1.161626
+    urls:
+    - cloudbees-flow-2.23.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.24.0
+    created: 2023-04-09T18:41:04.285Z
+    appVersion: 2023.04.0.162443
+    urls:
+    - cloudbees-flow-2.24.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.24.1
+    created: 2023-05-25T18:45:31.403Z
+    appVersion: 2023.04.1.163232
+    digest: 136a14e0e5785e997288ed2341bb45971d50a2de6bb1a03c39082fb2358598f7
+    urls:
+    - cloudbees-flow-2.24.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.25.0
+    created: 2023-06-20T15:29:43.762Z
+    appVersion: 2023.06.0.164409
+    urls:
+    - cloudbees-flow-2.25.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 0.0.1
+    created: 2022-01-25T09:38:05.480Z
+    appVersion: "9.2"
+    urls:
+    - cloudbees-flow-0.0.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 1.0.0
+    created: 2022-01-25T09:38:20.722Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-1.0.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.25.1
+    created: 2023-07-07T23:41:46.771Z
+    appVersion: 2023.06.1.165376
+    urls:
+    - cloudbees-flow-2.25.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.26.0-rc.2
+    created: 2023-08-01T21:03:09.642Z
+    appVersion: 2023.08.0.166738
+    urls:
+    - cloudbees-flow-2.26.0-rc.2.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.26.0-rc.3
+    created: 2023-08-01T21:25:59.800Z
+    appVersion: 2023.08.0.166738
+    urls:
+    - cloudbees-flow-2.26.0-rc.3.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 1.1.0
+    created: 2022-01-25T09:38:46.515Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-1.1.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.26.0
+    created: 2023-08-15T14:44:18.241Z
+    appVersion: 2023.08.0.167214
+    urls:
+    - cloudbees-flow-2.26.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 1.1.1
+    created: 2022-01-25T09:39:08.045Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-1.1.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 1.2.0
+    created: 2022-01-25T09:39:17.269Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-1.2.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.0.0
+    created: 2022-01-25T09:39:32.270Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-2.0.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.27.0-rc.4
+    created: 2023-10-24T16:19:42.795Z
+    appVersion: 2023.10.0.169425
+    urls:
+    - cloudbees-flow-2.27.0-rc.4.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.1.0
+    created: 2022-01-25T09:39:54.523Z
+    appVersion: 10.0.0.142654
+    urls:
+    - cloudbees-flow-2.1.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.27.0
+    created: 2023-10-24T16:48:15.419Z
+    appVersion: 2023.10.0.169425
+    urls:
+    - cloudbees-flow-2.27.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.2.0
+    created: 2022-01-25T09:40:10.432Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-2.2.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.3.0
+    created: 2022-01-25T09:40:25.626Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-2.3.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.28.0-rc.19
+    created: 2023-12-11T13:01:10.031Z
+    appVersion: 2023.12.0.171596
+    urls:
+    - cloudbees-flow-2.28.0-rc.19.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.4.0
+    created: 2022-01-25T09:40:41.073Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-2.4.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.28.0
+    created: 2023-12-15T11:53:05.614Z
+    appVersion: 2023.12.0.171596
+    urls:
+    - cloudbees-flow-2.28.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.5.0
+    created: 2022-01-25T09:40:50.769Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-2.5.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.6.0
+    created: 2022-01-25T09:41:09.780Z
+    appVersion: 10.0.2.144701
+    urls:
+    - cloudbees-flow-2.6.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.7.0
+    created: 2022-01-25T09:41:19.126Z
+    appVersion: 10.0.2.144701
+    urls:
+    - cloudbees-flow-2.7.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.8.0
+    created: 2022-01-25T09:41:53.607Z
+    appVersion: 10.1.0.145850
+    urls:
+    - cloudbees-flow-2.8.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.29.0
+    created: 2024-03-21T11:11:31.187Z
+    appVersion: 2024.03.0.173398
+    urls:
+    - cloudbees-flow-2.29.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.9.0
+    created: 2022-01-25T09:43:19.461Z
+    appVersion: 10.2.0.148735
+    urls:
+    - cloudbees-flow-2.9.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.30.0
+    created: 2024-06-18T13:51:09.019Z
+    appVersion: 2024.06.0.175153
+    digest: 23d9ff69e0a95af433dd18556da2ce91cdc78dee74aecd4c4dbf2906ab998a60
+    urls:
+    - cloudbees-flow-2.30.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.29.1
+    created: 2024-07-05T09:50:56.729Z
+    appVersion: 2024.03.1.175387
+    digest: eb5c532dec1a5c27b2a4d9341d11636231f5d04a37c06309ab4c5034de8eadf3
+    urls:
+    - cloudbees-flow-2.29.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.10.0
+    created: 2022-01-25T09:43:55.315Z
+    appVersion: 10.2.0.148735
+    urls:
+    - cloudbees-flow-2.10.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.28.1
+    created: 2024-07-22T16:46:29.710Z
+    appVersion: 2023.12.1.175675
+    digest: 0f6dc23112e0e12dfb5869032371ae1d014a66c1dea64f08bcb5691338e318e3
+    urls:
+    - cloudbees-flow-2.28.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.27.1
+    created: 2024-07-29T05:03:37.393Z
+    appVersion: 2023.10.1.175666
+    digest: f94151b8c4579c1e99f0db4a3fbbd86a4b6545ad014286fca8485fff51cf826b
+    urls:
+    - cloudbees-flow-2.27.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.26.1
+    created: 2024-08-07T12:33:46.986Z
+    appVersion: 2023.08.1.175835
+    digest: 319cff37a8972e50a70d2a4657236613c6d2cecb75137082ddbf7a36f7c6b713
+    urls:
+    - cloudbees-flow-2.26.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.31.0
+    created: 2024-09-30T09:59:59.073Z
+    appVersion: 2024.09.0.176472
+    digest: e518ecb7a944f69b0746afc0f39a6df893b56b332fa8c8edc54110ef1f1d553f
+    urls:
+    - cloudbees-flow-2.31.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.10.1
+    created: 2022-01-25T09:45:26.683Z
+    appVersion: 10.2.0.148735
+    urls:
+    - cloudbees-flow-2.10.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.10.2
+    created: 2022-01-25T09:45:54.052Z
+    appVersion: 10.2.1.150122
+    urls:
+    - cloudbees-flow-2.10.2.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.32.0
+    created: 2024-12-11T14:42:10.013Z
+    appVersion: 2024.12.0.177508
+    digest: 0acde7fecf02fe84a4e53edf9565d0f5f7da3650489a348599cf670d53e577e0
+    urls:
+    - cloudbees-flow-2.32.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.32.1
+    created: 2025-02-17T13:37:31.143Z
+    appVersion: 2024.12.1.178274
+    digest: fb5b52c3a2b9a3a9dc690a2280c2af87a38ecbf8cf261cf35e19b38e76ca67e9
+    urls:
+    - cloudbees-flow-2.32.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.33.0
+    created: 2025-03-27T06:58:24.146Z
+    appVersion: 2025.03.0.178767
+    digest: 9a112fb1dadc8768916e8bee62feae96e9cd7c3405c8aa18fa57a0684e301dfe
+    urls:
+    - cloudbees-flow-2.33.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.33.1
+    created: 2025-04-30T06:20:06.170Z
+    appVersion: 2025.03.1.179360
+    digest: 444af34e73f271586a902773f560a69963cf1987877804ad0eeea0fe02ee33a7
+    urls:
+    - cloudbees-flow-2.33.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.34.0
+    created: 2025-06-27T05:59:03.457Z
+    appVersion: 2025.06.0.180373
+    digest: 26d8403e6ccdff4c451cd6a9019dc56129f56042737016e854595091bab86fd8
+    urls:
+    - cloudbees-flow-2.34.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.34.1
+    created: 2025-07-21T06:24:44.586Z
+    appVersion: 2025.06.1.180551
+    digest: 81879171de6b98228409cc5851b658b055ec0d8fc04ad23b8066ede1c905bb3a
+    urls:
+    - cloudbees-flow-2.34.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.11.1
+    created: 2022-01-25T09:50:01.743Z
+    appVersion: 10.3.0.150860
+    urls:
+    - cloudbees-flow-2.11.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.12.0
+    created: 2022-01-25T09:51:44.445Z
+    appVersion: 10.3.2.151906
+    urls:
+    - cloudbees-flow-2.12.0.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.12.1
+    created: 2022-01-25T09:52:15.921Z
+    appVersion: 10.3.3.152331
+    urls:
+    - cloudbees-flow-2.12.1.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.12.2
+    created: 2022-01-25T09:52:25.338Z
+    appVersion: 10.3.3.152331
+    urls:
+    - cloudbees-flow-2.12.2.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.12.3
+    created: 2022-01-25T09:52:38.620Z
+    appVersion: 10.3.4.152496
+    urls:
+    - cloudbees-flow-2.12.3.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.12.4
+    created: 2022-01-25T09:52:48.267Z
+    appVersion: 10.3.5.152587
+    urls:
+    - cloudbees-flow-2.12.4.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.12.5
+    created: 2022-01-25T09:52:51.362Z
+    appVersion: 10.3.6.152801
+    urls:
+    - cloudbees-flow-2.12.5.tgz
+  - name: cloudbees-flow
+    description: A Helm chart for CloudBees Flow
+    version: 2.12.6
+    created: 2022-01-25T09:53:13.945Z
+    appVersion: 10.3.8.152966
+    urls:
+    - cloudbees-flow-2.12.6.tgz
+  cloudbees-core:
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.39.9+4e063c6120e6
+    created: 2022-01-28T16:33:18.494Z
+    appVersion: 2.319.2.9
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.39.9+4e063c6120e6.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.39.9+62d7abf51fb1
+    created: 2022-01-31T16:15:00.256Z
+    appVersion: 2.319.2.9
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.39.9+62d7abf51fb1.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.40.1+0dc0318c25a4
+    created: 2022-02-09T16:08:43.955Z
+    appVersion: 2.319.3.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.40.1+0dc0318c25a4.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.40.2+d8a42e22838b
+    created: 2022-02-15T15:44:22.770Z
+    appVersion: 2.319.3.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.40.2+d8a42e22838b.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.41.4+db6ac6e49d1b
+    created: 2022-03-09T18:37:47.210Z
+    appVersion: 2.332.1.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.41.4+db6ac6e49d1b.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.41.6+db16d98c59fb
+    created: 2022-03-15T16:22:49.986Z
+    appVersion: 2.332.1.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.41.6+db16d98c59fb.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.41.6+8b4162f4eda9
+    created: 2022-03-15T16:39:49.366Z
+    appVersion: 2.332.1.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.41.6+8b4162f4eda9.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.42.4+961131d5f59d
+    created: 2022-04-06T14:33:35.907Z
+    appVersion: 2.332.2.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.42.4+961131d5f59d.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.42.6+c9672cd0453e
+    created: 2022-04-12T13:05:14.931Z
+    appVersion: 2.332.2.6
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.42.6+c9672cd0453e.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.43.1+7ebb8eddc91a
+    created: 2022-05-04T14:27:41.265Z
+    appVersion: 2.332.3.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.43.1+7ebb8eddc91a.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.43.3+fbed12c3e4b0
+    created: 2022-05-17T13:18:33.246Z
+    appVersion: 2.332.3.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.43.3+fbed12c3e4b0.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.44.2+a040d13d70cf
+    created: 2022-06-22T19:33:31.573Z
+    appVersion: 2.346.1.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.44.2+a040d13d70cf.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.43.4+56e5517328f8
+    created: 2022-06-22T21:48:00.610Z
+    appVersion: 2.332.4.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.43.4+56e5517328f8.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.45.1+8bd15735adb7
+    created: 2022-07-13T12:58:35.383Z
+    appVersion: 2.346.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.45.1+8bd15735adb7.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.45.2+ae0d5d92b008
+    created: 2022-07-27T15:26:40.623Z
+    appVersion: 2.346.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.45.2+ae0d5d92b008.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.46.3+61437a95b644
+    created: 2022-08-10T13:19:18.412Z
+    appVersion: 2.346.3.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.46.3+61437a95b644.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.47.0+117b80441352
+    created: 2022-08-23T19:07:37.253Z
+    appVersion: 2.346.4.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.47.0+117b80441352.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.48.1+f7b88ec23de3
+    created: 2022-09-09T00:43:22.787Z
+    appVersion: 2.361.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.48.1+f7b88ec23de3.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.49.0+75e3da9c64e9
+    created: 2022-10-05T14:12:50.707Z
+    appVersion: 2.361.2.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.49.0+75e3da9c64e9.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.49.1+22bb1d81f834
+    created: 2022-10-19T15:52:57.071Z
+    appVersion: 2.361.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.49.1+22bb1d81f834.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.50.1+7c598dea1f53
+    created: 2022-11-02T10:33:03.178Z
+    appVersion: 2.361.3.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.50.1+7c598dea1f53.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.50.2+96f525f32c5f
+    created: 2022-11-15T17:17:18.503Z
+    appVersion: 2.361.3.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.50.2+96f525f32c5f.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.51.0+562e0285de1f
+    created: 2022-11-18T16:54:54.992Z
+    appVersion: 2.361.4.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.51.0+562e0285de1f.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.52.0+710d55f945cc
+    created: 2022-11-30T19:28:27.501Z
+    appVersion: 2.375.1.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.52.0+710d55f945cc.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.53.1+6f8f8ca18549
+    created: 2023-01-11T14:14:34.488Z
+    appVersion: 2.375.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.53.1+6f8f8ca18549.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.53.2+21664c8b3793
+    created: 2023-01-24T20:01:35.869Z
+    appVersion: 2.375.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.53.2+21664c8b3793.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.54.2+f6ef5eb84515
+    created: 2023-02-09T09:07:18.468Z
+    appVersion: 2.375.3.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.54.2+f6ef5eb84515.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.54.3+856afacc5125
+    created: 2023-02-09T11:05:06.118Z
+    appVersion: 2.375.3.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.54.3+856afacc5125.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.54.4+ea7999f77a1c
+    created: 2023-02-15T13:40:06.578Z
+    appVersion: 2.375.3.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.54.4+ea7999f77a1c.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.55.1+c59b5e0d6571
+    created: 2023-03-08T15:42:45.822Z
+    appVersion: 2.375.4.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.55.1+c59b5e0d6571.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.56.1+4acd1aba6d00
+    created: 2023-03-08T18:02:52.407Z
+    appVersion: 2.387.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.56.1+4acd1aba6d00.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.56.2+4ea6c86568b8
+    created: 2023-03-21T15:36:56.328Z
+    appVersion: 2.387.1.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.56.2+4ea6c86568b8.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.11619+7b485373b517
+    created: 2023-04-05T16:03:57.677Z
+    appVersion: 2.387.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.11619+7b485373b517.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.56.2+71dbb24a2b65
+    created: 2023-04-06T08:59:23.791Z
+    appVersion: 2.387.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.56.2+71dbb24a2b65.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.11627+2e5eff15bf01
+    created: 2023-04-12T12:20:21.121Z
+    appVersion: 2.387.2.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.11627+2e5eff15bf01.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.11946+a3220e0cc5b0
+    created: 2023-05-03T07:25:24.637Z
+    appVersion: 2.387.3.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.11946+a3220e0cc5b0.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.11963+e0ff1ecc63b4
+    created: 2023-05-25T18:37:04.738Z
+    appVersion: 2.387.3.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.11963+e0ff1ecc63b4.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 2.164.302
+    created: 2022-01-25T09:37:38.348Z
+    appVersion: 2.164.3.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-favicon.png
+    urls:
+    - cloudbees-core-2.164.302.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 2.176.104
+    created: 2022-01-25T09:37:41.324Z
+    appVersion: 2.176.1.4
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-favicon.png
+    urls:
+    - cloudbees-core-2.176.104.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.12552.0+e067425808d0
+    created: 2023-05-31T12:43:55.020Z
+    appVersion: 2.401.1.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.12552.0+e067425808d0.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 2.176.203
+    created: 2022-01-25T09:37:44.396Z
+    appVersion: 2.176.2.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-favicon.png
+    urls:
+    - cloudbees-core-2.176.203.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.4.1
+    created: 2022-01-25T09:37:50.432Z
+    appVersion: 2.176.3.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-favicon.png
+    urls:
+    - cloudbees-core-3.4.1.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.5.0
+    created: 2022-01-25T09:37:53.325Z
+    appVersion: 2.176.4.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-favicon.png
+    urls:
+    - cloudbees-core-3.5.0.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.6.0+4d2e34de1e86
+    created: 2023-08-03T10:44:21.503Z
+    appVersion: 2.190.2.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-favicon.png
+    urls:
+    - cloudbees-core-3.6.0+4d2e34de1e86.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.13110.0+ba87a74c8a04
+    created: 2023-06-28T15:33:14.717Z
+    appVersion: 2.401.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.13110.0+ba87a74c8a04.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.13121.0+b92ce641b0bf
+    created: 2023-07-03T18:48:02.300Z
+    appVersion: 2.401.2.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.13121.0+b92ce641b0bf.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.13125.0+a77ec0137f35
+    created: 2023-07-12T12:15:24.101Z
+    appVersion: 2.401.2.6
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.13125.0+a77ec0137f35.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.7.0+ffcae9c08fc6
+    created: 2022-01-25T09:38:26.947Z
+    appVersion: 2.190.3.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-favicon.png
+    urls:
+    - cloudbees-core-3.7.0+ffcae9c08fc6.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.8.0+a0d07461ae1c
+    created: 2022-01-25T09:38:33.244Z
+    appVersion: 2.204.1.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.8.0+a0d07461ae1c.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.13430.0+1e383c33d1a3
+    created: 2023-07-26T11:39:40.734Z
+    appVersion: 2.401.3.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.13430.0+1e383c33d1a3.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.9.0+c3d55aeaee57
+    created: 2022-01-25T09:38:39.939Z
+    appVersion: 2.204.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.9.0+c3d55aeaee57.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.13438.0+157bba55218a
+    created: 2023-08-16T12:12:39.987Z
+    appVersion: 2.401.3.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.13438.0+157bba55218a.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.10.0+158fd11beafc
+    created: 2022-01-25T09:38:55.709Z
+    appVersion: 2.204.3.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.10.0+158fd11beafc.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.11.0+911efa82c48d
+    created: 2022-01-25T09:38:58.802Z
+    appVersion: 2.204.3.7
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.11.0+911efa82c48d.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.12.0+80c17a044bc4
+    created: 2022-01-25T09:39:04.937Z
+    appVersion: 2.222.1.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.12.0+80c17a044bc4.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.14048.0+2883b010fbe6
+    created: 2023-08-28T15:02:06.908Z
+    appVersion: 2.414.1.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.14048.0+2883b010fbe6.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.13.0+899a413a0e8f
+    created: 2022-01-25T09:39:14.139Z
+    appVersion: 2.222.2.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.13.0+899a413a0e8f.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.14250.0+ba76d23d3618
+    created: 2023-09-20T12:17:05.645Z
+    appVersion: 2.414.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.14250.0+ba76d23d3618.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.14.0+ebfb4625ad50
+    created: 2022-01-25T09:39:29.157Z
+    appVersion: 2.222.4.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.14.0+ebfb4625ad50.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.15.0+79c9444fc3d1
+    created: 2022-01-25T09:39:41.403Z
+    appVersion: 2.235.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.15.0+79c9444fc3d1.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.15.1+94d2a6343fb6
+    created: 2022-01-25T09:39:47.973Z
+    appVersion: 2.235.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.15.1+94d2a6343fb6.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.14780.0+02e157d06f57
+    created: 2023-10-18T13:22:28.811Z
+    appVersion: 2.414.3.7
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.14780.0+02e157d06f57.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.14783.0+d0af0bc462a0
+    created: 2023-11-13T15:44:45.043Z
+    appVersion: 2.414.3.8
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.14783.0+d0af0bc462a0.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.16.0+f47784f483bf
+    created: 2022-01-25T09:40:00.824Z
+    appVersion: 2.235.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.16.0+f47784f483bf.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.16.1+a3fdb4ae4e87
+    created: 2022-01-25T09:40:03.945Z
+    appVersion: 2.235.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.16.1+a3fdb4ae4e87.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.17.0+7d9db331668b
+    created: 2022-01-25T09:40:16.466Z
+    appVersion: 2.235.4.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.17.0+7d9db331668b.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.15304.0+1ca66f65d80e
+    created: 2023-11-15T08:58:13.634Z
+    appVersion: 2.426.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.15304.0+1ca66f65d80e.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.18.0+9e7e10b4b576
+    created: 2022-01-25T09:40:22.401Z
+    appVersion: 2.235.5.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.18.0+9e7e10b4b576.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.15307.0+34919d9eafbb
+    created: 2023-11-29T12:40:43.620Z
+    appVersion: 2.426.1.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.15307.0+34919d9eafbb.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.20.0+7393ca8fd6d0
+    created: 2022-01-25T09:40:34.776Z
+    appVersion: 2.249.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.20.0+7393ca8fd6d0.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.15666.0+5ea03547ce92
+    created: 2023-12-13T15:24:43.295Z
+    appVersion: 2.426.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.15666.0+5ea03547ce92.tgz
+  - name: cloudbees-core
+    description: The Continuous Delivery Solution for Enterprises
+    version: 3.22.0+7f4108a2fd03
+    created: 2022-01-25T09:40:47.595Z
+    appVersion: 2.249.2.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.22.0+7f4108a2fd03.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.23.0+bbe45db86fa4
+    created: 2022-01-25T09:40:57.175Z
+    appVersion: 2.249.3.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.23.0+bbe45db86fa4.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.23.1+54c3599aaee4
+    created: 2022-01-25T09:41:00.229Z
+    appVersion: 2.249.3.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.23.1+54c3599aaee4.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.23.2+7700240cf909
+    created: 2022-01-25T09:41:03.354Z
+    appVersion: 2.249.3.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.23.2+7700240cf909.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.23.4+53a9d5818d07
+    created: 2022-01-25T09:41:06.442Z
+    appVersion: 2.249.3.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.23.4+53a9d5818d07.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.16155.0+bdcd96dc9444
+    created: 2024-01-24T12:54:00.152Z
+    appVersion: 2.426.3.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.16155.0+bdcd96dc9444.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.24.1+80dadc174346
+    created: 2022-01-25T09:41:15.993Z
+    appVersion: 2.263.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.24.1+80dadc174346.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.25.1+0d9482cac7b9
+    created: 2022-01-25T09:41:28.506Z
+    appVersion: 2.263.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.25.1+0d9482cac7b9.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.25.2+8359e01f9408
+    created: 2022-01-25T09:41:37.880Z
+    appVersion: 2.263.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.25.2+8359e01f9408.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.16714.0+b91b06c4042e
+    created: 2024-02-29T12:30:27.507Z
+    appVersion: 2.440.1.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.16714.0+b91b06c4042e.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.25.3+73c21ed5fcda
+    created: 2022-01-25T09:41:41.022Z
+    appVersion: 2.263.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.25.3+73c21ed5fcda.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.27.0+31f0c4fd2292
+    created: 2022-01-25T09:41:47.252Z
+    appVersion: 2.263.4.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.27.0+31f0c4fd2292.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.27.1+3a80da76fb5a
+    created: 2022-01-25T09:41:50.472Z
+    appVersion: 2.263.4.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.27.1+3a80da76fb5a.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.16720.0+8c1db08cd647
+    created: 2024-03-06T13:19:01.187Z
+    appVersion: 2.440.1.4
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.16720.0+8c1db08cd647.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.28.1+3c5f25973d17
+    created: 2022-01-25T09:42:03.149Z
+    appVersion: 2.277.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.28.1+3c5f25973d17.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.17108.0+90dcb0b2f715
+    created: 2024-03-20T15:19:44.236Z
+    appVersion: 2.440.2.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.17108.0+90dcb0b2f715.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.29.2+3336e9ba592d
+    created: 2022-01-25T09:42:13.124Z
+    appVersion: 2.277.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.29.2+3336e9ba592d.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.30.0+f50d5bb0af00
+    created: 2022-01-25T09:42:19.463Z
+    appVersion: 2.277.3.1
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.30.0+f50d5bb0af00.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.17418.0+c259df1cac86
+    created: 2024-04-18T14:06:23.609Z
+    appVersion: 2.440.3.7
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.17418.0+c259df1cac86.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.31.4+544eb2946f22
+    created: 2022-01-25T09:42:44.242Z
+    appVersion: 2.277.4.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.31.4+544eb2946f22.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.17426.0+84a265d4ee41
+    created: 2024-05-02T11:11:33.241Z
+    appVersion: 2.440.3.8
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.17426.0+84a265d4ee41.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.31.5+4de950bcc123
+    created: 2022-01-25T09:42:54.498Z
+    appVersion: 2.277.4.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.31.5+4de950bcc123.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.17821.0+5cfcf804cfad
+    created: 2024-05-16T18:18:55.222Z
+    appVersion: 2.452.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.17821.0+5cfcf804cfad.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.32.1+7d1cefcdc2b8
+    created: 2022-01-25T09:43:26.035Z
+    appVersion: 2.289.1.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.32.1+7d1cefcdc2b8.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.18067.0+786fc831d2f0
+    created: 2024-06-12T14:17:35.261Z
+    appVersion: 2.452.2.3
+    digest: 001f5f631d302189874c586f775e1c64de5e03b6fcbb661804306dccfeee7eeb
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.18067.0+786fc831d2f0.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.33.0+6247bb501aaa
+    created: 2022-01-25T09:43:38.886Z
+    appVersion: 2.289.2.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.33.0+6247bb501aaa.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.18072.0+dc5abfae7856
+    created: 2024-06-26T11:39:25.044Z
+    appVersion: 2.452.2.4
+    digest: 16a7040b7116d601a7d3715a656f9832f0853c4d8746c6b87e777276ebb5e7e8
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.18072.0+dc5abfae7856.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.33.1+540bc0022c65
+    created: 2022-01-25T09:43:48.940Z
+    appVersion: 2.289.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.33.1+540bc0022c65.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.18306.0+b5ad27c80a6b
+    created: 2024-07-10T06:33:51.145Z
+    appVersion: 2.452.3.2
+    digest: 910a095705620781309312970abc094e57f4d238d858fbb69568197b66444c39
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.18306.0+b5ad27c80a6b.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.18309.0+6208184791fe
+    created: 2024-08-07T09:15:05.205Z
+    appVersion: 2.452.4.1
+    digest: cfbabe1825e7c3e8effcf7c29f9c2f66e380c79f53a0017979ae883e7aa2abd8
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.18309.0+6208184791fe.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.18637.0+16fa7ffe2fa4
+    created: 2024-08-07T11:17:25.932Z
+    appVersion: 2.462.1.3
+    digest: c097dfac83fe26bb41f975c6bb33e5a25ad838353371118ef18f01250f1cc859
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.18637.0+16fa7ffe2fa4.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.19005.0+21d3f150a75f
+    created: 2024-09-04T10:38:44.424Z
+    appVersion: 2.462.2.2
+    digest: d1ddea891d4545f596526cb5b21ebfdd985089a9db50998cfa63ff3c6caa3777
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.19005.0+21d3f150a75f.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.19313.0+1afe0458111d
+    created: 2024-10-02T11:42:10.187Z
+    appVersion: 2.462.3.3
+    digest: e6ffe7309b606007249ec60737b11a631ef8849104482afb7b245217c00a248d
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.19313.0+1afe0458111d.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.34.1+8b9a7c288599
+    created: 2022-01-25T09:45:23.482Z
+    appVersion: 2.289.3.2
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.34.1+8b9a7c288599.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.19710.0+efd346a2455f
+    created: 2024-10-30T12:19:20.996Z
+    appVersion: 2.479.1.3
+    digest: 6466d7b3b73c24635114a758f11543473328f4a7262d670c9114b46fb5648f0e
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.19710.0+efd346a2455f.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.19716.0+8e8ecb08852c
+    created: 2024-11-13T15:45:27.470Z
+    appVersion: 2.479.1.4
+    digest: 2e4c1c77421131775a779ab8b2cb9f9ed0906e4ab4c8d5f2fa8bdc0810dd48ec
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.19716.0+8e8ecb08852c.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.20351.0+967cc5da1592
+    created: 2024-11-27T14:45:33.827Z
+    appVersion: 2.479.2.3
+    digest: 33db2b8129e3730697aeff9e4d2f26491cc9347abd78436e353d4e203e1689c6
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.20351.0+967cc5da1592.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.20880.0+0febd6353d0b
+    created: 2025-01-08T12:31:04.473Z
+    appVersion: 2.479.3.1
+    digest: 4bad11cfd694617bdaed8132e8fb611e7a0ccc6a2add9d86ed475fc044ccc232
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.20880.0+0febd6353d0b.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.20885.0+0c9aa7cff86e
+    created: 2025-01-22T14:19:04.324Z
+    appVersion: 2.479.3.2
+    digest: e502043661044c1c78ff29217a45861134dd0b49d839ddd193bcd996e9dd234d
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.20885.0+0c9aa7cff86e.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.21450.0+3eb0dca20e40
+    created: 2025-02-05T15:39:15.199Z
+    appVersion: 2.492.1.3
+    digest: bbbf9f04c814c6c4414e589615b0c0435c3a9de103c5c6900ca8baf1ad5d0c61
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.21450.0+3eb0dca20e40.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.21879.0+005baeaee5f9
+    created: 2025-03-05T14:39:19.453Z
+    appVersion: 2.492.2.2
+    digest: f88549e2b207b50bac47ae44dc3172133fb3413a7d64c1596a1683548f55dcd0
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.21879.0+005baeaee5f9.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.35.3+f189bbdab600
+    created: 2022-01-25T09:48:01.458Z
+    appVersion: 2.303.1.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.35.3+f189bbdab600.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.21885.0+1ec4d9ad44fc
+    created: 2025-03-19T12:13:33.852Z
+    appVersion: 2.492.2.3
+    digest: 523090d3d058174cbeb15fa6f776443b999b7df57bfc319126066865320f0424
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.21885.0+1ec4d9ad44fc.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.22283.0+4b0b554033da
+    created: 2025-04-02T11:40:01.837Z
+    appVersion: 2.492.3.5
+    digest: be9e2cad31f355b497c3ea37638b217827065179c8e947f5f650ec13826e4c8b
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.22283.0+4b0b554033da.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.35.4+f9889aab9992
+    created: 2022-01-25T09:48:32.175Z
+    appVersion: 2.303.1.6
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.35.4+f9889aab9992.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.22670.0+59d995985b9d
+    created: 2025-04-30T07:00:49.746Z
+    appVersion: 2.504.1.6
+    digest: 9dc0d30a7d4a7569995b85b1e259212820bba128166c574f3552b7621e5e74cd
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.22670.0+59d995985b9d.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.22674.0+4b2e4d925484
+    created: 2025-05-14T11:47:44.993Z
+    appVersion: 2.504.1.7
+    digest: 1b78c2570dc4822fe8ef79190ac03b6cb99cf823b49d5afa381d8cb1487e888a
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.22674.0+4b2e4d925484.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.27955.0+b43bef0bd03a
+    created: 2025-05-28T10:26:43.426Z
+    appVersion: 2.504.2.5
+    digest: e69fb6801ad766cae09c23c76c6f24259f77ae7bbbaefd521e47e31746404af8
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.27955.0+b43bef0bd03a.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.28226.0+b5bded24682b
+    created: 2025-06-25T07:34:29.549Z
+    appVersion: 2.504.3.28224
+    digest: f0782df0b4d89927a4ab21699844447f99480cfbb232c6ad6b90e199d7a3cf1c
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.28226.0+b5bded24682b.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.28229.0+8ba48fcb775c
+    created: 2025-07-09T11:55:59.907Z
+    appVersion: 2.504.3.28227
+    digest: 87152ba8b921ca8c292a29a4453b8acfd9c75752a77dc9a548236d782f6af207
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.28229.0+8ba48fcb775c.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.28667.0+d3da5d8d9ee8
+    created: 2025-07-29T15:12:52.697Z
+    appVersion: 2.516.1.28665
+    digest: d7e26e0353e2ff1f23f413efa779f4149ec2fe8501b0715ed2793b861e0fe787
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.28667.0+d3da5d8d9ee8.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.28671.0+c09c0c4c48df
+    created: 2025-07-31T22:11:20.505Z
+    appVersion: 2.516.1.28669
+    digest: f310e9756783b3c0128cc0de778f226d33cb353426378fabf1a00fba83131b35
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.28671.0+c09c0c4c48df.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.36.2+e9182cc6afb4
+    created: 2022-01-25T09:50:26.125Z
+    appVersion: 2.303.2.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.36.2+e9182cc6afb4.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.28985.0+797a7003b371
+    created: 2025-08-20T11:15:10.073Z
+    appVersion: 2.516.2.28983
+    digest: 0fd4b3c9f82a70becb7d44fa32bc101a0323c2e3898c5707529756aa9592605c
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.28985.0+797a7003b371.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.36.3+5059e44cf1d2
+    created: 2022-01-25T09:50:35.584Z
+    appVersion: 2.303.2.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.36.3+5059e44cf1d2.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.36.4+14a3fe1f015f
+    created: 2022-01-25T09:50:51.770Z
+    appVersion: 2.303.2.6
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.36.4+14a3fe1f015f.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.37.2+7390bf58e3ab
+    created: 2022-01-25T09:51:22.455Z
+    appVersion: 2.303.3.3
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.37.2+7390bf58e3ab.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.38.4+ddac4cebcaee
+    created: 2022-01-25T09:52:05.989Z
+    appVersion: 2.319.1.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.38.4+ddac4cebcaee.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.39.4+07d83224718d
+    created: 2022-01-25T09:53:00.834Z
+    appVersion: 2.319.2.5
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.39.4+07d83224718d.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.39.6+78640b7740da
+    created: 2022-01-25T09:53:07.278Z
+    appVersion: 2.319.2.7
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.39.6+78640b7740da.tgz
+  - name: cloudbees-core
+    description: Enterprise Continuous Integration with Jenkins
+    version: 3.39.7+58091444e7ae
+    created: 2022-01-25T09:53:10.481Z
+    appVersion: 2.319.2.7
+    icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+    urls:
+    - cloudbees-core-3.39.7+58091444e7ae.tgz
+  cloudbees-previews:
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.3
+    created: 2022-01-26T16:00:51.071Z
+    appVersion: 0.30.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.3.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.4
+    created: 2022-01-26T20:04:24.425Z
+    appVersion: 0.30.4
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.4.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.5
+    created: 2022-01-31T14:46:21.762Z
+    appVersion: 0.30.5
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.5.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.6
+    created: 2022-02-04T07:33:59.731Z
+    appVersion: 0.30.6
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.6.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.7
+    created: 2022-02-04T15:25:12.091Z
+    appVersion: 0.30.7
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.7.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.8
+    created: 2022-02-07T11:24:20.061Z
+    appVersion: 0.30.8
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.8.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.31.0
+    created: 2022-02-14T09:50:53.676Z
+    appVersion: 0.31.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.31.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.32.0
+    created: 2022-02-25T14:47:47.003Z
+    appVersion: 0.32.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.32.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.33.0
+    created: 2022-03-02T12:35:00.457Z
+    appVersion: 0.33.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.33.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.34.0
+    created: 2022-03-02T13:10:20.302Z
+    appVersion: 0.34.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.34.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.34.1
+    created: 2022-03-04T10:00:41.884Z
+    appVersion: 0.34.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.34.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.34.2
+    created: 2022-03-08T15:33:14.689Z
+    appVersion: 0.34.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.34.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.0.0
+    created: 2022-03-21T13:09:47.885Z
+    appVersion: 1.0.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.0.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.0.1
+    created: 2022-03-31T19:16:57.368Z
+    appVersion: 1.0.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.0.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.1.0
+    created: 2022-08-30T18:20:12.773Z
+    appVersion: 1.1.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.1.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.1.1
+    created: 2023-04-18T16:28:29.490Z
+    appVersion: 1.1.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.1.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.1.2
+    created: 2023-04-27T15:11:11.846Z
+    appVersion: 1.1.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.1.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.1.3
+    created: 2023-04-27T15:55:45.169Z
+    appVersion: 1.1.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.1.3.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.1.4
+    created: 2023-05-25T18:46:35.083Z
+    appVersion: 1.1.4
+    digest: af9f532bfd91a28ed07fe967bbc770f9449417d27488743023629c50a31f65c5
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.1.4.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 1.2.0
+    created: 2024-02-21T14:32:37.160Z
+    appVersion: 1.2.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-1.2.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.0.16
+    created: 2022-01-25T09:42:26.062Z
+    appVersion: 0.0.16
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.0.16.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.1.0
+    created: 2022-01-25T09:42:29.043Z
+    appVersion: 0.1.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.1.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.2.0
+    created: 2022-01-25T09:42:32.019Z
+    appVersion: 0.2.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.2.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.3.0
+    created: 2022-01-25T09:42:34.952Z
+    appVersion: 0.3.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.3.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.3.1
+    created: 2022-01-25T09:42:38.005Z
+    appVersion: 0.3.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.3.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.4.0
+    created: 2022-01-25T09:42:40.982Z
+    appVersion: 0.4.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.4.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.5.0
+    created: 2022-01-25T09:42:57.508Z
+    appVersion: 0.5.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.5.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.6.0
+    created: 2022-01-25T09:43:00.459Z
+    appVersion: 0.6.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.6.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.6.1
+    created: 2022-01-25T09:43:03.686Z
+    appVersion: 0.6.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.6.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.7.0
+    created: 2022-01-25T09:43:06.940Z
+    appVersion: 0.7.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.7.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.8.0
+    created: 2022-01-25T09:43:09.916Z
+    appVersion: 0.8.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.8.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.9.0
+    created: 2022-01-25T09:43:12.967Z
+    appVersion: 0.9.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.9.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.9.1
+    created: 2022-01-25T09:43:16.101Z
+    appVersion: 0.9.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.9.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.9.2
+    created: 2022-01-25T09:43:29.131Z
+    appVersion: 0.9.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.9.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.10.0
+    created: 2022-01-25T09:43:35.586Z
+    appVersion: 0.10.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.10.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.11.0
+    created: 2022-01-25T09:43:45.444Z
+    appVersion: 0.11.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.11.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.11.1
+    created: 2022-01-25T09:43:52.064Z
+    appVersion: 0.11.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.11.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.12.0
+    created: 2022-01-25T09:44:04.475Z
+    appVersion: 0.12.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.12.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.12.1
+    created: 2022-01-25T09:44:19.614Z
+    appVersion: 0.12.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.12.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.0
+    created: 2022-01-25T09:44:28.440Z
+    appVersion: 0.13.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.1
+    created: 2022-01-25T09:44:37.526Z
+    appVersion: 0.13.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.2
+    created: 2022-01-25T09:44:40.528Z
+    appVersion: 0.13.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.3
+    created: 2022-01-25T09:44:43.821Z
+    appVersion: 0.13.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.3.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.4
+    created: 2022-01-25T09:44:59.003Z
+    appVersion: 0.13.4
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.4.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.5
+    created: 2022-01-25T09:45:16.935Z
+    appVersion: 0.13.5
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.5.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.6
+    created: 2022-01-25T09:45:20.261Z
+    appVersion: 0.13.6
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.6.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.7
+    created: 2022-01-25T09:45:59.975Z
+    appVersion: 0.13.7
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.7.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.13.8
+    created: 2022-01-25T09:46:09.221Z
+    appVersion: 0.13.8
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.13.8.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.14.0
+    created: 2022-01-25T09:46:12.554Z
+    appVersion: 0.14.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.14.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.15.0
+    created: 2022-01-25T09:47:28.881Z
+    appVersion: 0.15.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.15.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.15.1
+    created: 2022-01-25T09:47:32.169Z
+    appVersion: 0.15.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.15.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.15.2
+    created: 2022-01-25T09:47:38.072Z
+    appVersion: 0.15.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.15.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.15.3
+    created: 2022-01-25T09:48:10.962Z
+    appVersion: 0.15.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.15.3.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.15.4
+    created: 2022-01-25T09:48:17.112Z
+    appVersion: 0.15.4
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.15.4.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.16.0
+    created: 2022-01-25T09:48:20.175Z
+    appVersion: 0.16.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.16.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.16.1
+    created: 2022-01-25T09:48:29.106Z
+    appVersion: 0.16.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.16.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.17.0
+    created: 2022-01-25T09:48:44.803Z
+    appVersion: 0.17.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.17.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.17.1
+    created: 2022-01-25T09:49:43.302Z
+    appVersion: 0.17.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.17.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.18.0
+    created: 2022-01-25T09:49:49.222Z
+    appVersion: 0.18.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.18.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.19.0
+    created: 2022-01-25T09:49:52.102Z
+    appVersion: 0.19.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.19.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.19.1
+    created: 2022-01-25T09:50:13.989Z
+    appVersion: 0.19.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.19.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.20.0
+    created: 2022-01-25T09:50:17.137Z
+    appVersion: 0.20.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.20.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.20.1
+    created: 2022-01-25T09:50:20.109Z
+    appVersion: 0.20.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.20.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.21.0
+    created: 2022-01-25T09:50:23.080Z
+    appVersion: 0.21.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.21.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.21.1
+    created: 2022-01-25T09:50:29.041Z
+    appVersion: 0.21.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.21.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.22.0
+    created: 2022-01-25T09:50:42.215Z
+    appVersion: 0.22.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.22.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.22.1
+    created: 2022-01-25T09:50:45.115Z
+    appVersion: 0.22.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.22.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.22.2
+    created: 2022-01-25T09:50:48.564Z
+    appVersion: 0.22.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.22.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.23.0
+    created: 2022-01-25T09:50:58.172Z
+    appVersion: 0.23.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.23.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.24.0
+    created: 2022-01-25T09:51:01.142Z
+    appVersion: 0.24.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.24.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.24.1
+    created: 2022-01-25T09:51:04.088Z
+    appVersion: 0.24.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.24.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.25.0
+    created: 2022-01-25T09:51:07.192Z
+    appVersion: 0.25.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.25.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.25.1
+    created: 2022-01-25T09:51:10.123Z
+    appVersion: 0.25.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.25.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.25.2
+    created: 2022-01-25T09:51:13.031Z
+    appVersion: 0.25.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.25.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.25.3
+    created: 2022-01-25T09:51:16.058Z
+    appVersion: 0.25.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.25.3.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.26.0
+    created: 2022-01-25T09:51:19.031Z
+    appVersion: 0.26.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.26.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.27.0
+    created: 2022-01-25T09:51:32.314Z
+    appVersion: 0.27.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.27.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.28.0
+    created: 2022-01-25T09:51:35.248Z
+    appVersion: 0.28.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.28.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.28.1
+    created: 2022-01-25T09:51:38.313Z
+    appVersion: 0.28.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.28.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.28.2
+    created: 2022-01-25T09:51:41.205Z
+    appVersion: 0.28.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.28.2.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.28.3
+    created: 2022-01-25T09:51:50.633Z
+    appVersion: 0.28.3
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.28.3.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.28.4
+    created: 2022-01-25T09:51:56.878Z
+    appVersion: 0.28.4
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.28.4.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.29.0
+    created: 2022-01-25T09:52:00.047Z
+    appVersion: 0.29.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.29.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.0
+    created: 2022-01-25T09:52:02.948Z
+    appVersion: 0.30.0
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.0.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.1
+    created: 2022-01-25T09:52:12.555Z
+    appVersion: 0.30.1
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.1.tgz
+    maintainers:
+    - name: CloudBees
+  - name: cloudbees-previews
+    description: A Helm chart for CloudBees Previews
+    version: 0.30.2
+    created: 2022-01-25T09:53:03.817Z
+    appVersion: 0.30.2
+    icon: https://www.cloudbees.com/sites/default/files/cloudbees-infinity-branding-element.png
+    urls:
+    - cloudbees-previews-0.30.2.tgz
+    maintainers:
+    - name: CloudBees
+  cloudbees-remote-agents:
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.51
+    created: 2022-01-25T09:44:01.425Z
+    appVersion: v1.0.51
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.51.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.54
+    created: 2022-01-25T09:44:07.470Z
+    appVersion: v1.0.54
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.54.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.55
+    created: 2022-01-25T09:44:10.536Z
+    appVersion: v1.0.55
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.55.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.56
+    created: 2022-01-25T09:44:13.612Z
+    appVersion: v1.0.56
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.56.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.57
+    created: 2022-01-25T09:44:16.661Z
+    appVersion: v1.0.57
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.57.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.58
+    created: 2022-01-25T09:44:22.503Z
+    appVersion: v1.0.58
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.58.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.59
+    created: 2022-01-25T09:44:25.359Z
+    appVersion: v1.0.59
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.59.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.60
+    created: 2022-01-25T09:44:31.432Z
+    appVersion: v1.0.60
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.60.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.61
+    created: 2022-01-25T09:44:34.504Z
+    appVersion: v1.0.61
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.61.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.62
+    created: 2022-01-25T09:44:46.652Z
+    appVersion: v1.0.62
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.62.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.63
+    created: 2022-01-25T09:44:49.581Z
+    appVersion: v1.0.63
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.63.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.64
+    created: 2022-01-25T09:44:52.732Z
+    appVersion: v1.0.64
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.64.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.65
+    created: 2022-01-25T09:44:55.783Z
+    appVersion: v1.0.65
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.65.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.66
+    created: 2022-01-25T09:45:01.891Z
+    appVersion: v1.0.66
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.66.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.67
+    created: 2022-01-25T09:45:04.803Z
+    appVersion: v1.0.67
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.67.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.68
+    created: 2022-01-25T09:45:07.670Z
+    appVersion: v1.0.68
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.68.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.69
+    created: 2022-01-25T09:45:10.745Z
+    appVersion: v1.0.69
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.69.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.70
+    created: 2022-01-25T09:45:13.705Z
+    appVersion: v1.0.70
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.70.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.77
+    created: 2022-01-25T09:45:36.132Z
+    appVersion: v1.0.77
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.77.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.78
+    created: 2022-01-25T09:45:38.934Z
+    appVersion: v1.0.78
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.78.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.79
+    created: 2022-01-25T09:45:41.886Z
+    appVersion: v1.0.79
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.79.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.80
+    created: 2022-01-25T09:45:44.734Z
+    appVersion: v1.0.80
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.80.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.81
+    created: 2022-01-25T09:45:47.716Z
+    appVersion: v1.0.81
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.81.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.82
+    created: 2022-01-25T09:45:50.764Z
+    appVersion: v1.0.82
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.82.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.83
+    created: 2022-01-25T09:46:02.844Z
+    appVersion: v1.0.83
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.83.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.84
+    created: 2022-01-25T09:46:05.907Z
+    appVersion: v1.0.84
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.84.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.85
+    created: 2022-01-25T09:46:15.477Z
+    appVersion: v1.0.85
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.85.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.86
+    created: 2022-01-25T09:46:18.313Z
+    appVersion: v1.0.86
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.86.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.87
+    created: 2022-01-25T09:46:21.125Z
+    appVersion: v1.0.87
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.87.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.88
+    created: 2022-01-25T09:46:23.992Z
+    appVersion: v1.0.88
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.88.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.89
+    created: 2022-01-25T09:46:27.009Z
+    appVersion: v1.0.89
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.89.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.90
+    created: 2022-01-25T09:46:29.809Z
+    appVersion: v1.0.90
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.90.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.91
+    created: 2022-01-25T09:46:32.856Z
+    appVersion: v1.0.91
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.91.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.92
+    created: 2022-01-25T09:46:36.067Z
+    appVersion: v1.0.92
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.92.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.93
+    created: 2022-01-25T09:46:38.916Z
+    appVersion: v1.0.93
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.93.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.94
+    created: 2022-01-25T09:46:41.880Z
+    appVersion: v1.0.94
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.94.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.95
+    created: 2022-01-25T09:46:44.786Z
+    appVersion: v1.0.95
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.95.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.96
+    created: 2022-01-25T09:46:47.669Z
+    appVersion: v1.0.96
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.96.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.97
+    created: 2022-01-25T09:46:50.557Z
+    appVersion: v1.0.97
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.97.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.98
+    created: 2022-01-25T09:46:53.654Z
+    appVersion: v1.0.98
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.98.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.99
+    created: 2022-01-25T09:46:56.536Z
+    appVersion: v1.0.99
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.99.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.100
+    created: 2022-01-25T09:46:59.474Z
+    appVersion: v1.0.100
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.100.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.101
+    created: 2022-01-25T09:47:02.339Z
+    appVersion: v1.0.101
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.101.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.102
+    created: 2022-01-25T09:47:05.318Z
+    appVersion: v1.0.102
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.102.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.103
+    created: 2022-01-25T09:47:08.285Z
+    appVersion: v1.0.103
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.103.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.104
+    created: 2022-01-25T09:47:11.092Z
+    appVersion: v1.0.104
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.104.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.105
+    created: 2022-01-25T09:47:13.993Z
+    appVersion: v1.0.105
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.105.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.106
+    created: 2022-01-25T09:47:16.907Z
+    appVersion: v1.0.106
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.106.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.107
+    created: 2022-01-25T09:47:19.767Z
+    appVersion: v1.0.107
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.107.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.108
+    created: 2022-01-25T09:47:22.683Z
+    appVersion: v1.0.108
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.108.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.109
+    created: 2022-01-25T09:47:25.866Z
+    appVersion: v1.0.109
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.109.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.110
+    created: 2022-01-25T09:47:35.012Z
+    appVersion: v1.0.110
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.110.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.111
+    created: 2022-01-25T09:47:41.000Z
+    appVersion: v1.0.111
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.111.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.112
+    created: 2022-01-25T09:47:43.833Z
+    appVersion: v1.0.112
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.112.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.113
+    created: 2022-01-25T09:47:46.849Z
+    appVersion: v1.0.113
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.113.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.114
+    created: 2022-01-25T09:47:49.818Z
+    appVersion: v1.0.114
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.114.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.115
+    created: 2022-01-25T09:47:52.615Z
+    appVersion: v1.0.115
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.115.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.116
+    created: 2022-01-25T09:47:55.460Z
+    appVersion: v1.0.116
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.116.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.117
+    created: 2022-01-25T09:47:58.258Z
+    appVersion: v1.0.117
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.117.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.118
+    created: 2022-01-25T09:48:04.493Z
+    appVersion: v1.0.118
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.118.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.119
+    created: 2022-01-25T09:48:13.825Z
+    appVersion: v1.0.119
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.119.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.120
+    created: 2022-01-25T09:48:23.025Z
+    appVersion: v1.0.120
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.120.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.121
+    created: 2022-01-25T09:48:25.942Z
+    appVersion: v1.0.121
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.121.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.122
+    created: 2022-01-25T09:48:34.988Z
+    appVersion: v1.0.122
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.122.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.123
+    created: 2022-01-25T09:48:47.828Z
+    appVersion: v1.0.123
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.123.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.124
+    created: 2022-01-25T09:48:50.696Z
+    appVersion: v1.0.124
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.124.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.125
+    created: 2022-01-25T09:48:53.705Z
+    appVersion: v1.0.125
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.125.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.126
+    created: 2022-01-25T09:48:56.672Z
+    appVersion: v1.0.126
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.126.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.127
+    created: 2022-01-25T09:48:59.666Z
+    appVersion: v1.0.127
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.127.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.128
+    created: 2022-01-25T09:49:02.680Z
+    appVersion: v1.0.128
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.128.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.129
+    created: 2022-01-25T09:49:05.503Z
+    appVersion: v1.0.129
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.129.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.130
+    created: 2022-01-25T09:49:08.555Z
+    appVersion: v1.0.130
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.130.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.131
+    created: 2022-01-25T09:49:11.367Z
+    appVersion: v1.0.131
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.131.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.132
+    created: 2022-01-25T09:49:14.380Z
+    appVersion: v1.0.132
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.132.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.133
+    created: 2022-01-25T09:49:17.248Z
+    appVersion: v1.0.133
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.133.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.134
+    created: 2022-01-25T09:49:20.187Z
+    appVersion: v1.0.134
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.134.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.135
+    created: 2022-01-25T09:49:23.127Z
+    appVersion: v1.0.135
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.135.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.136
+    created: 2022-01-25T09:49:25.931Z
+    appVersion: v1.0.136
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.136.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.137
+    created: 2022-01-25T09:49:28.836Z
+    appVersion: v1.0.137
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.137.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.138
+    created: 2022-01-25T09:49:31.731Z
+    appVersion: v1.0.138
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.138.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.139
+    created: 2022-01-25T09:49:34.682Z
+    appVersion: v1.0.139
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.139.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.140
+    created: 2022-01-25T09:49:37.499Z
+    appVersion: v1.0.140
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.140.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.141
+    created: 2022-01-25T09:49:40.328Z
+    appVersion: v1.0.141
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.141.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.142
+    created: 2022-01-25T09:49:46.190Z
+    appVersion: v1.0.142
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.142.tgz
+  - name: cloudbees-remote-agents
+    description: Cloudbees CI - Remote agents controller
+    version: v1.0.143
+    created: 2023-05-25T18:47:24.900Z
+    appVersion: v1.0.143
+    digest: 55fee275e98079a5cdf1127de0969c4310ffbafecf65ae34faa68ce219fe3a88
+    icon: https://www.cloudbees.com/favicon.ico
+    urls:
+    - cloudbees-remote-agents-v1.0.143.tgz
+  cloudbees-flow-agent:
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.13.0
+    created: 2022-01-31T14:13:50.441Z
+    appVersion: 10.4.0.153077
+    urls:
+    - cloudbees-flow-agent-2.13.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.13.2
+    created: 2022-02-21T10:18:11.919Z
+    appVersion: 10.4.1.153503
+    urls:
+    - cloudbees-flow-agent-2.13.2.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.13.3
+    created: 2022-03-25T15:13:47.161Z
+    appVersion: 10.4.2.153852
+    urls:
+    - cloudbees-flow-agent-2.13.3.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.14.0
+    created: 2022-04-28T20:18:51.768Z
+    appVersion: 10.5.0.154362
+    urls:
+    - cloudbees-flow-agent-2.14.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.15.0
+    created: 2022-05-27T09:00:03.146Z
+    appVersion: 10.5.1.154796
+    urls:
+    - cloudbees-flow-agent-2.15.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.16.0
+    created: 2022-06-30T17:43:00.471Z
+    appVersion: 10.6.0.155529
+    urls:
+    - cloudbees-flow-agent-2.16.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.17.0
+    created: 2022-08-05T12:29:54.202Z
+    appVersion: 10.7.0.156355
+    urls:
+    - cloudbees-flow-agent-2.17.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.18.0
+    created: 2022-09-02T20:25:06.686Z
+    appVersion: 10.8.0.156807
+    urls:
+    - cloudbees-flow-agent-2.18.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.19.0
+    created: 2022-10-06T12:00:18.246Z
+    appVersion: 10.9.0.157496
+    urls:
+    - cloudbees-flow-agent-2.19.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.20.0
+    created: 2022-11-10T16:45:12.578Z
+    appVersion: 10.10.0.158216
+    urls:
+    - cloudbees-flow-agent-2.20.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.21.0
+    created: 2022-12-13T17:59:42.180Z
+    appVersion: 10.11.0.159109
+    urls:
+    - cloudbees-flow-agent-2.21.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.22.0
+    created: 2023-02-03T17:18:52.917Z
+    appVersion: 2023.02.0.160256
+    urls:
+    - cloudbees-flow-agent-2.22.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.23.0
+    created: 2023-03-09T16:53:02.175Z
+    appVersion: 2023.03.0.161439
+    urls:
+    - cloudbees-flow-agent-2.23.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.23.1
+    created: 2023-03-15T20:43:09.155Z
+    appVersion: 2023.03.1.161626
+    urls:
+    - cloudbees-flow-agent-2.23.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.24.0
+    created: 2023-04-09T18:41:05.346Z
+    appVersion: 2023.04.0.162443
+    urls:
+    - cloudbees-flow-agent-2.24.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.24.1
+    created: 2023-05-25T18:45:49.922Z
+    appVersion: 2023.04.1.163232
+    digest: f7795e487d3db12b76b553e8b76887efe809d23b7b57887bf0fdd0a6e4694c15
+    urls:
+    - cloudbees-flow-agent-2.24.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.25.0
+    created: 2023-06-20T15:29:44.849Z
+    appVersion: 2023.06.0.164409
+    urls:
+    - cloudbees-flow-agent-2.25.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 0.0.1
+    created: 2022-01-25T09:38:08.428Z
+    appVersion: "9.2"
+    urls:
+    - cloudbees-flow-agent-0.0.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.25.1
+    created: 2023-07-07T23:41:47.780Z
+    appVersion: 2023.06.1.165376
+    urls:
+    - cloudbees-flow-agent-2.25.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 1.0.0
+    created: 2022-01-25T09:38:23.683Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-agent-1.0.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.26.0-rc.2
+    created: 2023-08-01T21:03:10.734Z
+    appVersion: 2023.08.0.166738
+    urls:
+    - cloudbees-flow-agent-2.26.0-rc.2.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.26.0-rc.3
+    created: 2023-08-01T21:26:01.024Z
+    appVersion: 2023.08.0.166738
+    urls:
+    - cloudbees-flow-agent-2.26.0-rc.3.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 1.1.0
+    created: 2022-01-25T09:38:49.504Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-agent-1.1.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.26.0
+    created: 2023-08-15T14:44:19.448Z
+    appVersion: 2023.08.0.167214
+    urls:
+    - cloudbees-flow-agent-2.26.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 1.1.1
+    created: 2022-01-25T09:39:10.946Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-agent-1.1.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 1.2.0
+    created: 2022-01-25T09:39:20.140Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-agent-1.2.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.0.0
+    created: 2022-01-25T09:39:35.175Z
+    appVersion: 9.2.0.139827
+    urls:
+    - cloudbees-flow-agent-2.0.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.27.0-rc.4
+    created: 2023-10-24T16:19:43.926Z
+    appVersion: 2023.10.0.169425
+    urls:
+    - cloudbees-flow-agent-2.27.0-rc.4.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.27.0
+    created: 2023-10-24T16:48:16.472Z
+    appVersion: 2023.10.0.169425
+    urls:
+    - cloudbees-flow-agent-2.27.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.1.0
+    created: 2022-01-25T09:39:57.501Z
+    appVersion: 10.0.0.142654
+    urls:
+    - cloudbees-flow-agent-2.1.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.2.0
+    created: 2022-01-25T09:40:13.225Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-agent-2.2.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.3.0
+    created: 2022-01-25T09:40:28.629Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-agent-2.3.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.28.0-rc.19
+    created: 2023-12-11T13:01:11.105Z
+    appVersion: 2023.12.0.171596
+    urls:
+    - cloudbees-flow-agent-2.28.0-rc.19.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.28.0
+    created: 2023-12-15T11:53:06.639Z
+    appVersion: 2023.12.0.171596
+    urls:
+    - cloudbees-flow-agent-2.28.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.4.0
+    created: 2022-01-25T09:40:44.181Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-agent-2.4.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.5.0
+    created: 2022-01-25T09:40:53.793Z
+    appVersion: 10.0.1.143076
+    urls:
+    - cloudbees-flow-agent-2.5.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.6.0
+    created: 2022-01-25T09:41:12.846Z
+    appVersion: 10.0.2.144701
+    urls:
+    - cloudbees-flow-agent-2.6.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.7.0
+    created: 2022-01-25T09:41:22.052Z
+    appVersion: 10.0.2.144701
+    urls:
+    - cloudbees-flow-agent-2.7.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.8.0
+    created: 2022-01-25T09:41:56.417Z
+    appVersion: 10.1.0.145850
+    urls:
+    - cloudbees-flow-agent-2.8.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.29.0
+    created: 2024-03-21T11:11:32.244Z
+    appVersion: 2024.03.0.173398
+    urls:
+    - cloudbees-flow-agent-2.29.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.9.0
+    created: 2022-01-25T09:43:22.597Z
+    appVersion: 10.2.0.148735
+    urls:
+    - cloudbees-flow-agent-2.9.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.30.0
+    created: 2024-06-18T13:51:10.113Z
+    appVersion: 2024.06.0.175153
+    digest: f551221624b57692d657d391db23411660779d3615196c45b40bfd26ccb95293
+    urls:
+    - cloudbees-flow-agent-2.30.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.29.1
+    created: 2024-07-05T09:50:57.817Z
+    appVersion: 2024.03.1.175387
+    digest: ed65e0966229f6966f85691a28009f2f82640856b9436a7303e49d2df0ca69c1
+    urls:
+    - cloudbees-flow-agent-2.29.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.10.0
+    created: 2022-01-25T09:43:58.449Z
+    appVersion: 10.2.0.148735
+    urls:
+    - cloudbees-flow-agent-2.10.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.28.1
+    created: 2024-07-22T16:46:30.838Z
+    appVersion: 2023.12.1.175675
+    digest: 7ef0c82518cb408519a872974d769d245eddad8728a8f137005c70ab4da056bd
+    urls:
+    - cloudbees-flow-agent-2.28.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.27.1
+    created: 2024-07-29T05:03:38.477Z
+    appVersion: 2023.10.1.175666
+    digest: 750eb53e304f10a48f28378a576a66579057bbb856ae6db874351fa6c5131ef8
+    urls:
+    - cloudbees-flow-agent-2.27.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.26.1
+    created: 2024-08-07T12:33:48.214Z
+    appVersion: 2023.08.1.175835
+    digest: 9f53f8eadb6996f12f3c0aafe871cb77e8830d33f0e6b32ccb60fd264c7c675a
+    urls:
+    - cloudbees-flow-agent-2.26.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.31.0
+    created: 2024-09-30T10:09:02.388Z
+    appVersion: 2024.09.0.176472
+    digest: 606f3511c9c661da06cd2bee070bc8ef99107bf9c65d28115803c73336441434
+    urls:
+    - cloudbees-flow-agent-2.31.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.10.1
+    created: 2022-01-25T09:45:29.750Z
+    appVersion: 10.2.0.148735
+    urls:
+    - cloudbees-flow-agent-2.10.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.10.2
+    created: 2022-01-25T09:45:56.955Z
+    appVersion: 10.2.1.150122
+    urls:
+    - cloudbees-flow-agent-2.10.2.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.32.0
+    created: 2024-12-11T14:42:10.915Z
+    appVersion: 2024.12.0.177508
+    digest: f27110a60512511956f4a2618cae35a5ca1576d2d91f4560600ab7af6e749cb0
+    urls:
+    - cloudbees-flow-agent-2.32.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.32.1
+    created: 2025-02-17T13:37:31.990Z
+    appVersion: 2024.12.1.178274
+    digest: 64fb3fcda57991a63e8f99bfdab5a76cf04c25ffcd55fe58d6f5224f9c4bd2a1
+    urls:
+    - cloudbees-flow-agent-2.32.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.33.0
+    created: 2025-03-27T06:58:25.150Z
+    appVersion: 2025.03.0.178767
+    digest: cc2375d4de478c82cdfa446e04fde29065c1e32526049ca8287586c9e652eb84
+    urls:
+    - cloudbees-flow-agent-2.33.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.33.1
+    created: 2025-04-30T06:20:07.067Z
+    appVersion: 2025.03.1.179360
+    digest: 7044c1726b471d0f63868e9c0b826a9391ca4e47b84523234e44779f55a513d2
+    urls:
+    - cloudbees-flow-agent-2.33.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.34.0
+    created: 2025-06-27T05:59:04.352Z
+    appVersion: 2025.06.0.180373
+    digest: df349d938bf50b1131b527d6925e249cc60944ac36218b61e693d34e655a4171
+    urls:
+    - cloudbees-flow-agent-2.34.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.34.1
+    created: 2025-07-21T06:24:45.578Z
+    appVersion: 2025.06.1.180551
+    digest: 274906e055a2c1566aa0b8ceadb13df9840db781030c0903de27e052e390fe8b
+    urls:
+    - cloudbees-flow-agent-2.34.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.11.1
+    created: 2022-01-25T09:50:04.806Z
+    appVersion: 10.3.0.150860
+    urls:
+    - cloudbees-flow-agent-2.11.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.12.0
+    created: 2022-01-25T09:51:47.641Z
+    appVersion: 10.3.2.151906
+    urls:
+    - cloudbees-flow-agent-2.12.0.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.12.1
+    created: 2022-01-25T09:52:18.922Z
+    appVersion: 10.3.3.152331
+    urls:
+    - cloudbees-flow-agent-2.12.1.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.12.2
+    created: 2022-01-25T09:52:22.147Z
+    appVersion: 10.3.3.152331
+    urls:
+    - cloudbees-flow-agent-2.12.2.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.12.3
+    created: 2022-01-25T09:52:34.786Z
+    appVersion: 10.3.4.152496
+    urls:
+    - cloudbees-flow-agent-2.12.3.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.12.4
+    created: 2022-01-25T09:52:45.048Z
+    appVersion: 10.3.5.152587
+    urls:
+    - cloudbees-flow-agent-2.12.4.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.12.5
+    created: 2022-01-25T09:52:54.332Z
+    appVersion: 10.3.6.152801
+    urls:
+    - cloudbees-flow-agent-2.12.5.tgz
+  - name: cloudbees-flow-agent
+    description: A Helm chart for CloudBees Flow Agent
+    version: 2.12.6
+    created: 2022-01-25T09:53:16.836Z
+    appVersion: 10.3.8.152966
+    urls:
+    - cloudbees-flow-agent-2.12.6.tgz
+generated: 2025-08-20T11:15:35.736Z

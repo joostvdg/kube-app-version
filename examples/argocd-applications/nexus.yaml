@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nxrm-ha
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: nxrm-ha
+    repoURL: https://sonatype.github.io/helm3-charts
+    targetRevision: "81.0.0"

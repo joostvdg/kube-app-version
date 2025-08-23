@@ -266,6 +266,8 @@ public class ArgoCollector implements ApplicationCollector {
       String repoUrl = source.get("repoURL").getAsString();
       String sourceType = determineSourceType(source);
 
+      repoUrl = verifyURLForSpecialCases(repoUrl);
+
       // Create artifact with repo URL
       AppArtifact artifact = new AppArtifact(repoUrl, sourceType, appName);
 
@@ -288,6 +290,18 @@ public class ArgoCollector implements ApplicationCollector {
     } else {
       logger.debug("Argo App {} source is missing repoURL", appName);
     }
+  }
+
+  private String verifyURLForSpecialCases(String repoUrl) {
+    // sometimes an OCI Helm Chart is installed via Argo without the 'oci://' prefix
+    // if it doesn't start with http or oci, we add it
+    if (!repoUrl.startsWith("http://")
+        && !repoUrl.startsWith("https://")
+        && !repoUrl.startsWith("oci://")) {
+      logger.debug("Assuming {} should have 'oci://' as prefix", repoUrl);
+      return "oci://" + repoUrl;
+    }
+    return repoUrl;
   }
 
   private String determineSourceType(JsonObject source) {

@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudbees
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: cloudbees-core
+    repoURL: https://public-charts.artifacts.cloudbees.com/repository/public/
+    targetRevision: "3.27955.0+b43bef0bd03a"
