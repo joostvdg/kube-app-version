@@ -13,7 +13,7 @@ RUN mvn package -e -C -B --show-version --no-transfer-progress -DskipTests  # we
 
 
 
-FROM cgr.dev/chainguard/jre as runtime
+FROM cgr.dev/chainguard/jre AS runtime
 WORKDIR /app
 COPY --from=build /project/target/kube-app-version-*-SNAPSHOT.jar  app.jar
 EXPOSE 8080
