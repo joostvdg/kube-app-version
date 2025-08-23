@@ -14,6 +14,10 @@ env:
 jobs:
   code-quality:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
     steps:
       - uses: actions/checkout@v4
 
@@ -43,6 +47,9 @@ jobs:
 
   security-scan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     steps:
       - uses: actions/checkout@v4
 
@@ -162,6 +169,9 @@ jobs:
   image-security-scan:
     needs: [build-and-push]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - name: Run Trivy vulnerability scanner on image
