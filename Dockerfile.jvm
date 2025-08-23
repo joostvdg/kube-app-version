@@ -12,15 +12,7 @@ COPY src/ ./src
 RUN mvn package -e -C -B --show-version --no-transfer-progress -DskipTests  # we assume tests are run before we get here
 
 
-#FROM eclipse-temurin:24-jre-alpine
-#RUN apk add dumb-init
-#RUN mkdir /app
-#RUN addgroup --system javauser && adduser -S -s /bin/false -G javauser javauser
-#COPY --from=build /project/target/kube-app-version-*-SNAPSHOT.jar /app/java-application.jar
-#WORKDIR /app
-#RUN chown -R javauser:javauser /app
-#USER javauser
-#CMD "dumb-init" "java" "-jar" "java-application.jar"
+
 FROM cgr.dev/chainguard/jre as runtime
 WORKDIR /app
 COPY --from=build /project/target/kube-app-version-*-SNAPSHOT.jar  app.jar
