@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.3</version>
+		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>net.joostvdg</groupId>
@@ -35,7 +35,7 @@
 
 		<spotless.version>2.44.5</spotless.version>
 		<error-prone.version>2.38.0</error-prone.version>
-		<spring-modulith.version>1.4.0</spring-modulith.version>
+		<spring-modulith.version>1.4.2</spring-modulith.version>
 		<google-java-format.version>1.27.0</google-java-format.version>
 		<otel.version>1.51.0</otel.version>
 
@@ -70,12 +70,12 @@
 		<dependency>
 			<groupId>io.kubernetes</groupId>
 			<artifactId>client-java</artifactId>
-			<version>23.0.0</version>
+			<version>24.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.kubernetes</groupId>
 			<artifactId>client-java-extended</artifactId>
-			<version>23.0.0</version>
+			<version>24.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
