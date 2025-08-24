@@ -319,3 +319,10 @@ kube-app-version-74b98cbf94-vgz6m kube-app-version      at org.springframework.b
 kube-app-version-74b98cbf94-vgz6m kube-app-version      at java.base/java.lang.ClassLoader.loadClass(Unknown Source) ~[na:na]
 kube-app-version-74b98cbf94-vgz6m kube-app-version      ... 235 common frames omitted
 ```
+
+## Not Working
+
+* CloudBees
+* external secrets operator
+* gotify
+* harness-delegate
