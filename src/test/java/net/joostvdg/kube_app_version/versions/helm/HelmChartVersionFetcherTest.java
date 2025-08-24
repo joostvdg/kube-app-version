@@ -226,4 +226,31 @@ class HelmChartVersionFetcherTest {
     assertNotNull(versions);
     assertTrue(versions.isEmpty());
   }
+
+  @Test
+  void getAvailableVersions_worksWithChartNameFromArgoApp() throws Exception {
+    // Arrange - simulate an ArgoCD app named "cloudbees" that uses "cloudbees-core" chart
+    AppArtifact helmArtifact =
+        new AppArtifact(
+            "https://public-charts.artifacts.cloudbees.com/repository/public",
+            "helm",
+            "cloudbees-core"); // Chart name, not ArgoCD app name
+
+    String indexContent =
+        Files.readString(
+            Path.of(new ClassPathResource("cloudbees-helm-chart-index.yaml").getURI()));
+    when(httpResponse.statusCode()).thenReturn(200);
+    when(httpResponse.body()).thenReturn(indexContent);
+    when(httpClient.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
+        .thenReturn(httpResponse);
+
+    // Act
+    List<String> versions = fetcher.getAvailableVersions(helmArtifact);
+
+    // Assert
+    assertNotNull(versions);
+    assertFalse(versions.isEmpty());
+    // TODO: how do we keep this in Sync?
+    assertEquals("3.28985.0+797a7003b371", versions.get(0));
+  }
 }

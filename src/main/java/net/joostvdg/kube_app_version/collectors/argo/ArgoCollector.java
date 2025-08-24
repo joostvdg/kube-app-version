@@ -101,12 +101,20 @@ public class ArgoCollector implements ApplicationCollector {
     return dynamicApi.list().getObject().getItems();
   }
 
-  private App processArgoApplication(DynamicKubernetesObject argoAppCr) {
+  App processArgoApplication(DynamicKubernetesObject argoAppCr) {
     String appName = argoAppCr.getMetadata().getName();
     logger.info("Processing Argo Application: {}", appName);
 
     App discoveredApp = createBasicAppInfo(argoAppCr, appName);
     AppVersion currentVersion = createAppVersion(argoAppCr, appName, discoveredApp.getLabels());
+
+    // Store artifact name mappings for Helm charts
+    for (AppArtifact artifact : currentVersion.getArtifacts()) {
+      if ("helm".equals(artifact.getArtifactType())
+          && !appName.equals(artifact.getArtifactName())) {
+        discoveredApp.addArtifactNameMapping("helm", artifact.getArtifactName());
+      }
+    }
 
     Set<AppVersion> appVersions = new HashSet<>();
     appVersions.add(currentVersion);
@@ -268,8 +276,16 @@ public class ArgoCollector implements ApplicationCollector {
 
       repoUrl = verifyURLForSpecialCases(repoUrl);
 
-      // Create artifact with repo URL
-      AppArtifact artifact = new AppArtifact(repoUrl, sourceType, appName);
+      // For Helm charts, use the chart name as artifact name, otherwise use app name
+      String artifactName = appName;
+      if ("helm".equals(sourceType)
+          && source.has("chart")
+          && source.get("chart").isJsonPrimitive()) {
+        artifactName = source.get("chart").getAsString();
+      }
+
+      // Create artifact with repo URL and correct artifact name
+      AppArtifact artifact = new AppArtifact(repoUrl, sourceType, artifactName);
 
       // Add optional chart info for Helm charts
       if ("helm".equals(sourceType)

@@ -2,6 +2,7 @@
 package net.joostvdg.kube_app_version.api.model;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -13,6 +14,22 @@ public class App {
   private LocalDateTime lastSeen;
   private AppVersion currentVersion;
   private Set<AppVersion> versions;
+
+  // Add to App.java
+  private Map<String, String> artifactNameMappings = new HashMap<>(); // artifactType -> chartName
+
+  public Map<String, String> getArtifactNameMappings() {
+    return artifactNameMappings;
+  }
+
+  public void setArtifactNameMappings(Map<String, String> artifactNameMappings) {
+    this.artifactNameMappings =
+        artifactNameMappings != null ? artifactNameMappings : new HashMap<>();
+  }
+
+  public void addArtifactNameMapping(String artifactType, String chartName) {
+    this.artifactNameMappings.put(artifactType, chartName);
+  }
 
   public String getId() {
     return id;

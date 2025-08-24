@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: kube-app-version
-          image:  ghcr.io/joostvdg/kube-app-version@sha256:0e2504a3d3d7ae9572de62bfd586e461ded123f210015a84a3dc062d4c22e834
+          image: ghcr.io/joostvdg/kube-app-version@sha256:703270d6967b709a94335c37e5a83963a6ae8226d72d5163682570f173b89bff
           env:
             - name: APP_REDIS_MODE
               value: "OPTIONAL"

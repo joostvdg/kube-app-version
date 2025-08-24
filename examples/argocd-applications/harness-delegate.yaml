@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: harness-delegate
+  name: harness-delegate-ng
   namespace: argocd
 spec:
   destination:
@@ -9,5 +9,5 @@ spec:
   project: default
   source:
     chart: harness-delegate-ng
-    repoURL: https://harness.github.io/delegate-helm-chart/charts/
+    repoURL: https://harness.github.io/delegate-helm-chart/charts
     targetRevision: "1.0.22"
