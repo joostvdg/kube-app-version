@@ -2,6 +2,10 @@ name: CI/CD Pipeline
 
 on:
   push:
+    paths-ignore:
+      - "README.md"  
+      - ".github/workflows/sonarcloud.yml"
+      - "examples/"
     branches: [ main ]
     tags: [ 'v*' ]
   pull_request:
